@@ -339,6 +339,10 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Configuring Gluu CE for Replication
+      </label>
+    
     <a href="./" title="Configuring Gluu CE for Replication" class="md-nav__link md-nav__link--active">
       Configuring Gluu CE for Replication
     </a>
@@ -349,6 +353,59 @@
   
     
   
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preface" title="Preface" class="md-nav__link">
+    Preface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-procedure-for-mirror-mode" title="Migration Procedure for Mirror Mode" class="md-nav__link">
+    Migration Procedure for Mirror Mode
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-requisites" title="Pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-1-existing-gluu-server" title="Server 1 (Existing Gluu Server)" class="md-nav__link">
+    Server 1 (Existing Gluu Server)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-mirror-server" title="Server 2 (Mirror Server)" class="md-nav__link">
+    Server 2 (Mirror Server)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mirror-server-1-to-server-2" title="Mirror Server 1 to Server 2" class="md-nav__link">
+    Mirror Server 1 to Server 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
     
@@ -463,6 +520,59 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#preface" title="Preface" class="md-nav__link">
+    Preface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-procedure-for-mirror-mode" title="Migration Procedure for Mirror Mode" class="md-nav__link">
+    Migration Procedure for Mirror Mode
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-requisites" title="Pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-1-existing-gluu-server" title="Server 1 (Existing Gluu Server)" class="md-nav__link">
+    Server 1 (Existing Gluu Server)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-2-mirror-server" title="Server 2 (Mirror Server)" class="md-nav__link">
+    Server 2 (Mirror Server)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mirror-server-1-to-server-2" title="Mirror Server 1 to Server 2" class="md-nav__link">
+    Mirror Server 1 to Server 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -476,13 +586,19 @@
                
               
                 
-                <h2 id="preface">Preface<a class="headerlink" href="#preface" title="Permanent link">#</a></h2>
-<p>This page is about OpenLDAP replication used as the data storage for Gluu Server. OpenLDAP supports many different types of replication <a href="http://www.openldap.org/doc/admin24/replication.html">topological setups</a>. The Cluster Manager application by Gluu supports two of them.
-<em> <strong>Delta-Synrepl</strong> - for high availability single master (read/write) multiple consumer (read only) setup.
-</em> <strong>Mirror Mode</strong> - for fall back double master (read/write) multiple consumers under each master (read only) setup.
-This document outline the setup procedure for both mode of operations.</p>
+                <h1 id="preparing-gluu-ce-for-replication">Preparing Gluu CE for Replication<a class="headerlink" href="#preparing-gluu-ce-for-replication" title="Permanent link">#</a></h1>
+<h2 id="preface">Preface<a class="headerlink" href="#preface" title="Permanent link">#</a></h2>
+<p>This page is about OpenLDAP replication used as the data storage for Gluu Server. 
+OpenLDAP supports many different types of replication 
+<a href="http://www.openldap.org/doc/admin24/replication.html">topological setups</a>. 
+The Cluster Manager application by Gluu supports two of them.</p>
+<ul>
+<li><strong>Delta-Synrepl</strong> - for high availability single master (read/write) multiple consumer (read only) setup.</li>
+<li><strong>Mirror Mode</strong> - for fall back double master (read/write) multiple consumers under each master (read only) setup.
+This document outline the setup procedure for both mode of operations.</li>
+</ul>
 <h2 id="migration-procedure-for-mirror-mode">Migration Procedure for Mirror Mode<a class="headerlink" href="#migration-procedure-for-mirror-mode" title="Permanent link">#</a></h2>
-<p>[[/img/replication/ce_cluster_diagram-1.png|Model Diagram]]</p>
+<p><img alt="architecture" src="../../img/ce_cluster_diagram-1.png" /></p>
 <h3 id="pre-requisites">Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permanent link">#</a></h3>
 <ol>
 <li>Existing Gluu Server 3.0.1 installation. Refer <a href="https://gluu.org/docs/ce/latest/installation-guide/install/">installation guide</a> for details.</li>
@@ -491,95 +607,117 @@ This document outline the setup procedure for both mode of operations.</p>
 </ol>
 <h3 id="server-1-existing-gluu-server">Server 1 (Existing Gluu Server)<a class="headerlink" href="#server-1-existing-gluu-server" title="Permanent link">#</a></h3>
 <ol>
-<li><strong>Backup Data:</strong> Login login to the chroot environment of the Gluu server. While inside the chroot, stop LDAP server and export its data for backup
-    <code>bash
-    service solserver stop
-    /opt/symas/bin/slapcat -l alldata.ldif</code></li>
 <li>
-<p><strong>Edit the file</strong> <code>/opt/symas/etc/openldap/symas-openldap.conf</code> to allow other servers to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration):
-    ```ini
-    # Change 
-    HOST_LIST="ldaps://127.0.0.1:1636/"
-    # to 
-    HOST_LIST="ldaps://127.0.0.1:1636/ ldaps://<server_ip>:1636"</p>
-<h1 id="change">Change<a class="headerlink" href="#change" title="Permanent link">#</a></h1>
-<p>EXTRA_SLAPD_ARGS=""</p>
-<h1 id="to">to<a class="headerlink" href="#to" title="Permanent link">#</a></h1>
-<p>EXTRA_SLAPD_ARGS="-F /opt/symas/etc/openldap/slapd.d"
-<code>3. **Generate new SSL certificate for OpenLDAP:** The default certificate for OpenLDAP in Gluu Server is for localhost only, we need to generate a hostname based certificate for wider access. (Skip/Modify this step if you are using a different CA system). **Important:** Common Name (e.g. server FQDN or YOUR name) should be your hostname.</code>bash
-cd /etc/certs
-mkdir old_certs
-mv openldap.* old_certs/
-/usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048
-/usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key</p>
-<h1 id="ensure-the-common-name-here-is-your-full-hostname-and-not-localhost">Ensure the Common Name here is your full hostname and NOT localhost<a class="headerlink" href="#ensure-the-common-name-here-is-your-full-hostname-and-not-localhost" title="Permanent link">#</a></h1>
-<p>/usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr
-/usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt</p>
-<h1 id="change-the-in-the-command-below">Change the <hostname> in the command below<a class="headerlink" href="#change-the-in-the-command-below" title="Permanent link">#</a></h1>
-<p>/opt/jre/bin/keytool -import -trustcacerts -alias <hostname>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt
-cp openldap.crt openldap.pem
-<code>5. **Configure oxAuth to both the servers:** Add the hostname of both the servers to `/etc/gluu/conf/ox-ldap.properties` as shown below. This points the oxAuth to the two LDAP servers it can connect to, providing fallback in case of one server failing.</code>ini
-...
-servers: <hostname>:1636,<server_2_hostname>:1636
-...
-<code>6. **Create a backup of some files necessary for replication:**</code>bash
-cd ~
-mkdir repfiles
-cd repfiles
-cp /etc/certs/openldap.crt .
-cp -r /etc/gluu/conf/ .
-cd ..
-tar -czf repfiles.tar.gz repfiles
-<code>7. Copy the backup files to local computer, we will use this to configure the second server</code>bash
-scp root@server1:/opt/gluu-server-3.0.1/root/repfiles.tar.gz </location/in/local/server>
-```</p>
+<p><strong>Backup Data:</strong> Login login to the chroot environment of the Gluu server. 
+    While inside the chroot, stop LDAP server and export its data for backup</p>
+<p><code>service solserver stop
+/opt/symas/bin/slapcat -l alldata.ldif</code></p>
+</li>
+<li>
+<p><strong>Edit the file</strong> <code>/opt/symas/etc/openldap/symas-openldap.conf</code> 
+    to allow servers within chroot to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration).
+    As Gluu recommends to use FQDN or IP for its connections to LDAP.</p>
+<p>Change the values of <code>HOST_LIST</code> and <code>EXTRA_SLAPD_ARGS</code></p>
+<p><code>HOST_LIST="ldaps://127.0.0.1:1636/"
+to 
+HOST_LIST="ldaps://127.0.0.1:1636/ ldaps://&lt;server_ip&gt;:1636"</code></p>
+<p><code>EXTRA_SLAPD_ARGS=" "
+to
+EXTRA_SLAPD_ARGS="-F /opt/symas/etc/openldap/slapd.d"</code></p>
+</li>
+<li>
+<p><strong>Generate new SSL certificate for OpenLDAP:</strong> The default certificate for OpenLDAP in Gluu Server is for localhost only, we need to generate a hostname based certificate for wider access. (Skip/Modify this step if you are using a different CA system). <strong>Important:</strong> Common Name (e.g. server FQDN or YOUR name) should be your hostname.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning<p>Ensure the Common Name here is your full hostname and NOT localhost.</p>
+</p>
+</div>
+<p><code># cd /etc/certs</code></p>
+<p><code># mkdir old_certs</code></p>
+<p><code># mv openldap.* old_certs/</code></p>
+<p><code># /usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048</code></p>
+<p><code># /usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key</code></p>
+<p><code># /usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr</code></p>
+<p><code># /usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt</code></p>
+<p>Change the <hostname> of the <server 1> in the command below</p>
+<p><code>#/opt/jre/bin/keytool -import -trustcacerts -alias &lt;server1&gt;_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt</code></p>
+<p><code>cp openldap.crt openldap.pem</code></p>
+</li>
+<li>
+<p><strong>Configure oxAuth to both the servers:</strong> 
+    Add the hostname (FQDN) of both the servers to <code>/etc/gluu/conf/ox-ldap.properties</code> as shown below. 
+    This points the oxAuth to the two LDAP servers it can connect to, providing fallback in case 
+    of one server failing.</p>
+<p>Add the server FQDN to the value <code>servers</code></p>
+<p><code>servers: &lt;hostname&gt;:1636,&lt;server_2_hostname&gt;:1636</code></p>
+</li>
+<li>
+<p><strong>Create a backup of some files necessary for replication:</strong></p>
+<p><code># cd ~</code></p>
+<p><code># mkdir repfiles</code></p>
+<p><code># cd repfiles</code></p>
+<p><code># cp /etc/certs/openldap.crt .</code></p>
+<p><code># cp -r /etc/gluu/conf/ .</code></p>
+<p><code># cd ..</code>
+<code># tar -czf repfiles.tar.gz repfiles</code></p>
+</li>
+<li>
+<p>Copy the backup files to local computer, we will use this to configure the second server</p>
+<p><code>scp root@server1:/opt/gluu-server-3.0.1/root/repfiles.tar.gz &lt;/location/in/local/server&gt;</code></p>
 </li>
 </ol>
-<p><strong>Note:</strong> There is no need to start the LDAP server (service solserver) now, it would be configured and started by the Cluster Manager later.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is no need to start the LDAP server (service solserver) now, it would be configured and started by the Cluster Manager later.</p>
+</div>
 <h3 id="server-2-mirror-server">Server 2 (Mirror Server)<a class="headerlink" href="#server-2-mirror-server" title="Permanent link">#</a></h3>
 <ol>
-<li><a href="https://gluu.org/docs/ce/3.0.1/installation-guide/install/">Install CE package on server 2</a>. The aim here is to setup the LDAP and oxAuth only so, when running <code>setup.py</code> mark only "Install oxAuth", "LDAP" and "JCE"  as True and everything as false.</li>
-<li><strong>Copy the backfiles from server 1 to server 2:</strong>
-    <code>bash
-    scp repfiles.tar.gz root@server2:/opt/gluu-server-3.0.1/root/</code></li>
-<li><strong>Replace the existing files with backup ones:</strong> This sets up the second gluu-server to act like the twin of the first one
-    <code>bash
-    ssh root@server_2
-    service gluu-server-3.0.1 login
-    tar -xvf repfiles.tar.gz
-    cd repfiles
-    rm -rf /etc/gluu/conf/
-    cp -r conf /etc/gluu/
-    /opt/jre/bin/keytool -import -trustcacerts -alias &lt;server_1_hostname&gt;_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt</code></li>
 <li>
-<p><strong>Replace the OpenLDAP certificates:</strong>
-    ```bash
-    cd /etc/certs
-    mkdir old_certs
-    mv openldap.* old_certs/
-    /usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048
-    /usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key</p>
-<h1 id="ensure-the-common-name-here-is-your-full-hostname-and-not-localhost_1">Ensure the Common Name here is your full hostname and NOT localhost<a class="headerlink" href="#ensure-the-common-name-here-is-your-full-hostname-and-not-localhost_1" title="Permanent link">#</a></h1>
-<p>/usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr
-/usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt</p>
-<h1 id="change-the-in-the-command-below_1">Change the <hostname> in the command below<a class="headerlink" href="#change-the-in-the-command-below_1" title="Permanent link">#</a></h1>
-<p>/opt/jre/bin/keytool -import -trustcacerts -alias <hostname>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt
-cp openldap.crt openldap.pem
-<code>5. **Edit the file** `/opt/symas/etc/openldap/symas-openldap.conf` to allow other servers to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration):</code>ini</p>
-<h1 id="change_1">Change<a class="headerlink" href="#change_1" title="Permanent link">#</a></h1>
-<p>HOST_LIST="ldaps://127.0.0.1:1636/"</p>
-<h1 id="to_1">to<a class="headerlink" href="#to_1" title="Permanent link">#</a></h1>
-<p>HOST_LIST="ldaps://127.0.0.1:1636/ ldaps://<server_ip>:1636"</p>
-<h1 id="change_2">Change<a class="headerlink" href="#change_2" title="Permanent link">#</a></h1>
-<p>EXTRA_SLAPD_ARGS=""</p>
-<h1 id="to_2">to<a class="headerlink" href="#to_2" title="Permanent link">#</a></h1>
-<p>EXTRA_SLAPD_ARGS="-F /opt/symas/etc/openldap/slapd.d"
-```</p>
+<p><a href="https://gluu.org/docs/ce/latest/installation-guide/install/">Install CE package on server 2</a>. 
+    The aim here is to setup the LDAP and oxAuth only so, when running <code>setup.py</code> mark only "Install oxAuth", "LDAP" and "JCE"  as True and everything as false.</p>
 </li>
 <li>
-<p><strong>Clean up the existing LDAP data files:</strong> The data would be replicated from server 1 when configured.
-    <code>bash
-    rm -rf /opt/gluu/data/</code></p>
+<p><strong>Copy the backfiles from server 1 to server 2:</strong></p>
+<p><code>scp repfiles.tar.gz root@server2:/opt/gluu-server-3.0.1/root/</code></p>
+</li>
+<li>
+<p><strong>Replace the existing files with backup ones:</strong> This sets up the second gluu-server to act like the twin of the first one</p>
+<p><code>#ssh root@server_2</code></p>
+<p><code>#service gluu-server-3.0.1 login</code></p>
+<p><code>#tar -xvf repfiles.tar.gz</code></p>
+<p><code>#cd repfiles</code></p>
+<p><code>#rm -rf /etc/gluu/conf/</code></p>
+<p><code>#cp -r conf /etc/gluu/</code></p>
+<p><code>#/opt/jre/bin/keytool -import -trustcacerts -alias &lt;server_1_hostname&gt;_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt</code></p>
+</li>
+<li>
+<p><strong>Replace the OpenLDAP certificates:</strong></p>
+<p><code>#cd /etc/certs</code></p>
+<p><code>#mkdir old_certs</code></p>
+<p><code>#mv openldap.* old_certs/</code></p>
+<p><code>#/usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048</code></p>
+<p><code>#/usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key</code></p>
+<p><em>Ensure the Common Name here is your full <strong>hostname</strong> and NOT localhost</em></p>
+<p><code>#/usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr</code></p>
+<p><code>#/usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt</code></p>
+<p><em>Change the <strong>hostname</strong> in the command below</em></p>
+<p><code>#/opt/jre/bin/keytool -import -trustcacerts -alias &lt;hostname&gt;_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt</code></p>
+<p><code>#cp openldap.crt openldap.pem</code></p>
+</li>
+<li>
+<p><strong>Edit the file</strong> <code>/opt/symas/etc/openldap/symas-openldap.conf</code> 
+    to allow servers within chroot to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration).
+    As Gluu recommends to use FQDN or IP for its connections to LDAP.</p>
+<p>Change the values of <code>HOST_LIST</code> and <code>EXTRA_SLAPD_ARGS</code></p>
+<p><code>HOST_LIST="ldaps://127.0.0.1:1636/"
+to 
+HOST_LIST="ldaps://127.0.0.1:1636/ ldaps://&lt;server_ip&gt;:1636"</code></p>
+<p><code>EXTRA_SLAPD_ARGS=" "
+to
+EXTRA_SLAPD_ARGS="-F /opt/symas/etc/openldap/slapd.d"</code></p>
+</li>
+<li>
+<p><strong>Clean up the existing LDAP data files:</strong> The data would be replicated from server 1 when configured.</p>
+<p><code>rm -rf /opt/gluu/data/</code></p>
 </li>
 </ol>
 <h3 id="mirror-server-1-to-server-2">Mirror Server 1 to Server 2<a class="headerlink" href="#mirror-server-1-to-server-2" title="Permanent link">#</a></h3>
@@ -591,7 +729,8 @@ service gluu-server-3.0.1 login
 /opt/jre/bin/keytool -import -trustcacerts -alias &lt;server2&gt;_openldap_2 -file server2_openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt
 </code></pre>
 
-<p>Now both the servers are ready to be configured to a cluster. After you get the Cluster Manager installed, follow the <strong>Mirror Mode</strong> in <a href="https://github.com/GluuFederation/cluster-mgr/wiki/Setting-up-LDAP-replication">replication setup guide</a></p>
+<p>Now both the servers are ready to be configured to a cluster. 
+After you get the Cluster Manager installed, follow the <strong>Mirror Mode</strong> in <a href="../../replication/Setting-up-LDAP-replication/">replication setup guide</a></p>
               
             </article>
           </div>

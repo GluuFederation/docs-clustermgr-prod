@@ -1,3 +1,5 @@
+#Configuring replicatoin between Gluu CE server using Cluster Manager
+
 ## Pre-requisites
 
 * **Gluu Server or LDIF Export** - This Gluu server or the LDIF export of the Gluu Server's contents would be used as the main source of LDAP data.
@@ -23,11 +25,11 @@
     * **TLS CA Certificate** - If you are using SSL/TLS via `ldaps`, you will need to configure the TLS certificate locations. Enter location of CA cert on your LDAP server. For a typical Gluu server this would be `/etc/certs/openldap.pem` or `/etc/certs/openldap.crt` as it is self-signed.
     * **TLS Server Certificate** - The location of server certificate. For typical gluu server it is `/etc/certs/openldap.crt`
     * **TLS Server Key** - The location of server certificate's key. For typical gluu server it is `/etc/certs/openldap.key`
-    [[/img/replication/new_provider.png|New Provider]]
+    ![provider](../img/replication/new_provider.png)
 5. The app creates a slapd.conf using your data. You can add/change any configuration specific to your requirements and click <kdb>Setup Server</kbd>
 6. The server is setup. Click <kbd>Go to Dashboard</kbd> once the setup is complete. In case the setup throws some error, make necessary changes in the server via ssh, then refresh the page or click the retry button at the bottom of the page to run the setup again.
 7. The dashboard lists the server added. Click <kbd>Initialize</kbd> -> <kbd>Using Exported LDIF</kbd>.
-8. Upload the `fulldata.ldif` we exported from the Gluu Server. The cluster manager will import the LDIF data into the provider, and add the replication manager.
+8. Upload the `alldata.ldif` we exported from the Gluu Server. The cluster manager will import the LDIF data into the provider, and add the replication manager.
 9. Once initialisation is complete an <kbd>Add Consumer</kbd> shows in the dashboard in the Actions box of the provider.
 
 ### Setting up the Consumers
@@ -40,9 +42,9 @@
 
 ## Mirror Mode
 1. Open Cluster Manager in the browser. Click the <kbd>Setup</kbd> button in the MirroMode box.
-    [[/img/replication/homepage.png|Homepage]]
+    ![homepage](../img/replication/homepage.png)
 2. If cluster manager hasn't been configured earlier, the user will be prompted to configure it before setting up the cluster. The values **Replication Manager DN** and the **Password** are mandatory. Other fields are optional. Enter the values and <kbd>Update Configuration</kbd>.
-    [[/img/replication/config_page.png]]
+    ![configpage](../img/replication/config_page.png)
 3. Now a **New Provider** can be added to the cluster. The fields are:
     * **This is a Gluu Server** - Check this box if the server is a Gluu Server and the OpenLDAP is inside chroot container.
     * (Optional) **Gluu Server Version** - If the above checkbox is marked, then the version of Gluu-Server will have to be selected here.
@@ -54,17 +56,17 @@
     * **TLS CA Certificate** - If you are using SSL/TLS via `ldaps`, you will need to configure the TLS certificate locations. Enter location of CA cert on your LDAP server. For a typical Gluu server this would be `/etc/certs/openldap.pem` or `/etc/certs/openldap.crt` as it is self-signed.
     * **TLS Server Certificate** - The location of server certificate. For typical gluu server it is `/etc/certs/openldap.crt`
     * **TLS Server Key** - The location of server certificate's key. For typical gluu server it is `/etc/certs/openldap.key`
-    [[/img/replication/new_provider.png|New Provider]]
+    ![provider](../img/replication/new_provider.png)
 4. Click <kbd>Generate Provider Config</kbd>. This generates the `slapd.conf` file that would be used to setup the OpenLDAP. If the organization/admin wishes to make any specific changes, they can do so here.
-    [[/img/replication/conf_editor.png|slapd.conf editor]]
+    ![slapd.conf editor](../img/replication/conf_editor.png)
 5. If `slapd.conf` is satisfactory, then clicking <kbd>Setup Server</kbd> would setup the server ready for cluster usage. Wait until the <kbd>Add Mirror</kbd> appears at the bottom of the page.
-    [[/img/replication/setup_provider.png|Setup Provider]]
-    [[/img/replication/add_mirror.png|slapd.conf editor]]
+    ![Setup Provider](../img/replication/setup_provider.png)
+    ![slapd.conf editor](../img/replication/add_mirror.png)
 6. Click the <kbd>Add Mirror</kbd> button and repeat the above step 3 to step 5 to setup the mirror server.
 7. Once both the servers are setup for replication, we can initialize replication by adding the replication user. Go to dashboard and Initialize **both the servers**
 8. Click <kbd>Initialize</kbd> and select `Using existing data` if the provider LDAP already has the data (in case of gluu server), or `Using LDIF Data` if have some LDIF data backup that should be uploaded and used as the database.
-    [[/img/replication/initialize_using_existing.png|Initialize Server]]
-    [[/img/replication/initialization_done.png|Initialization Done]]
+    ![Initialize Server](../img/replication/initialize_using_existing.png)
+    ![Initialization Done](../img/replication/initialization_done.png)
 
 ## Troubleshooting
 
