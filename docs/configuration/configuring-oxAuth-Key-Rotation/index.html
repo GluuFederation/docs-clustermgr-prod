@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documenation for Gluu Cluster Manager">
+      
+      
+      
+      
+        <link rel="shortcut icon" href="../../favicon.ico">
+      
+      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+    
+    
+      
+        <title>Configuring oxAuth Key Rotation - Gluu Docs</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-facb31f4a3.js"></script>
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-f3ab63f78a.css">
+      
+      
+    
+    
+  </head>
+  
+  
+  
+  
+    <body>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+	 <div class="md-flex__cell md-flex__cell--shrink">
+	    <a href="https://gluu.org/docs/" title="Gluu Docs" class=" md-logo  md-header-nav__button">
+          
+            <img src="../../gluu.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  Configuration Guide
+                </span>
+              
+            
+            Configuring oxAuth Key Rotation
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search">
+  <div class="md-search__overlay"></div>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <label class="md-icon md-search__icon" for="search"></label>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+              
+
+
+  
+
+
+  <a href="https://github.com/GluuFederation/docs-clustermgr-prod" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+            
+          </div>
+      </div>
+    </div>
+<!-- Second Nav Bar 
+<nav class="md-secondary-header-nav md-grid" style="
+    height: 58px;
+    background: white;
+	color: #555555;
+	font-weight: bold;
+	font-size; 8px
+	overflow: hidden;
+">
+<div class="md-flex-secondary" style="
+    display: table;
+    padding: 10px;
+">
+<label for="Versions">Ver:<select id="versions" onchange="window.location.href=this.value;" style="
+    position: relative;
+    display: inline-block;
+    min-width: 100%;
+    /* width: 120%; */
+    height: 34px;
+    padding: 6px 30px 6px 15px;
+    color: #555555;
+    border: none;
+    background: transparent;
+    outline: none;
+    -webkit-appearance: none;
+    z-index: 99;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px;
+">
+  <option value="/docs">Latest</option>
+  <option value="/docs/2.4.4">2.4.4</option>
+    </select> 
+</label>
+ </div>
+ </nav>-->
+   </nav>
+</header>
+    
+    <div class="md-container">
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary">
+
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <i class=" md-logo  md-nav__button">
+      
+        <img src="../../gluu.jpg">
+      
+    </i>
+    Gluu Docs
+	<label for="Versions">Ver:
+	  <select id="versions" onchange="window.location.href=this.value;" style="
+		position: inherit;
+		display: inline;
+		min-width: 25%;
+		/* width: 120%; */
+		height: 22px;
+		padding: 5px 15px 5px 5px;
+		color: Black;
+		border: none;
+		background: transparent;
+		outline: none;
+		-webkit-appearance: none;
+		z-index: 99;
+		cursor: pointer;
+		font-size: 10px;
+		margin-bottom: 10px;
+		border: 1px solid black;
+		overflow: auto
+	">
+	  <option value="/docs/ce/3.0.2">3.0.2</option>
+	  <option value="/docs/ce/3.0.1">3.0.1</option>
+	  <option value="/docs/ce/3.0.0">3.0.0</option>
+	  <option value="/docs">All Versions</option>
+		</select> 
+	</label>
+  </label>
+    
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/GluuFederation/docs-clustermgr-prod" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  <li class="md-nav__item">
+    
+      <a href="../.." title="Home" class="md-nav__link">
+        Home
+      </a>
+    
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Installation Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-2">
+        Installation Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../installation/installation/" title="Install Cluster Manager" class="md-nav__link">
+        Install Cluster Manager
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Upgrade/Patch Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-3">
+        Upgrade/Patch Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../installation/upgrade/" title="Upgrade Gluu Cluster Manager" class="md-nav__link">
+        Upgrade Gluu Cluster Manager
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Configuration Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-4">
+        Configuration Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../configuring-GluuCE-Cluster/" title="Configuring Gluu CE for Replication" class="md-nav__link">
+        Configuring Gluu CE for Replication
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../configuring-oxAuth-Logs/" title="Configuring oxAuth logs" class="md-nav__link">
+        Configuring oxAuth logs
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Configuring oxAuth Key Rotation
+      </label>
+    
+    <a href="./" title="Configuring oxAuth Key Rotation" class="md-nav__link md-nav__link--active">
+      Configuring oxAuth Key Rotation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-oxauth-key-rotation" title="Configuring oxAuth Key Rotation" class="md-nav__link">
+    Configuring oxAuth Key Rotation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-rotation-interval" title="Key Rotation Interval" class="md-nav__link">
+    Key Rotation Interval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-rotation-type" title="Key Rotation Type" class="md-nav__link">
+    Key Rotation Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jks-backend" title="JKS Backend" class="md-nav__link">
+    JKS Backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxeleven-backend" title="oxEleven Backend" class="md-nav__link">
+    oxEleven Backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-integration" title="LDAP Integration" class="md-nav__link">
+    LDAP Integration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-oxauth-key-rotation" title="Monitoring oxAuth Key Rotation" class="md-nav__link">
+    Monitoring oxAuth Key Rotation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Replication Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-5">
+        Replication Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../replication/Setting-up-LDAP-replication/" title="Replication" class="md-nav__link">
+        Replication
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Troubleshooting
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-6">
+        Troubleshooting
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../troubleshooting/troubleshooting/" title="Troubleshooting Issues" class="md-nav__link">
+        Troubleshooting Issues
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-oxauth-key-rotation" title="Configuring oxAuth Key Rotation" class="md-nav__link">
+    Configuring oxAuth Key Rotation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-rotation-interval" title="Key Rotation Interval" class="md-nav__link">
+    Key Rotation Interval
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-rotation-type" title="Key Rotation Type" class="md-nav__link">
+    Key Rotation Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jks-backend" title="JKS Backend" class="md-nav__link">
+    JKS Backend
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxeleven-backend" title="oxEleven Backend" class="md-nav__link">
+    oxEleven Backend
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ldap-integration" title="LDAP Integration" class="md-nav__link">
+    LDAP Integration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-oxauth-key-rotation" title="Monitoring oxAuth Key Rotation" class="md-nav__link">
+    Monitoring oxAuth Key Rotation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+               
+                 <a href="https://github.com/GluuFederation/docs-clustermgr-prod/blob/master/source/configuration\configuring-oxAuth-Key-Rotation.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
+               
+              
+                
+                  <h1>Configuring oxAuth Key Rotation</h1>
+                
+                <h2 id="configuring-oxauth-key-rotation">Configuring oxAuth Key Rotation<a class="headerlink" href="#configuring-oxauth-key-rotation" title="Permanent link">#</a></h2>
+<p>Key rotation consists of several processes:</p>
+<ol>
+<li>Generating private keys (stored in <code>oxEleven</code> or <code>JKS</code> backend)</li>
+<li>Generating public keys and save them to LDAP.</li>
+<li>Running scheduled background job that executes process 1 and 2.</li>
+</ol>
+<p>To configure oxAuth key rotation, click <strong>oxAuth Key Rotation</strong> in left sidebar menu.</p>
+<h3 id="key-rotation-interval">Key Rotation Interval<a class="headerlink" href="#key-rotation-interval" title="Permanent link">#</a></h3>
+<p>This value determines the interval (in days) of automatic key rotation after configuration has been saved.
+For example, if key rotation config are saved on 21st August, the next key rotation will occur automatically
+at 23rd August and so on.</p>
+<p>[[/img/key-rotation/oxauth-key-interval-marker.png|Key Rotation Interval]]</p>
+<h3 id="key-rotation-type">Key Rotation Type<a class="headerlink" href="#key-rotation-type" title="Permanent link">#</a></h3>
+<p>There are 2 backend types we can choose, <code>oxEleven</code> and <code>JKS</code> (Java keystore).</p>
+<h4 id="jks-backend">JKS Backend<a class="headerlink" href="#jks-backend" title="Permanent link">#</a></h4>
+<p>[[/img/key-rotation/oxauth-key-jks-radio-marker.png|Key Rotation JKS Type]]</p>
+<p>When we choose JKS backend, a new section will appear as shown below.
+Note, we need to add oxAuth server(s) where JKS file will be distributed to all available servers.
+To add oxAuth server, type the hostname or IP address of the server in the text field.
+Afterwards, click <strong>Add oxAuth server</strong> button.</p>
+<p>[[/img/key-rotation/oxauth-add-oxauth-marker.png|Add oxAuth server]]</p>
+<p>If we want to remove oxAuth server, click <strong>Remove?</strong> checkbox for desired server and then click <strong>Remove selected</strong> button.</p>
+<p>[[/img/key-rotation/oxauth-remove-oxauth-marker.png|Remove oxAuth server]]</p>
+<h4 id="oxeleven-backend">oxEleven Backend<a class="headerlink" href="#oxeleven-backend" title="Permanent link">#</a></h4>
+<p>[[/img/key-rotation/oxauth-key-ox11-radio.png|Key Rotation oxEleven Type]]</p>
+<p>When we choose oxEleven backend, a new section will appear as shown below:</p>
+<p>[[/img/key-rotation/oxauth-key-ox11-config.png|oxEleven config]]</p>
+<p>Note, refer to <a href="https://github.com/GluuFederation/cluster-mgr/wiki/Installing-Cluster-Manager-Application#oxeleven-application-optional">oxEleven setup</a> for details.</p>
+<p>Enter the URL of oxEleven in <code>http://host:port</code> format.
+We already know that oxEleven is installed in the same host,
+hence we can use IP address from <code>eth0</code> interface and port 8190.</p>
+<p>Enter the random token mentioned in oxEleven setup section in link above.</p>
+<h3 id="ldap-integration">LDAP Integration<a class="headerlink" href="#ldap-integration" title="Permanent link">#</a></h3>
+<p>As public keys are stored in LDAP, we need to specify <code>inum appliance</code> for searching and replacing desired entries in LDAP.
+We can find the <code>inum appliance</code> in <code>/opt/gluu-server-3.0.1/install/community-edition-setup/setup.properties.last</code> inside the Gluu Server (1).
+Locate the line <code>inumAppliance</code> inside that file as shown below:</p>
+<pre><code># /opt/gluu-server-3.0.1/install/community-edition-setup/setup.properties.last file
+inumApplianceFN=56EF0E9AF67AB15B0002AC3A8E0E
+inumAppliance=@!56EF.0E9A.F67A.B15B!0002!AC3A.8E0E # this is the inum appliance
+</code></pre>
+<p>Copy the value and paste into the form field:</p>
+<p>[[/img/key-rotation/oxauth-inum-appliance.png|Configure Inum Appliance]]</p>
+<p>Once we have entered correct Inum Appliance, click <strong>Rotate Key</strong> at the bottom of the form.</p>
+<h2 id="monitoring-oxauth-key-rotation">Monitoring oxAuth Key Rotation<a class="headerlink" href="#monitoring-oxauth-key-rotation" title="Permanent link">#</a></h2>
+<p>As key rotation process is running as background job, to monitor the result (or error), we can tail a log file.</p>
+<pre><code>tailf /var/log/celery/w1-1.log
+</code></pre>
+<p>Here's an example of successful key rotation logged in <code>/var/log/celery/w1-1.log</code> when using <code>jks</code> backend type:</p>
+<pre><code>[2017-05-04 12:24:40,073: WARNING/Worker-1] [root@128.199.116.221] Executing task '_copy_jks'
+[2017-05-04 12:24:40,091: INFO/Worker-1] Connected (version 2.0, client OpenSSH_7.2p2)
+[2017-05-04 12:24:40,312: INFO/Worker-1] Authentication (publickey) successful!
+[2017-05-04 12:24:40,554: INFO/Worker-1] [chan 0] Opened sftp connection (server version 3)
+[2017-05-04 12:24:40,559: WARNING/Worker-1] [root@128.199.116.221] put: /opt/gluu-cluster-mgr/oxauth-keys.jks -&gt; /opt/gluu-server-3.0.1/etc/certs/oxauth-keys.jks
+[2017-05-04 12:24:40,563: INFO/Worker-1] [chan 0] sftp session closed.
+[2017-05-04 12:24:40,564: WARNING/Worker-1] JKS file has been copied to 128.199.116.221
+[2017-05-04 12:26:31,410: WARNING/Worker-1] key rotation task will be executed approximately at 2017-05-05 12:24:40.052739 UTC
+</code></pre>
+<p>Here's an example of successful key rotation logged in <code>/var/log/celery/w1-1.log</code> when using <code>oxeleven</code> backend type:</p>
+<pre><code>[2017-05-04 12:47:32,727: WARNING/Worker-4] key rotation task will be executed approximately at 2017-05-05 12:24:40.052739 UTC
+[2017-05-04 12:49:07,780: WARNING/Worker-4] deleting old keys
+[2017-05-04 12:49:07,798: INFO/Worker-4] Starting new HTTP connection (1): 128.199.225.90
+[2017-05-04 12:49:08,068: WARNING/Worker-4] obtaining new keys
+[2017-05-04 12:49:08,070: INFO/Worker-4] Starting new HTTP connection (1): 128.199.225.90
+[2017-05-04 12:49:08,707: WARNING/Worker-4] pub keys has been updated
+</code></pre>
+<p>Note, if we don't see logs about key rotation in <code>/var/log/celery/w1-1.log</code>, we can try to tail the other log files; <code>/var/log/celery/w1-2.log</code>, <code>/var/log/celery/w1-3.log</code>, or <code>/var/log/celery/w1-4.log</code>.</p>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../configuring-oxAuth-Logs/" title="Configuring oxAuth logs" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Configuring oxAuth logs
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../replication/Setting-up-LDAP-replication/" title="Replication" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Replication
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017, Gluu, Inc.
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-2afe21e0b2.js"></script>
+      <script>var config={url:{base:"../.."}},app=new Application(config);app.initialize()</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
