@@ -71,4 +71,17 @@
 ## Troubleshooting
 
 * For most part the web interface would log the errors encountered during the setup processes.
-* In case of some consumer misbehaving or is misconfigured, remove the server from the dashboard using the <kbd>Remove</kbd> button and re-add the server using <kbd>Add Consumer</kbd>
+* In case of some consumer misbehaving or is misconfigured, remove the server from the 
+dashboard using the <kbd>Remove</kbd> button and re-add the server using <kbd>Add Consumer</kbd>
+* Before adding the consumer remove the data and provider certificate from the consumer server(Server 2).
+    
+    ` #service solserver stop`
+    
+    ` #rm -rf /opt/gluu/data`
+    
+    ` #rm /opt/symas/ssl/<provider.crt>`
+    
+!!!Note:
+
+    Not required to start LDAP manually, once the data and certificate is removed, this task would be taken care by 
+    cluster mananger once the consumer is added the cluster manager web application.

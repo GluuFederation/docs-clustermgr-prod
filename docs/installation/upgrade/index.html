@@ -519,8 +519,40 @@
                 
                 <h1 id="cluster-manager-upgrade-guide">Cluster Manager Upgrade Guide<a class="headerlink" href="#cluster-manager-upgrade-guide" title="Permanent link">#</a></h1>
 <h2 id="upgrade-using-apt-get">Upgrade using apt-get<a class="headerlink" href="#upgrade-using-apt-get" title="Permanent link">#</a></h2>
+<p>To upgrade Gluu Cluster Manager using apt-get commands</p>
+<pre><code>` #apt-get clean`
+
+` #apt-get update`
+
+` #apt-get install python-cluster-mgr`
+</code></pre>
+<p>To check for the latest policy use below command</p>
+<pre><code>` #apt-cache policy python-cluster-mgr`
+</code></pre>
+<p>Restart the services for Cluster Manager using below commands.</p>
+<pre><code>` #systemctl restart gunicorn`
+
+` #systemctl restart celery`
+
+` #systemctl restart celerybeat`
+</code></pre>
+<p>Now your existing package has been upgraded with new build.</p>
 <h2 id="manual-upgrade">Manual Upgrade<a class="headerlink" href="#manual-upgrade" title="Permanent link">#</a></h2>
-<p>Content to be added later</p>
+<p>To upgrade Gluu Cluster Manager manually, use below commands:</p>
+<p>Navigate to the Cluster Manager install directory.</p>
+<pre><code>` #cd /usr/lib/python2.7/dist-packages/clustermgr`
+</code></pre>
+<p>Get the latest package and install</p>
+<pre><code>` #wget https://github.com/GluuFederation/cluster-mgr/raw/be2679d9fc7d53076df386847374f3ef68087c50/clustermgr/tasks.py -O tasks.py`
+</code></pre>
+<p><code>#rm tasks.pyc</code></p>
+<p>Restart Cluster Manager Services</p>
+<pre><code>` #systemctl restart gunicorn`
+
+` #systemctl restart celery`
+
+` #systemctl restart celerybeat`
+</code></pre>
               
             </article>
           </div>
