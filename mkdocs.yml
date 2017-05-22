@@ -16,7 +16,7 @@ pages:
 - Home: 'index.md'
 - Installation Guide:
         - 'Install Cluster Manager': 'installation/Installation.md'
-- Upgrade/Patch Guide:
+- Upgrade Guide:
         - 'Upgrade Gluu Cluster Manager' : 'installation/upgrade.md'
 - Configuration Guide:
         - 'Configuring Gluu CE for Replication' : 'configuration/configuring-GluuCE-Cluster.md'
