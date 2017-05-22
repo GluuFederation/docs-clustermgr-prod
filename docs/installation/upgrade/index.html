@@ -331,13 +331,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#manual-upgrade" title="Manual Upgrade" class="md-nav__link">
-    Manual Upgrade
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -495,13 +488,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#manual-upgrade" title="Manual Upgrade" class="md-nav__link">
-    Manual Upgrade
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -537,22 +523,27 @@
 ` #systemctl restart celerybeat`
 </code></pre>
 <p>Now your existing package has been upgraded with new build.</p>
-<h2 id="manual-upgrade">Manual Upgrade<a class="headerlink" href="#manual-upgrade" title="Permanent link">#</a></h2>
-<p>To upgrade Gluu Cluster Manager manually, use below commands:</p>
-<p>Navigate to the Cluster Manager install directory.</p>
-<pre><code>` #cd /usr/lib/python2.7/dist-packages/clustermgr`
-</code></pre>
-<p>Get the latest package and install</p>
-<pre><code>` #wget https://github.com/GluuFederation/cluster-mgr/raw/be2679d9fc7d53076df386847374f3ef68087c50/clustermgr/tasks.py -O tasks.py`
-</code></pre>
-<p><code>#rm tasks.pyc</code></p>
-<p>Restart Cluster Manager Services</p>
-<pre><code>` #systemctl restart gunicorn`
+<!-- ## Manual Upgrade
 
-` #systemctl restart celery`
+To upgrade Gluu Cluster Manager manually, use below commands:
 
-` #systemctl restart celerybeat`
-</code></pre>
+Navigate to the Cluster Manager install directory.
+
+    ` #cd /usr/lib/python2.7/dist-packages/clustermgr`
+
+Get the latest package and install
+
+    ` #wget https://github.com/GluuFederation/cluster-mgr/raw/be2679d9fc7d53076df386847374f3ef68087c50/clustermgr/tasks.py -O tasks.py`
+
+   ` #rm tasks.pyc`
+
+Restart Cluster Manager Services
+
+    ` #systemctl restart gunicorn`
+
+    ` #systemctl restart celery`
+
+    ` #systemctl restart celerybeat` -->
               
             </article>
           </div>

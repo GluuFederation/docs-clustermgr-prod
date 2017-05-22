@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,7 +13,7 @@
         
     <url>
      <loc>/installation/installation/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -23,7 +23,7 @@
         
     <url>
      <loc>/installation/upgrade/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -33,19 +33,19 @@
         
     <url>
      <loc>/configuration/configuring-GluuCE-Cluster/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/configuration/configuring-oxAuth-Logs/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/configuration/configuring-oxAuth-Key-Rotation/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -55,7 +55,7 @@
         
     <url>
      <loc>/replication/Setting-up-LDAP-replication/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -65,7 +65,7 @@
         
     <url>
      <loc>/troubleshooting/troubleshooting/</loc>
-     <lastmod>2017-05-20</lastmod>
+     <lastmod>2017-05-22</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

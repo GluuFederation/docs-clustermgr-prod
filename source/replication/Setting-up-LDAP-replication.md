@@ -83,5 +83,6 @@ dashboard using the <kbd>Remove</kbd> button and re-add the server using <kbd>Ad
     
 !!!Note:
 
-    Not required to start LDAP manually, once the data and certificate is removed, this task would be taken care by 
-    cluster mananger once the consumer is added the cluster manager web application.
+    It is not required to start LDAP manually, once the data and certificate is removed, 
+    this task would be taken care by cluster mananger once the consumer is added the 
+    cluster manager web application.

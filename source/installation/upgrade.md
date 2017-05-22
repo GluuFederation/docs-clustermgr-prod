@@ -24,7 +24,7 @@ Restart the services for Cluster Manager using below commands.
     
 Now your existing package has been upgraded with new build.
 
-## Manual Upgrade
+<!-- ## Manual Upgrade
 
 To upgrade Gluu Cluster Manager manually, use below commands:
 
@@ -44,5 +44,5 @@ Restart Cluster Manager Services
    
     ` #systemctl restart celery`
    
-    ` #systemctl restart celerybeat`
+    ` #systemctl restart celerybeat` -->
     
