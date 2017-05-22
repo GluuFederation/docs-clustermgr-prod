@@ -1,21 +1,27 @@
 # Cluster Manager Installation Procedure
 
-## Minimum Requirements 
+## Minimum Requirements
 
-**Server:** Ubuntu 16.04 (Xenial)
+**Server:** Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial)
+
+Prepare a server with Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial) already installed.
+Minimum recommendation resource:
 
 |CPU Unit  |    RAM     |   Disk Space      | Processor Type |
 |----------|------------|-------------------|----------------|
-|       2  |    4GB     |   40GB            |  64 Bit       
-
-Prepare a server with Ubuntu 16.04 (Xenial) already installed. Minimum recommendation resource is 4GB RAM, 2 CPU, and 40GB disk. Login via SSH to remote server for Cluster Manager installation.
+|       2  |    4GB     |   40GB            |  64 Bit
 
 ## Installation
 
-
+Login via SSH to remote server for Cluster Manager installation.
 
 ```
+# for Ubuntu Trusty
+echo "deb https://repo.gluu.org/ubuntu/ trusty-devel main" > /etc/apt/sources.list.d/gluu-repo.list
+
+# for Ubuntu Xenial
 echo "deb https://repo.gluu.org/ubuntu/ xenial-devel main" > /etc/apt/sources.list.d/gluu-repo.list
+
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install -y gluu-cluster-mgr
@@ -24,18 +30,19 @@ apt-get install -y gluu-cluster-mgr
 
 !!!Note:
 
-    SSH trust between Cluster Manager server (3) and the Gluu Servers (1) and (2)
-via `ssh_keys` is necessary for it to run operations remotely.
+    SSH trust between Cluster Manager server (3) and the Gluu Servers (1) and (2) via `ssh_keys` is necessary for it to run operations remotely.
 
 Cluster Manager runs as `gluu` user. Hence in order to run operation remotely WITHOUT a password prompt,
 the public key (`/home/gluu/.ssh/id_rsa.pub`) of Cluster Manager
-should be added to the `<REMOTE_SERVER>.ssh/authorized_keys` of all the servers it will communicate with.
+should be added to the `/root/.ssh/authorized_keys` of all the servers it will communicate with.
 
 To generate public and private key pair:
+
 ```bash
 sudo -u gluu mkdir /home/gluu/.ssh
 sudo -u gluu ssh-keygen -t rsa -b 4096 -C 'cluster-mgr'
 ```
+
 Make sure **we're NOT USING any passphrase** when prompted.
 
 Copy the public key (`/home/gluu/.ssh/id_rsa.pub`) into local computer:
@@ -44,18 +51,18 @@ Copy the public key (`/home/gluu/.ssh/id_rsa.pub`) into local computer:
 scp root@<cluster-mgr-server>:/home/gluu/.ssh/id_rsa.pub </path/in/local/computer>
 ```
 
-If using Windows machine and ssh using putty, you could use any scp app 
+If using Windows machine and ssh using putty, you could use any scp app
 like winscp to copy files to your local computer
-From local computer, copy the content of downloaded public key and append it to `authorized_keys` 
+From local computer, copy the content of downloaded public key and append it to `authorized_keys`
 of Gluu CE server:
 
 ```bash
-cat </the/above/id_rsa.pub> | ssh root@<gluu-server> 'cat >> .ssh/authorized_keys'
+cat </path/in/local/computer> | ssh root@<gluu-server> 'cat >> .ssh/authorized_keys'
 ```
 
 ### Message Consumer
 
-Login back to Cluster Manager server, then add new user and grant the 
+Login back to Cluster Manager server, then add new user and grant the
 privileges to newly created user by login into MySQL console:
 
     mysql -u root -p
@@ -80,6 +87,11 @@ Modify lines below in `/opt/message-consumer/conf/prod.properties` file using te
 
 Restart `message-consumer` service to make sure Message Consumer loads updated configuration:
 
+    # for Ubuntu Trusty
+    service message-consumer stop
+    service message-consumer start
+
+    # for Ubuntu Xenial
     systemctl restart message-consumer
     systemctl enable message-consumer
 
@@ -90,9 +102,9 @@ Sync database schema (will create new db if not exist):
     APP_MODE=prod clustermgr-cli db upgrade
 
 The command above will create a database `/opt/gluu-cluster-mgr/clustermgr.db`.
-To make sure Cluster Manager webapp has a sufficient access to database, run command below:
+To make sure Cluster Manager webapp has sufficient access required files and directorues, run command below:
 
-    chown gluu:gluu /opt/gluu-cluster-mgr/clustermgr.db
+    chown -R gluu:gluu /opt/gluu-cluster-mgr/
 
 Generate random unique string:
 
@@ -100,9 +112,7 @@ Generate random unique string:
 
 !!!Note
 
-    The command above will print out string in terminal.
-
-Copy the value and keep it somewhere else for later use (i.e. backup plan).
+    The command above will print out string in terminal. Copy the value and keep it somewhere else for later use (i.e. backup plan).
 
 Create `/opt/gluu-cluster-mgr/instance/config.py` and put line below:
 
@@ -112,16 +122,28 @@ Note, change the `<random-unique-string>` to use our own unique string.
 
 Restart `gunicorn` service:
 
+    # for Ubuntu Trusty
+    service gunicorn restart
+
+    # for Ubuntu Xenial
     systemctl restart gunicorn
     systemctl enable gunicorn
 
 Restart `celery` service to make sure background jobs runner connected to correct database:
 
+    # for Ubuntu Trusty
+    service celery restart
+
+    # for Ubuntu Xenial
     systemctl restart celery
     systemctl enable celery
 
 Restart `celerybeat` service to make scheduled background jobs runner connected to correct database:
 
+    # for Ubuntu Trusty
+    service celerybeat restart
+
+    # for Ubuntu Xenial
     systemctl restart celerybeat
     systemctl enable celerybeat
 
