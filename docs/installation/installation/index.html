@@ -359,11 +359,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      Upgrade/Patch Guide
+      Upgrade Guide
     </label>
     <nav class="md-nav" data-md-component="collapsible">
       <label class="md-nav__title" for="nav-3">
-        Upgrade/Patch Guide
+        Upgrade Guide
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -581,13 +581,15 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
                
-                 <a href="https://github.com/GluuFederation/docs-clustermgr-prod/blob/master/source/installation\installation.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
+                 <a href="https://github.com/GluuFederation/docs-clustermgr-prod/blob/master/source/installation\Installation.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
                
               
                 
                 <h1 id="cluster-manager-installation-procedure">Cluster Manager Installation Procedure<a class="headerlink" href="#cluster-manager-installation-procedure" title="Permanent link">#</a></h1>
 <h2 id="minimum-requirements">Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permanent link">#</a></h2>
-<p><strong>Server:</strong> Ubuntu 16.04 (Xenial)</p>
+<p><strong>Server:</strong> Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial)</p>
+<p>Prepare a server with Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial) already installed.
+Minimum recommendation resource:</p>
 <table>
 <thead>
 <tr>
@@ -606,9 +608,14 @@
 </tr>
 </tbody>
 </table>
-<p>Prepare a server with Ubuntu 16.04 (Xenial) already installed. Minimum recommendation resource is 4GB RAM, 2 CPU, and 40GB disk. Login via SSH to remote server for Cluster Manager installation.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<pre><code>echo &quot;deb https://repo.gluu.org/ubuntu/ xenial-devel main&quot; &gt; /etc/apt/sources.list.d/gluu-repo.list
+<p>Login via SSH to remote server for Cluster Manager installation.</p>
+<pre><code># for Ubuntu Trusty
+echo &quot;deb https://repo.gluu.org/ubuntu/ trusty-devel main&quot; &gt; /etc/apt/sources.list.d/gluu-repo.list
+
+# for Ubuntu Xenial
+echo &quot;deb https://repo.gluu.org/ubuntu/ xenial-devel main&quot; &gt; /etc/apt/sources.list.d/gluu-repo.list
+
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install -y gluu-cluster-mgr
@@ -617,12 +624,11 @@ apt-get install -y gluu-cluster-mgr
 <h2 id="generate-public-and-private-keys">Generate Public and Private Keys<a class="headerlink" href="#generate-public-and-private-keys" title="Permanent link">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>SSH trust between Cluster Manager server (3) and the Gluu Servers (1) and (2)</p>
+<p>SSH trust between Cluster Manager server (3) and the Gluu Servers (1) and (2) via <code>ssh_keys</code> is necessary for it to run operations remotely.</p>
 </div>
-<p>via <code>ssh_keys</code> is necessary for it to run operations remotely.</p>
 <p>Cluster Manager runs as <code>gluu</code> user. Hence in order to run operation remotely WITHOUT a password prompt,
 the public key (<code>/home/gluu/.ssh/id_rsa.pub</code>) of Cluster Manager
-should be added to the <code>&lt;REMOTE_SERVER&gt;.ssh/authorized_keys</code> of all the servers it will communicate with.</p>
+should be added to the <code>/root/.ssh/authorized_keys</code> of all the servers it will communicate with.</p>
 <p>To generate public and private key pair:</p>
 <pre><code class="bash">sudo -u gluu mkdir /home/gluu/.ssh
 sudo -u gluu ssh-keygen -t rsa -b 4096 -C 'cluster-mgr'
@@ -633,15 +639,15 @@ sudo -u gluu ssh-keygen -t rsa -b 4096 -C 'cluster-mgr'
 <pre><code class="bash">scp root@&lt;cluster-mgr-server&gt;:/home/gluu/.ssh/id_rsa.pub &lt;/path/in/local/computer&gt;
 </code></pre>
 
-<p>If using Windows machine and ssh using putty, you could use any scp app 
+<p>If using Windows machine and ssh using putty, you could use any scp app
 like winscp to copy files to your local computer
-From local computer, copy the content of downloaded public key and append it to <code>authorized_keys</code> 
+From local computer, copy the content of downloaded public key and append it to <code>authorized_keys</code>
 of Gluu CE server:</p>
-<pre><code class="bash">cat &lt;/the/above/id_rsa.pub&gt; | ssh root@&lt;gluu-server&gt; 'cat &gt;&gt; .ssh/authorized_keys'
+<pre><code class="bash">cat &lt;/path/in/local/computer&gt; | ssh root@&lt;gluu-server&gt; 'cat &gt;&gt; .ssh/authorized_keys'
 </code></pre>
 
 <h3 id="message-consumer">Message Consumer<a class="headerlink" href="#message-consumer" title="Permanent link">#</a></h3>
-<p>Login back to Cluster Manager server, then add new user and grant the 
+<p>Login back to Cluster Manager server, then add new user and grant the
 privileges to newly created user by login into MySQL console:</p>
 <pre><code>mysql -u root -p
 </code></pre>
@@ -660,7 +666,12 @@ mysql -u gluu -p &lt; mysql_schema.sql
 spring.mysql.datasource.password=&lt;my-secret-password&gt;
 </code></pre>
 <p>Restart <code>message-consumer</code> service to make sure Message Consumer loads updated configuration:</p>
-<pre><code>systemctl restart message-consumer
+<pre><code># for Ubuntu Trusty
+service message-consumer stop
+service message-consumer start
+
+# for Ubuntu Xenial
+systemctl restart message-consumer
 systemctl enable message-consumer
 </code></pre>
 <h3 id="cluster-manager">Cluster Manager<a class="headerlink" href="#cluster-manager" title="Permanent link">#</a></h3>
@@ -668,31 +679,42 @@ systemctl enable message-consumer
 <pre><code>APP_MODE=prod clustermgr-cli db upgrade
 </code></pre>
 <p>The command above will create a database <code>/opt/gluu-cluster-mgr/clustermgr.db</code>.
-To make sure Cluster Manager webapp has a sufficient access to database, run command below:</p>
-<pre><code>chown gluu:gluu /opt/gluu-cluster-mgr/clustermgr.db
+To make sure Cluster Manager webapp has sufficient access required files and directorues, run command below:</p>
+<pre><code>chown -R gluu:gluu /opt/gluu-cluster-mgr/
 </code></pre>
 <p>Generate random unique string:</p>
 <pre><code>cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 </code></pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The command above will print out string in terminal.</p>
+<p>The command above will print out string in terminal. Copy the value and keep it somewhere else for later use (i.e. backup plan).</p>
 </div>
-<p>Copy the value and keep it somewhere else for later use (i.e. backup plan).</p>
 <p>Create <code>/opt/gluu-cluster-mgr/instance/config.py</code> and put line below:</p>
 <pre><code>SECRET_KEY = "&lt;random-unique-string&gt;"
 </code></pre>
 <p>Note, change the <code>&lt;random-unique-string&gt;</code> to use our own unique string.</p>
 <p>Restart <code>gunicorn</code> service:</p>
-<pre><code>systemctl restart gunicorn
+<pre><code># for Ubuntu Trusty
+service gunicorn restart
+
+# for Ubuntu Xenial
+systemctl restart gunicorn
 systemctl enable gunicorn
 </code></pre>
 <p>Restart <code>celery</code> service to make sure background jobs runner connected to correct database:</p>
-<pre><code>systemctl restart celery
+<pre><code># for Ubuntu Trusty
+service celery restart
+
+# for Ubuntu Xenial
+systemctl restart celery
 systemctl enable celery
 </code></pre>
 <p>Restart <code>celerybeat</code> service to make scheduled background jobs runner connected to correct database:</p>
-<pre><code>systemctl restart celerybeat
+<pre><code># for Ubuntu Trusty
+service celerybeat restart
+
+# for Ubuntu Xenial
+systemctl restart celerybeat
 systemctl enable celerybeat
 </code></pre>
 <p>Now logout from remote server.</p>
