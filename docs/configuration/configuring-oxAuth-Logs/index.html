@@ -269,7 +269,7 @@
           
   <li class="md-nav__item">
     
-      <a href="../../installation/Installation/" title="Install Cluster Manager" class="md-nav__link">
+      <a href="../../installation/installation/" title="Install Cluster Manager" class="md-nav__link">
         Install Cluster Manager
       </a>
     
@@ -544,21 +544,21 @@
 To see those logs, we need to connect Cluster Manager to Message Consumer application.
 Make sure that oxAuth are configured to <a href="https://github.com/GluuFederation/message-consumer#configure-oxauth-server-logging">send the log to ActiveMQ</a>.</p>
 <p>Click <strong>oxAuth Logging</strong> link in left sidebar menu, a new form will be displayed as shown below:</p>
-<p>[[/img/oxauth-log/oxauth-log-config.png|Message Consumer empty URL]]</p>
+<p><img alt="Message Consumer empty URL" src="../../img/oxauth-log/oxauth-log-config.png" /></p>
 <p>Note that if the URL is empty or unreachable, a warning message will be displayed at the top of the page.</p>
 <h3 id="message-consumer-url">Message Consumer URL<a class="headerlink" href="#message-consumer-url" title="Permanent link">#</a></h3>
 <p>The URL specifies full URL of Message Consumer application (REST API).
 Message Consumer is installed by default when we install <code>gluu-cluster-mgr</code> package, and it is running at <code>http://localhost:9339</code>.</p>
-<p>[[/img/oxauth-log/oxauth-log-msgcon-url.png|Message Consumer URL]]</p>
+<p><img alt="Message Consumer URL" src="../../img/oxauth-log/oxauth-log-msgcon-url.png" /></p>
 <p>Save the URL by clicking <strong>Save Config</strong> button.
 If URL is reachable, then 2 new links will be displayed, <strong>Audit Logs</strong> and <strong>Server Logs</strong>.
 In this example, we will focus on server logs. Click the <strong>Server Logs</strong> link.</p>
 <h3 id="oxauth-server-logs">oxAuth Server Logs<a class="headerlink" href="#oxauth-server-logs" title="Permanent link">#</a></h3>
 <p>If oxAuth logs are available in ActiveMQ, Cluster Manager will show them in paginated list.</p>
-<p>[[/img/oxauth-log/oxauth-log-server-log-list.png|oxAuth server logs list]]</p>
+<p><img alt="oxAuth server logs list" src="../../img/oxauth-log/oxauth-log-server-log-list.png" /></p>
 <p>Each log details can be viewed by clicking <strong>View</strong> under the Details table header.
 An example of server log details is shown below:</p>
-<p>[[/img/oxauth-log/oxauth-log-server-log-item.png|oxAuth server log details]]</p>
+<p><img alt="oxAuth server log details" src="../../img/oxauth-log/oxauth-log-server-log-item.png" /></p>
               
             </article>
           </div>

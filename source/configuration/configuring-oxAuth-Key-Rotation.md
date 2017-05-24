@@ -14,7 +14,7 @@ This value determines the interval (in days) of automatic key rotation after con
 For example, if key rotation config are saved on 21st August, the next key rotation will occur automatically
 at 23rd August and so on.
 
-[[/img/key-rotation/oxauth-key-interval-marker.png|Key Rotation Interval]]
+![Key Rotation Interval](../img/key-rotation/oxauth-key-interval-marker.png)
 
 ### Key Rotation Type
 
@@ -22,26 +22,26 @@ There are 2 backend types we can choose, `oxEleven` and `JKS` (Java keystore).
 
 #### JKS Backend
 
-[[/img/key-rotation/oxauth-key-jks-radio-marker.png|Key Rotation JKS Type]]
+![Key Rotation JKS Type](../img/key-rotation/oxauth-key-jks-radio-marker.png)
 
 When we choose JKS backend, a new section will appear as shown below.
 Note, we need to add oxAuth server(s) where JKS file will be distributed to all available servers.
 To add oxAuth server, type the hostname or IP address of the server in the text field.
 Afterwards, click __Add oxAuth server__ button.
 
-[[/img/key-rotation/oxauth-add-oxauth-marker.png|Add oxAuth server]]
+![Add oxAuth server](../img/key-rotation/oxauth-add-oxauth-marker.png)
 
 If we want to remove oxAuth server, click __Remove?__ checkbox for desired server and then click __Remove selected__ button.
 
-[[/img/key-rotation/oxauth-remove-oxauth-marker.png|Remove oxAuth server]]
+![Remove oxAuth server](../img/key-rotation/oxauth-remove-oxauth-marker.png)
 
 #### oxEleven Backend
 
-[[/img/key-rotation/oxauth-key-ox11-radio.png|Key Rotation oxEleven Type]]
+![Key Rotation oxEleven Type](../img/key-rotation/oxauth-key-ox11-radio.png)
 
 When we choose oxEleven backend, a new section will appear as shown below:
 
-[[/img/key-rotation/oxauth-key-ox11-config.png|oxEleven config]]
+![oxEleven config](../img/key-rotation/oxauth-key-ox11-config.png)
 
 Note, refer to [oxEleven setup](https://github.com/GluuFederation/cluster-mgr/wiki/Installing-Cluster-Manager-Application#oxeleven-application-optional) for details.
 
@@ -63,7 +63,7 @@ Locate the line `inumAppliance` inside that file as shown below:
 
 Copy the value and paste into the form field:
 
-[[/img/key-rotation/oxauth-inum-appliance.png|Configure Inum Appliance]]
+![Configure Inum Appliance](../img/key-rotation/oxauth-inum-appliance.png)
 
 Once we have entered correct Inum Appliance, click __Rotate Key__ at the bottom of the form.
 
