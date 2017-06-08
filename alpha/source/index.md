@@ -1,3 +1,3 @@
-# Gluu Cluster Manager 3.0.2 Documentation
+# Gluu Cluster Manager Documentation
 ## Introduction
-TBA
+Gluu Cluster Manager is a product to cluster Gluu CE servers in an enviornment for availability and scalability.
