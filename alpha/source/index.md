@@ -1,11 +1,6 @@
 # Gluu Cluster Manager Documentation
 ## Introduction
-Gluu Cluster Manager is a product to cluster Gluu CE servers in an environment for 
-availability and scalability.
-
-Gluu CE Servers can be clustered using Gluu Cluster Manager a product from Gluu. Gluu Cluster Manager 
-replicates data from primary Gluu CE Server to secondary Gluu CE server for enhanced productivity. Data is
-replicated using secured protocol and configuration of clustering will covered in this in documentation.
+Gluu's Cluster Manager software simplifies the process of replicating data across multiple Gluu Servers in order to achieve high availability and failover. 
 
 ## Architecture Diagram of Cluster Manager
 
