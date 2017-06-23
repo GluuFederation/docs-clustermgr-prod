@@ -3,7 +3,7 @@
 Gluu's Cluster Manager software simplifies the process of replicating data across multiple Gluu Servers in order to achieve high availability and failover. 
 
 ## How to Use Cluster Manager
-Follow the steps to use Cluster Manager:
+Follow these steps to use Gluu's Cluster Manager software:
 
 1. Deploy a single instance of the Gluu Server. Follow the [Gluu Server installation instructions](https://gluu.org/docs/ce/latest/installation-guide/install/).
 
