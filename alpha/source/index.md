@@ -7,7 +7,7 @@ Follow these steps to use Gluu's Cluster Manager software:
 
 1. Deploy a single instance of the Gluu Server. Follow the [Gluu Server installation instructions](https://gluu.org/docs/ce/latest/installation-guide/install/).
 
-2. Deploy a single instance of Cluster Manager app. Follow the [Cluster Manager installation instructions] (https://gluu.org/docs/cm/alpha/installation/Installation/).
+2. Deploy a single instance of Cluster Manager app. Follow the [Cluster Manager installation instructions](https://gluu.org/docs/cm/alpha/installation/Installation/).
 
 3. Deploy one or more mirror instances of Gluu Server. [Read the docs](https://gluu.org/docs/cm/alpha/configuration/configuring-GluuCE-Cluster/#server-2-mirror-server).
 
