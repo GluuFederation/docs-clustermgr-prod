@@ -7,7 +7,7 @@ OpenLDAP supports many different types of replication
 [topological setups](http://www.openldap.org/doc/admin24/replication.html). 
 The Cluster Manager application by Gluu supports two of them.
 
-- **Delta-Synrepl** - for high availability single master (read/write) multiple consumer (read only) setup.
+- **Delta-Synrepl** - for high availability single master (read/write) multiple consumers (read only) setup.
 - **Mirror Mode** - for fall back double master (read/write) multiple consumers under each master (read only) setup.
 This document outline the setup procedure for both mode of operations.
 
