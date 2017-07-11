@@ -26,10 +26,10 @@ This document outline the setup procedure for both mode of operations.
 1. **Backup Data:** Login login to the chroot environment of the Gluu server. 
     While inside the chroot, stop LDAP server and export its data for backup
    
-    ```
-    service solserver stop
-    /opt/symas/bin/slapcat -l alldata.ldif
-    ```
+
+    `# service solserver stop`
+    
+    `# /opt/symas/bin/slapcat -l alldata.ldif`
     
 2. **Edit the file** `/opt/symas/etc/openldap/symas-openldap.conf` 
     to allow servers within chroot to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration).
@@ -97,6 +97,7 @@ This document outline the setup procedure for both mode of operations.
     `# cp -r /etc/gluu/conf/ .`
     
     `# cd ..`
+    
     `# tar -czf repfiles.tar.gz repfiles`
     
 6. Copy the backup files to local computer, we will use this to configure the second server
