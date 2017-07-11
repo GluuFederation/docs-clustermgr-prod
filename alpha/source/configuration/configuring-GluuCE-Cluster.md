@@ -113,7 +113,7 @@ This document outline the setup procedure for both mode of operations.
 ### Server 2 (Mirror Server)
 
 1. [Install CE package on server 2](https://gluu.org/docs/ce/latest/installation-guide/install/). 
-    The aim here is to setup the LDAP and oxAuth only so, when running `setup.py` mark only "Install oxAuth", "LDAP" and "JCE"  as True and everything as false.
+    The aim here is to setup the LDAP and oxAuth only so, when going through components selection set of questions in `setup.py` interactive menus respond with "Yes" only to "Install oxAuth", "LDAP" and "JCE", and with "No" for all other components.
 
 2. **Copy the backfiles from server 1 to server 2:**
     
