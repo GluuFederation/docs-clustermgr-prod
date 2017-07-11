@@ -124,43 +124,43 @@ This document outline the setup procedure for both mode of operations.
 3. **Replace the existing files with backup ones:** This sets up the second gluu-server to act like the twin of the first one
     
     
-    `#ssh root@server_2`
+    `# ssh root@server_2`
     
-    `#service gluu-server-3.0.1 login`
+    `# service gluu-server-3.0.1 login`
     
-    `#tar -xvf repfiles.tar.gz`
+    `# tar -xvf repfiles.tar.gz`
     
-    `#cd repfiles`
+    `# cd repfiles`
     
-    `#rm -rf /etc/gluu/conf/`
+    `# rm -rf /etc/gluu/conf/`
     
-    `#cp -r conf /etc/gluu/`
+    `# cp -r conf /etc/gluu/`
     
-    `#/opt/jre/bin/keytool -import -trustcacerts -alias <server_1_hostname>_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
+    `# /opt/jre/bin/keytool -import -trustcacerts -alias <server_1_hostname>_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
 4. **Replace the OpenLDAP certificates:**
 
-    `#cd /etc/certs`
+    `# cd /etc/certs`
     
-    `#mkdir old_certs`
+    `# mkdir old_certs`
     
-    `#mv openldap.* old_certs/`
+    `# mv openldap.* old_certs/`
     
-    `#/usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048`
+    `# /usr/bin/openssl genrsa -des3 -out /etc/certs/openldap.key.orig 2048`
     
-    `#/usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key`
+    `# /usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key`
     
     *Ensure the Common Name here is your full **hostname** and NOT localhost*
     
-    `#/usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr`
+    `# /usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr`
     
-    `#/usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt`
+    `# /usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt`
 
     *Change the **hostname** in the command below*
     
-    `#/opt/jre/bin/keytool -import -trustcacerts -alias <hostname>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
+    `# /opt/jre/bin/keytool -import -trustcacerts -alias <hostname>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
-    `#cp openldap.crt openldap.pem`
+    `# cp openldap.crt openldap.pem`
         
 5. **Edit the file** `/opt/symas/etc/openldap/symas-openldap.conf` 
     to allow servers within chroot to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration).
