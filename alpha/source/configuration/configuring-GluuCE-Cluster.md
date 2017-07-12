@@ -50,7 +50,7 @@ This document outline the setup procedure for both mode of operations.
 
     !!!Warning: 
             
-            Ensure the Common Name here is your full hostname and NOT localhost.
+            Make sure the "Common Name" in CSR generated next is full **hostname** of the first server, and NOT "localhost"!
     
     
     `# cd /etc/certs`
@@ -67,7 +67,7 @@ This document outline the setup procedure for both mode of operations.
     
     `# /usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt`
 
-    Use this host's hostname instead of `<server1>` in the command below
+    *Use this host's hostname instead of `<server1>` in the command below*
     
     `# /opt/jre/bin/keytool -import -trustcacerts -alias <server1>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
@@ -136,6 +136,10 @@ This document outline the setup procedure for both mode of operations.
     
     `# cp -r conf /etc/gluu/`
     
+    `# chown -R root:gluu /etc/gluu/conf`
+    
+    *Use first server's hostname for alias in the command below as we need it to be added to Java's truststore so Gluu's components running on this host could connect to LDAP server on the other one using SSL/TLS*
+    
     `# /opt/jre/bin/keytool -import -trustcacerts -alias <server_1_hostname>_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
 4. **Replace the OpenLDAP certificates:**
@@ -150,15 +154,17 @@ This document outline the setup procedure for both mode of operations.
     
     `# /usr/bin/openssl rsa -in /etc/certs/openldap.key.orig -out /etc/certs/openldap.key`
     
-    *Ensure the Common Name here is your full **hostname** and NOT localhost*
+    !!!Warning: 
+            
+            Make sure the "Common Name" in CSR generated next is full **hostname** of the second server, and NOT "localhost"!
     
     `# /usr/bin/openssl req -new -key /etc/certs/openldap.key -out /etc/certs/openldap.csr`
     
     `# /usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt`
 
-    *Change the **hostname** in the command below*
+    *Use this host's hostname instead of `<server2>` in the command below*
     
-    `# /opt/jre/bin/keytool -import -trustcacerts -alias <hostname>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
+    `# /opt/jre/bin/keytool -import -trustcacerts -alias <server2>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
     `# cp openldap.crt openldap.pem`
         
