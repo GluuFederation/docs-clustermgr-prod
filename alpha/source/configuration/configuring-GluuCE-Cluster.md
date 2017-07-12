@@ -190,7 +190,8 @@ This document outline the setup procedure for both mode of operations.
 
 ### Mirror Server 1 to Server 2
 
-Copy `openldap.crt` from server 2 to server 1 and import it into the truststore for the apps like oxAuth to connect to the LDAP in server 2.
+Copy `openldap.crt` from server2 to server1 and import it into the truststore so Gluu's components running on the first host could connect to LDAP server on the second one using SSL/TLS.
+
 ```bash
 scp root@server2:/opt/gluu-server-3.0.1/etc/certs/openldap.crt .
 scp openldap.crt root@server1:/opt/gluu-server-3.0.1/root/server2_openldap.crt
