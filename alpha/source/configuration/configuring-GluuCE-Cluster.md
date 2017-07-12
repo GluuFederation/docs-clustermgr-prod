@@ -115,7 +115,7 @@ This document outline the setup procedure for both mode of operations.
 1. [Install CE package on server 2](https://gluu.org/docs/ce/latest/installation-guide/install/). 
     The aim here is to setup the LDAP and oxAuth only so, when going through components selection set of questions in `setup.py` interactive menus respond with "Yes" only to "Install oxAuth", "LDAP" and "JCE", and with "No" for all other components.
 
-2. **Copy the backfiles from server 1 to server 2:**
+2. **Copy the archive you created at server1 from your local machine to server2:**
     
     ```
     scp repfiles.tar.gz root@server2:/opt/gluu-server-3.0.1/root/
@@ -200,7 +200,7 @@ service gluu-server-3.0.1 login
 /opt/jre/bin/keytool -import -trustcacerts -alias <server2>_openldap_2 -file server2_openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt
 ```
 
-Now both the servers are ready to be configured to a cluster. 
+Now both servers are ready to be merged into a cluster. 
 After you get the Cluster Manager installed, follow the **Mirror Mode** in [replication setup guide](../replication/Setting-up-LDAP-replication.md)
 
 
