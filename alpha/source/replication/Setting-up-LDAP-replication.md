@@ -71,6 +71,7 @@
 ## Troubleshooting
 
 * For most part the web interface would log the errors encountered during the setup processes.
+* In case any issue prevented you from adding the 2nd (mirror) server in Mirror mode, remove both of Provider servers on "Dashboard" page and start again from setting up the 1st server
 * In case of some consumer misbehaving or is misconfigured, remove the server from the 
 dashboard using the <kbd>Remove</kbd> button and re-add the server using <kbd>Add Consumer</kbd>
 * Before adding the consumer remove the data and provider certificate from the consumer server(Server 2).
