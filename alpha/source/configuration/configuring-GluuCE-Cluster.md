@@ -67,9 +67,9 @@ This document outline the setup procedure for both mode of operations.
     
     `# /usr/bin/openssl x509 -req -days 365 -in /etc/certs/openldap.csr -signkey /etc/certs/openldap.key -out /etc/certs/openldap.crt`
 
-    Change the <hostname> of the <server 1> in the command below
+    Use this host's hostname instead of `<server1>` in the command below
     
-    `#/opt/jre/bin/keytool -import -trustcacerts -alias <server1>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
+    `# /opt/jre/bin/keytool -import -trustcacerts -alias <server1>_openldap_2 -file /etc/certs/openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
     
     `cp openldap.crt openldap.pem`
     
