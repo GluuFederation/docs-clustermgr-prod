@@ -138,7 +138,7 @@ This document outline the setup procedure for both mode of operations.
 
     `# chown -R root:gluu /etc/gluu/conf`
 
-    *Use first server's hostname for alias in the command below as we need it to be added to Java's truststore so Gluu's components running on this host could connect to LDAP server on the other one using SSL/TLS*
+    *Use first server's hostname in alias when adding its OpenLDAP's certificate to local Java's truststore with the command below; we need it to be added so Gluu's components running on this host could connect to LDAP server on the other one using SSL/TLS*
 
     `# /opt/jre/bin/keytool -import -trustcacerts -alias <server_1_hostname>_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
 
@@ -210,7 +210,7 @@ Note, this step is supposed to be executed once each time new Gluu CE server is 
 
 ### Mirror Server 1 to Server 2
 
-Copy `openldap.crt` from server2 to server1 and import it into the truststore so Gluu's components running on the first host could connect to LDAP server on the second one using SSL/TLS.
+Copy `openldap.crt` from server2 to server1 and import it into the truststore there so Gluu's components running on the first host could connect to LDAP server on the second one using SSL/TLS.
 
 ```bash
 scp root@server2:/opt/gluu-server-3.0.1/etc/certs/openldap.crt .
