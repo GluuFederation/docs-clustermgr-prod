@@ -21,4 +21,4 @@ Follow these steps to use Gluu's Cluster Manager software:
 
 ## Architecture Diagram of Cluster Manager
 
-![architecture diagram](../img/ce-cluster-diagram.png)
+![architecture diagram](../ce-cluster-diagram.png)
