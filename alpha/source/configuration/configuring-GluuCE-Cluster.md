@@ -188,6 +188,26 @@ This document outline the setup procedure for both mode of operations.
     rm -rf /opt/gluu/data/
     ```
 
+### SSH Connectivity From Cluster Manager to Servers
+
+To make sure Cluster Manager able to run remote commands in all servers, add Cluster Manager SSH public key.
+Refer to [Generate Public and Private Keys](https://gluu.org/docs/cm/alpha/installation/Installation/#generate-public-and-private-keys) docs on how to generate Cluster Manager public and private keys if they are not generated yet.
+
+Once we have the public key ready, copy the public key (`/home/gluu/.ssh/id_rsa.pub`) into local computer:
+
+```
+scp root@<cluster-mgr-server>:/home/gluu/.ssh/id_rsa.pub </path/in/local/computer>
+```
+
+If using Windows machine and ssh using putty, you could use any scp app like winscp to copy files to your local computer. From local computer, copy the content of downloaded public key and append it to `authorized_keys` of Gluu CE server:
+
+```
+cat </path/in/local/computer> | ssh root@<server1> 'cat >> .ssh/authorized_keys'
+cat </path/in/local/computer> | ssh root@<server2> 'cat >> .ssh/authorized_keys'
+```
+
+Note, this step is supposed to be executed once each time new Gluu CE server is added.
+
 ### Mirror Server 1 to Server 2
 
 Copy `openldap.crt` from server2 to server1 and import it into the truststore so Gluu's components running on the first host could connect to LDAP server on the second one using SSL/TLS.
@@ -202,20 +222,3 @@ service gluu-server-3.0.1 login
 
 Now both servers are ready to be merged into a cluster.
 After you get the Cluster Manager installed, follow the **Mirror Mode** in [replication setup guide](../replication/Setting-up-LDAP-replication.md)
-
-### SSH Connectivity From Cluster Manager to Server
-
-To make sure Cluster Manager able to run remote commands in this server, add Cluster Manager SSH public key.
-Refer to [Generate Public and Private Keys](https://gluu.org/docs/cm/alpha/installation/Installation/#generate-public-and-private-keys) docs on how to generate Cluster Manager public and private keys if they are not generated yet.
-
-Once we have the public key ready, copy the public key (`/home/gluu/.ssh/id_rsa.pub`) into local computer:
-
-```
-scp root@<cluster-mgr-server>:/home/gluu/.ssh/id_rsa.pub </path/in/local/computer>
-```
-
-If using Windows machine and ssh using putty, you could use any scp app like winscp to copy files to your local computer. From local computer, copy the content of downloaded public key and append it to `authorized_keys` of Gluu CE server:
-
-```
-cat </path/in/local/computer> | ssh root@<server2> 'cat >> .ssh/authorized_keys'
-```
