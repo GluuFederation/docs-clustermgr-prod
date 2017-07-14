@@ -41,7 +41,7 @@
 13. In the Dashboard, click <kbd>Start Test</kbd> under **Test Replication**. This adds a test entry to the provider, verifies the data is replicated to all its consumers, removes the data from the provider and ensures, it is removed from all the consumers as well.
 
 ## Mirror Mode
-1. Open Cluster Manager in the browser. Click the <kbd>Setup</kbd> button in the MirroMode box.
+1. Open Cluster Manager in the browser. Click the <kbd>Setup</kbd> button in the Mirror Mode box.
     ![homepage](../img/replication/homepage.png)
 2. If cluster manager hasn't been configured earlier, the user will be prompted to configure it before setting up the cluster. The values **Replication Manager DN** and the **Password** are mandatory. Other fields are optional. Enter the values and <kbd>Update Configuration</kbd>.
     ![configpage](../img/replication/config_page.png)
