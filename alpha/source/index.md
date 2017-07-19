@@ -2,6 +2,12 @@
 ## Introduction
 Gluu's Cluster Manager software simplifies the process of replicating data across multiple Gluu Servers in order to achieve high availability and failover. 
 
+## Prerequisites
+- Gluu Server 3.x
+
+!!! Note
+    If you need to cluster Gluu Server 2.x, please review our [csync docs](https://gluu.org/docs/ce/2.4.4/cluster/csync-installation/).
+
 ## How to Use Cluster Manager
 Follow these steps to use Gluu's Cluster Manager software:
 
