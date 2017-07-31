@@ -96,3 +96,23 @@ Here's an example of successful key rotation logged in `/var/log/celery/w1-1.log
 
 
 Note, if we don't see logs about key rotation in `/var/log/celery/w1-1.log`, we can try to tail the other log files; `/var/log/celery/w1-2.log`, `/var/log/celery/w1-3.log`, or `/var/log/celery/w1-4.log`.
+
+
+### Key Rotation Availability
+
+If somehow Key Rotation is down/unavailable for various reason, oxAuth keys won't be rotated, but oxAuth service will keep running.
+
+### Known Issue
+
+There is a case caused by mismatched public keys stored in LDAP and private keys stored inside JKS file.
+This could happen when Cluster Manager unable to copy new JKS file due to various reasons (i.e. network issue) to servers where oxAuth are hosted.
+
+There are few ways to fix this issue:
+
+- Retry the key rotation by clicking __Rotate Key__ button again.
+- Or, copy `/opt/gluu-cluster-mgr/oxauth-keys.jks` manually, fox example:
+
+        scp root@<cluster-mgr>:/opt/gluu-cluster-mgr/oxauth-keys.jks .
+        scp oxauth-keys.jks root@<oxauth-server>:/opt/gluu-server-3.0.1/etc/certs/oxauth-keys.jks
+
+  Repeat the process for all servers where oxAuth are hosted.

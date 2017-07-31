@@ -62,8 +62,21 @@ cat </path/in/local/computer> | ssh root@<gluu-server> 'cat >> .ssh/authorized_k
 
 ### Message Consumer
 
-Login back to Cluster Manager server, then add new user and grant the
-privileges to newly created user by login into MySQL console:
+Login back to Cluster Manager server, then modify `/etc/activemq/instances-available/main/activemq.xml`:
+
+    <transportConnectors>
+        <transportConnector name="openwire" uri="tcp://<cluster-mgr-ip>:61616"/>
+    </transportConnectors>
+
+Restart `activemq` service:
+
+    # for Ubuntu Trusty
+    service activemq restart
+
+    # for Ubuntu Xenial
+    systemctl restart activemq
+
+Add new user and grant the privileges to newly created user by login into MySQL console:
 
     mysql -u root -p
 
