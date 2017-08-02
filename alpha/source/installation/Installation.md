@@ -110,10 +110,14 @@ Restart `message-consumer` service to make sure Message Consumer loads updated c
 
 ### Cluster Manager
 
+Instructions to install Cluster Manager - cli 
+
+    [https://github.com/GluuFederation/cluster-mgr](https://github.com/GluuFederation/cluster-mgr)
+    
 Sync database schema (will create new db if not exist):
 
-    APP_MODE=prod clustermgr-cli db upgrade
-
+    `APP_MODE=prod clustermgr-cli db upgrade`
+  
 The command above will create a database `/opt/gluu-cluster-mgr/clustermgr.db`.
 To make sure Cluster Manager webapp has sufficient access required files and directorues, run command below:
 
