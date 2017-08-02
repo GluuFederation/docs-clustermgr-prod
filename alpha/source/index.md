@@ -15,7 +15,7 @@ Follow these steps to use Gluu's Cluster Manager software:
 
 2. Deploy a single instance of Cluster Manager app. Follow the [Cluster Manager installation instructions](https://gluu.org/docs/cm/alpha/installation/Installation/).
 
-3. Deploy one or more mirror instances of Gluu Server. [Read the docs](https://gluu.org/docs/cm/alpha/configuration/configuring-GluuCE-Cluster/#server-2-mirror-server).
+3. Deploy one or more mirror instances of Gluu Server. [Read the docs](https://gluu.org/docs/cm/alpha/configuration/configuring-GluuCE-Cluster/).
 
 4. Use Cluster Manager to replicate the data from one server to another. [Read the docs]( https://gluu.org/docs/cm/alpha/replication/Setting-up-LDAP-replication/).
 
