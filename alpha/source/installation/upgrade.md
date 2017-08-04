@@ -6,7 +6,13 @@ To upgrade Gluu Cluster Manager using `apt-get` commands:
 
     apt-get clean
     apt-get update
-    apt-get install gluu-cluster-mgr
+    apt-get install gluu-cluster-mgr python-cluster-mgr
+
+!!!Note
+
+    The `python-cluster-mgr` package are updated explicitly since most of the updates
+    are available in `python-cluster-mgr` package. This is different from initial setup
+    where we only need to install `gluu-cluster-mgr` which will install `python-cluster-mgr` as well.
 
 Make sure database schema is updated:
 
