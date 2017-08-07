@@ -6,14 +6,9 @@ To see those logs, we need to connect Cluster Manager to Message Consumer applic
 
 1. Login to server where oxAuth is hosted.
 
-2. Unpack `oxauth.war` into its own directory, for example:
+2. Create `/opt/oxAuth-log4j2.xml` file. See the default [oxAuth's log4j2.xml](https://github.com/GluuFederation/oxAuth/blob/master/Server/src/main/resources/log4j2.xml) for example.
 
-        cd /opt/gluu/jetty/oxauth/webapps
-        unzip oxauth.war -d oxauth
-
-3. Move `oxauth.war` to somewhere else to avoid conflict with unpacked oxAuth directory.
-
-4. Modify `/opt/gluu/jetty/oxauth/webapps/oxauth/WEB-INF/classes/log4j2.xml` to re-configure the log by adding new directive inside `<Appenders>` and `Loggers` tags:
+3. In `/opt/oxAuth-log4j2.xml`, add new directives inside `<Appenders>` and `Loggers` tags:
 
         <Appenders>
             <!-- some lines are omitted -->
@@ -35,18 +30,17 @@ To see those logs, we need to connect Cluster Manager to Message Consumer applic
             </Root>
         </Loggers>
 
+4. Login to oxTrust and navigate to `/identity/logviewer/configure` URL then pass the path of the `log4j2.xml` configuration file (in this case it would be `/opt/oxAuth-log4j2.xml`) to the __oxAuth External log4j location__ field.
+
 5. Restart oxAuth service:
 
         service oxauth restart
 
-6. Exit from oxAuth server.
+6. Login to Cluster Manager server, and click __oxAuth Logging__ link in left sidebar menu, a new form will be displayed as shown below:
 
+    ![Message Consumer empty URL](../img/oxauth-log/oxauth-log-config.png)
 
-Login to Cluster Manager server, and click __oxAuth Logging__ link in left sidebar menu, a new form will be displayed as shown below:
-
-![Message Consumer empty URL](../img/oxauth-log/oxauth-log-config.png)
-
-Note that if the URL is empty or unreachable, a warning message will be displayed at the top of the page.
+    Note that if the URL is empty or unreachable, a warning message will be displayed at the top of the page.
 
 ### Message Consumer URL
 
