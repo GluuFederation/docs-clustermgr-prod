@@ -23,7 +23,7 @@ This document outline the setup procedure for both mode of operations.
 
 ### Server 1 (Existing Gluu Server)
 
-1. **Backup Data:** Login login to the chroot environment of the Gluu server.
+1. **Backup Data:** Login to the chroot environment of the Gluu server.
     While inside the chroot, stop LDAP server and export its data for backup
 
 
