@@ -1,5 +1,7 @@
 # Cluster Manager Installation Procedure
 
+# This service is in alpha and it is highly recommended that users follow the [manual](https://github.com/GluuFederation/cluster-mgr/tree/master/manual_install) method of setting up multi-master replication nodes, until we push the product into beta.
+
 ## Minimum Requirements
 
 **Server:** Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial)
