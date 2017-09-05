@@ -1,7 +1,8 @@
 # Gluu Cluster Manager Documentation
-## Introduction
+## Alpha Release    
+This service is in alpha. It is highly recommended that you follow the [manual method](https://github.com/GluuFederation/cluster-mgr/tree/master/manual_install) of setting up multi-master replication nodes, until we push the Cluster Manager product into beta.
 
-**This service is in alpha and it is highly recommended that users follow the [manual](https://github.com/GluuFederation/cluster-mgr/tree/master/manual_install) method of setting up multi-master replication nodes, until we push the product into beta.**
+## Introduction
 
 Gluu's Cluster Manager software simplifies the process of replicating data across multiple Gluu Servers in order to achieve high availability and failover. 
 
