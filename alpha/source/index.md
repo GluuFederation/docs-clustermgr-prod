@@ -1,6 +1,6 @@
 # Gluu Cluster Manager Documentation
 ## Alpha Release    
-This service is in alpha. It is highly recommended that you follow the [manual method](https://github.com/GluuFederation/cluster-mgr/tree/master/manual_install) of setting up multi-master replication nodes, until we push the Cluster Manager product into beta.
+This service is in alpha. It is highly recommended that you follow the [manual method](https://github.com/GluuFederation/cluster-mgr/tree/master/manual_install) of setting up multi-master replication nodes until we push the Cluster Manager product into beta.
 
 ## Introduction
 
