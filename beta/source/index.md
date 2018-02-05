@@ -7,6 +7,11 @@ This service is in beta. Please report bugs or feature requests to support-team@
 
 ## Features
 
+- LDAP Replication
+- Cache Management
+- Monitoring
+- Logging
+
 ## Installation
 
 ## Deploy Gluu Clusters
