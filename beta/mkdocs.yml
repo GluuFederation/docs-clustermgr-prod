@@ -3,7 +3,7 @@ site_description: Documenation for Gluu Cluster Manager
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2017, Gluu, Inc.
 docs_dir: source
-repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/tree/alpha/alpha
+repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/tree/beta/beta
 theme_dir: theme/material
 extra:
     version: 'beta'
