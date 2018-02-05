@@ -1,4 +1,4 @@
-site_name: Gluu Docs
+site_name: Cluster Manager Docs
 site_description: Documenation for Gluu Cluster Manager
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2017, Gluu, Inc.
@@ -6,7 +6,7 @@ docs_dir: source
 repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/tree/alpha/alpha
 theme_dir: theme/material
 extra:
-    version: '3.0.1'
+    version: 'beta'
     logo: 'gluu.jpg'
 markdown_extensions:
 - admonition
@@ -14,15 +14,6 @@ markdown_extensions:
      permalink: '#'
 pages:
 - Home: 'index.md'
-- Installation Guide:
-        - 'Install Cluster Manager': 'installation/Installation.md'
-- Upgrade Guide:
-        - 'Upgrade Gluu Cluster Manager' : 'installation/upgrade.md'
-- Configuration Guide:
-        - 'Configuring Gluu CE for Replication' : 'configuration/configuring-GluuCE-Cluster.md'
-        - 'Configuring oxAuth logs': 'configuration/configuring-oxAuth-Logs.md'
-        - 'Configuring oxAuth Key Rotation' : 'configuration/configuring-oxAuth-Key-Rotation.md'
-- Replication Guide:
-        - 'Replication': 'replication/Setting-up-LDAP-replication.md'
-- Troubleshooting:
-        - 'Troubleshooting Issues': 'troubleshooting/troubleshooting.md'
+- Install: 'installation/index.md'
+- Deploy Clusters: 'deploy/index.md'
+- Troubleshooting: 'troubleshooting/index.md'
