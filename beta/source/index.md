@@ -13,7 +13,7 @@ This service is in beta. Please report bugs or feature requests to support-team@
 - Logging
 
 ## Installation
-Get started by following the installation guide. 
+Get started by following the [installation guide](./installation/index.md). 
 
 ## License
 Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). Copyright Gluu 2018.
