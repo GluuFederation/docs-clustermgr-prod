@@ -48,6 +48,9 @@ The necessary external ports that need to be opened in a default cluster install
 
 - 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel.
 
+## Default Components
+See the [homepage](../index.md#default-components) for a discussion of default components installed with Cluster Manager. 
+
 ## Installing Cluster Manager
 
 ### SSH & Keypairs
