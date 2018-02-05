@@ -1,4 +1,5 @@
 # Gluu Cluster Manager Documentation
+## Overview
 Cluster Manager is a GUI tool for installing and managing a highly available, clustered Gluu Server infrastructure.
 
 ## Beta Release    
