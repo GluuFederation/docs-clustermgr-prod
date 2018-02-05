@@ -2,17 +2,17 @@
 
 ## Prerequisites
 
-- A minimum of four (4) machines. One machine will be used for cluster manager, which could be localhost on the installers computer. This machine can be very lightweight and will only be used for proxying TCP and HTTP traffic. It will act as a proxy for the other three servers where Gluu will be installed. 
+- A minimum of four (4) machines: One machine will be used for cluster manager, which could be localhost on the installers computer. This machine will only be used for proxying TCP and HTTP traffic. The other three machines will host the Gluu Server. 
 
-- Cluster Manager currently supports installation on Ubuntu 14 and 16. However, it can be used to configure Gluu Server clusters on Ubuntu, CentOS, RHEL, and Debian.
+- Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines hosting Gluu can have Ubuntu, CentOS, RHEL, or Debian.
 
-- Cluster Manager should be installed on a secure administrators computer or a VM, as it will have SSH access to all servers in the cluster.
+- Cluster Manager will have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
 
-- After configuration, Cluster Manager no longer needs to be actively connected to the cluster. However, in order to take advantage of Cluster Managers monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
+- Cluster Manager no longer needs to be actively connected to the cluster after initial setup. However, in order to take advantage of its monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
 
 ### External ports
 
-The necessary external ports that need to be opened in a default cluster installation are as follows:
+The following external ports need to be opened:
 
 <table>
   <tr><th> Gluu Servers </th><th> Load Balancer </th> <th> Cluster Manager </th></tr>
