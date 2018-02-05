@@ -1,4 +1,4 @@
-## Deploying a Gluu Server Cluster
+# Deploying a Gluu Cluster
 
 To deploy a functioning cluster, it is necessary to do a few things.
 
