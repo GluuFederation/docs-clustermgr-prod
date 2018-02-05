@@ -7,6 +7,11 @@ This service is in beta. Please report bugs or feature requests to support-team@
 
 ## Features
 
+## Installation
+
+## Deploy Gluu Clusters
+
+## Logging and Troubleshooting
 
 ## License
 Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). Copyright Gluu 2018.
