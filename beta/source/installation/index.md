@@ -1,201 +1,149 @@
-# Cluster Manager Installation Procedure
+# Cluster Manager Installation
 
-# This service is in alpha and it is highly recommended that users follow the [manual](https://gluu.org/docs/ce/installation-guide/cluster/) method of setting up multi-master replication nodes, until we push the product into beta.
+## Prerequisites
 
-## Minimum Requirements
+- A minimum of four (4) machines. One machine will be used for cluster manager, which could be localhost on the installers computer. This machine can be very lightweight and will only be used for proxying TCP and HTTP traffic. It will act as a proxy for the other three servers where Gluu will be installed. 
 
-**Server:** Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial)
+- Cluster Manager currently supports installation on Ubuntu 14 and 16. However, it can be used to configure Gluu Server clusters on Ubuntu, CentOS, RHEL, and Debian.
 
-Prepare a server with Ubuntu 14.04 (Trusty) or Ubuntu 16.04 (Xenial) already installed.
-Minimum recommendation resource:
+- Cluster Manager should be installed on a secure administrators computer or a VM, as it will have SSH access to all servers in the cluster.
 
-|CPU Unit  |    RAM     |   Disk Space      | Processor Type |
-|----------|------------|-------------------|----------------|
-|       2  |    4GB     |   40GB            |  64 Bit
+- After configuration, Cluster Manager no longer needs to be actively connected to the cluster. However, in order to take advantage of Cluster Managers monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
 
-## Installation
+### External ports
 
-Login via SSH to remote server for Cluster Manager installation.
+The necessary external ports that need to be opened in a default cluster installation are as follows:
+
+<table>
+  <tr><th> Gluu Servers </th><th> Load Balancer </th> <th> Cluster Manager </th></tr>
+<tr><td>
+
+|22| --| 443| 808* |
+|--| -- | -- | -- |
+|1636| 4444 | 8989 | 7777|
+
+</td><td>
+
+|22| 80 |
+|--|--|
+|443 | 8888 |
+
+</td>
+
+</td><td>
+
+|22|
+|--|
+|1636|
+
+</td></tr> 
+
+</table>
+
+- 22 will be used by Cluster Manager to pull logs and make adjustments to the systems. 
+
+- 80 and 443 are self explanatory. 
+
+- 1636, 4444 and 8989 are necessary for LDAP usage and replication. 
+
+- 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel.
+
+## Installing Cluster Manager
+
+### SSH & Keypairs
+
+Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/Load-balancing server:
+
+`ssh-keygen -t rsa`
+
+- This will initiate a prompt to create a key-pair. **Do not input a password here**. Cluster Manager must be able to open connections to the servers.
+
+- Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used).
+
+**This HAS to be the root authorized_keys or Cluster Manager will not work**
+
+### Install dependencies  
+
+Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
-# for Ubuntu Trusty
-echo "deb https://repo.gluu.org/ubuntu/ trusty-devel main" > /etc/apt/sources.list.d/gluu-repo.list
-
-# for Ubuntu Xenial
-echo "deb https://repo.gluu.org/ubuntu/ xenial-devel main" > /etc/apt/sources.list.d/gluu-repo.list
-
-curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-apt-get update
-apt-get install -y gluu-cluster-mgr
-```
-## Generate Public and Private Keys
-
-!!!Note:
-
-    SSH trust between Cluster Manager server (3) and the Gluu Servers (1) and (2) via `ssh_keys` is necessary for it to run operations remotely.
-
-Cluster Manager runs as `gluu` user. Hence in order to run operation remotely WITHOUT a password prompt,
-the public key (`/home/gluu/.ssh/id_rsa.pub`) of Cluster Manager
-should be added to the `/root/.ssh/authorized_keys` of all the servers it will communicate with.
-
-To generate public and private key pair:
-
-```bash
-sudo -u gluu mkdir /home/gluu/.ssh
-sudo -u gluu ssh-keygen -t rsa -b 4096 -C 'cluster-mgr'
+sudo apt-get update
+sudo apt-get install python-pip python-dev libffi-dev libssl-dev redis-server default-jre
+(default-jre is for license requirements. Not necessary if Java already installed)
+sudo pip install --upgrade setuptools influxdb
 ```
 
-Make sure **we're NOT USING any passphrase** when prompted.
+### Install the package
 
-Copy the public key (`/home/gluu/.ssh/id_rsa.pub`) into local computer:
+Install cluster manager using the following command:
 
-```bash
-scp root@<cluster-mgr-server>:/home/gluu/.ssh/id_rsa.pub </path/in/local/computer>
+```
+pip install clustermgr
 ```
 
-If using Windows machine and ssh using putty, you could use any scp app
-like winscp to copy files to your local computer
-From local computer, copy the content of downloaded public key and append it to `authorized_keys`
-of Gluu CE server:
+There may be a few innocuous warnings, but this is normal.
 
-```bash
-cat </path/in/local/computer> | ssh root@<gluu-server> 'cat >> .ssh/authorized_keys'
+### Prepare Database
+
+Prepare the database using the following commands:
+
+```
+clustermgr-cli db upgrade
 ```
 
-### Message Consumer
+### Add license validator 
 
-Login back to Cluster Manager server, then modify `/etc/activemq/instances-available/main/activemq.xml`:
+Prepare the license validator by using the following commands:
 
-    <transportConnectors>
-        <transportConnector name="openwire" uri="tcp://<cluster-mgr-ip>:61616"/>
-    </transportConnectors>
+```
+mkdir -p $HOME/.clustermgr/javalibs
+wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicense-validator-3.2.0-SNAPSHOT-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
+```
 
-Restart `activemq` service:
+!!! Note
+    Licenses files are not currently enforced. It is on the honor system! In future versions, a license file may be required.  
 
-    # for Ubuntu Trusty
-    service activemq restart
+### Run Celery
 
-    # for Ubuntu Xenial
-    systemctl restart activemq
+Run celery scheduler and workers in separate terminals:
 
-Add new user and grant the privileges to newly created user by login into MySQL console:
+```
+# Terminal 1
+clustermgr-beat &
 
-    mysql -u root -p
+# Terminal 2
+clustermgr-celery &
+```
 
-Type command below after successful MySQL console login:
+### Run clustermgr-cli
 
-    CREATE USER 'gluu'@'localhost' IDENTIFIED BY '<my-secret-password>';
-    GRANT ALL PRIVILEGES ON gluu_log.* TO 'gluu'@'localhost';
+Open another terminal to run clustermgr-cli:
 
-Note, change the `<my-secret-password>` to use our own password.
-Afterwards, exit from MySQL console login.
+```
+clustermgr-cli run
+```
 
-Iniatilize database for Message Consumer:
+### Create Credentials
 
-    cd /opt/message-consumer/conf
-    mysql -u gluu -p < mysql_schema.sql
+When Cluster Manager is run for the first time, it will prompt creation of an administrator user name and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`. The default authentication method can be disabled by removing the file.
 
-Modify lines below in `/opt/message-consumer/conf/prod.properties` file using text editor:
+### Intstall oxd (optional)
 
-    spring.mysql.datasource.username=gluu
-    spring.mysql.datasource.password=<my-secret-password>
+We recommend utilizing the [oxd client software](https://github.com/GluuFederation/cluster-mgr/wiki/User-Authentication#using-oxd-and-gluu-server) to leverage Gluu for authentication to Cluster Manager.  After oxd has been installed and configured, [default authentication](https://github.com/GluuFederation/cluster-mgr/wiki/User-Authentication#using-default-admin-user) can be disabled. 
 
-Restart `message-consumer` service to make sure Message Consumer loads updated configuration:
+### Create new user
+It is recommended to create an additional "cluster" user, other than the one used to install and configure cluster manager. 
 
-    # for Ubuntu Trusty
-    service message-consumer stop
-    service message-consumer start
+This is a basic security precaution, due to the fact that the user ssh'ing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager. 
 
-    # for Ubuntu Xenial
-    systemctl restart message-consumer
-    systemctl enable message-consumer
+```
+ssh -L 5000:localhost:5000 cluster@<server>
+```
 
-### Cluster Manager
+### Login
 
-Sync database schema (will create new db if not exist) using `clustermgr-cli` executable, which is included in `gluu-cluster-mgr` package:
+Navigate to the cluster-mgr web GUI on your local machine:
 
-    `APP_MODE=prod clustermgr-cli db upgrade`
-
-The command above will create a database `/opt/gluu-cluster-mgr/clustermgr.db`.
-The `APP_MODE` environment variable is set to `prod` for production use.
-To make sure Cluster Manager webapp has sufficient access required files and directories, run command below:
-
-    chown -R gluu:gluu /opt/gluu-cluster-mgr/
-
-Generate random unique string:
-
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
-
-!!!Note
-
-    The command above will print out string in terminal. Copy the value and keep it somewhere else for later use (i.e. backup plan).
-
-Create `/opt/gluu-cluster-mgr/instance/config.py` and put line below:
-
-    SECRET_KEY = "<random-unique-string>"
-
-Note, change the `<random-unique-string>` to use our own unique string.
-
-Restart `gunicorn` service:
-
-    # for Ubuntu Trusty
-    service gunicorn restart
-
-    # for Ubuntu Xenial
-    systemctl restart gunicorn
-    systemctl enable gunicorn
-
-Restart `celery` service to make sure background jobs runner connected to correct database:
-
-    # for Ubuntu Trusty
-    service celery restart
-
-    # for Ubuntu Xenial
-    systemctl restart celery
-    systemctl enable celery
-
-Restart `celerybeat` service to make scheduled background jobs runner connected to correct database:
-
-    # for Ubuntu Trusty
-    service celerybeat restart
-
-    # for Ubuntu Xenial
-    systemctl restart celerybeat
-    systemctl enable celerybeat
-
-Now logout from remote server.
-
-Note, Cluster Manager webapp is bind to `localhost:6000` in remote server.
-We can use SSH tunneling to access it from web browser.
-
-    ssh -L 8080:localhost:6000 root@<cluster-mgr-server>
-
-Afterwards, type `localhost:8080` in web browser address bar.
-
-### oxEleven Application (optional)
-
-As an alternative of using JKS (the default backend) for storing oxAuth keys, we can also use [oxEleven](https://github.com/GluuFederation/oxEleven).
-
-First things first, install docker as we need it for building oxEleven image:
-
-    curl -fsSL https://raw.githubusercontent.com/GluuFederation/cluster-tools/master/get_docker.sh | sh
-
-Build oxEleven docker image:
-
-    cd ~
-    git clone https://github.com/GluuFederation/gluu-docker.git
-    cd gluu-docker
-    git checkout ce-3
-    docker build --rm=true --force-rm=true --tag=gluuox11 ubuntu/14.04/oxeleven
-
-Generate random token (in this example, we will use UUID):
-
-    $ cat /proc/sys/kernel/random/uuid
-
-Keep the token generated from process above for later use.
-
-Run oxEleven and bind it at `http://<host>:8190`:
-
-    docker run -d --name=ox11 --env OXUUID=random-token -p 8190:8080 --restart=always gluuox11
-
-Note, the access to oxEleven APIs will be protected by random token.
+```
+http://localhost:5000/
+```
