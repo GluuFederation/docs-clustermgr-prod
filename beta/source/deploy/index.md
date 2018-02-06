@@ -4,11 +4,11 @@ To deploy a functioning cluster, it is necessary to do a few things.
 
 Here is the first screen you'll see on the initial launch where you create the default administrator and password:
 
-![Admin_Creation](https://github.com/GluuFederation/docs-clustermgr-prod/blob/beta/beta/source/img/Cluster_Manager-01.png)
+![Admin_Creation](../img/Cluster_Manager-01.png)
 
 Next you'll be taken to the splash page where you can initiate building a cluster with the `Setup Cluster` button:
 
-![Setup Cluster](https://github.com/GluuFederation/docs-clustermgr-prod/blob/beta/beta/source/img/Cluster_Manager-02.png)
+![Setup Cluster](../img/Cluster_Manager-02.png)
 
 Here is you `Settings` screen. You can access this screen again by clicking the `Settings` button on the left menu bar.
 
