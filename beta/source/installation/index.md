@@ -18,7 +18,7 @@ The following external ports need to be opened:
   <tr><th> Gluu Servers </th><th> Load Balancer </th> <th> Cluster Manager </th></tr>
 <tr><td>
 
-|22| --| 443| 808* |
+|22| 443|30865| -- |
 |--| -- | -- | -- |
 |1636| 4444 | 8989 | 7777|
 
@@ -42,9 +42,11 @@ The following external ports need to be opened:
 
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems. 
 
-- 80 and 443 are self explanatory. 
+- 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server/oxAuth. 
 
-- 1636, 4444 and 8989 are necessary for LDAP usage and replication. 
+- 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes.
+
+- 30865 is the default port for csync2 file system replication.
 
 - 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel.
 
