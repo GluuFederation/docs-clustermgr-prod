@@ -14,7 +14,7 @@ This service is in beta. Please report bugs or feature requests via the [Gluu su
 
 ## Components
 
-Cluster Manager utilizes the following components to manage and deploy a highly available Gluu Server identity & access management service:
+Cluster Manager utilizes the following components to deploy and manage a highly available Gluu Server identity & access management service:
 
 1. **Gluu Server:** Free open source software package for identity and access management. 
 
