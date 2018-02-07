@@ -12,11 +12,9 @@ This service is in beta. Please report bugs or feature requests via the [Gluu su
 - Monitoring
 - Logging
 
-## Default Components
+## Components
 
-By default the installation of a cluster installs five (5) services to manage high availabilty. 
-
-These services are:
+Cluster Manager utilizes the following default components to manage and deploy a highly available Gluu Server identity & access management service:
 
 1. **Gluu Server:** Free open source software package for identity and access management. 
 
