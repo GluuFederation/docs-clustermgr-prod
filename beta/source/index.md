@@ -18,7 +18,7 @@ Cluster Manager utilizes the following components:
 
 1. **Gluu Server:** Free open source software package for identity and access management. 
 
-1. **Redis-Server:** A value key-store known for it's high performance. Installed outside the chroot on all servers. Configuration file located at `/etc/redis/redis.conf` or `/etc/redis.conf` on the servers with Gluu installed.
+1. **Redis-Server:** A value key-store known for it's high performance. Installed outside the chroot on all servers. Configuration file is located on the servers with Gluu at `/etc/redis/redis.conf` or `/etc/redis.conf`.
 
 1. **Stunnel:** Used to protect communications between oxAuth and Redis and Twemproxy caching services. Configuration file located at `/etc/stunnel/stunnel.conf` on **all** servers. Runs on port 8888 of the NGINX/Proxy server and 7777 on the Gluu servers. **For security Redis runs on localhost.** Stunnel faciliates SSL communication over the Internet for Redis which doesn't come default with encrypted traffic.
 
