@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- A minimum of four (4) machines: One (1) machine will be used for cluster manager, which will only be used for proxying TCP and HTTP traffic. This could be localhost on the installers computer. The other three (3) machines will host Gluu Servers. 
+- A minimum of four (4) machines: One (1) machine is for cluster manager, which will only be used for proxying TCP and HTTP traffic. This could be localhost on the installers computer. The other three (3) machines will host Gluu Servers. 
 
 - Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines hosting Gluu can have Ubuntu, CentOS, RHEL, or Debian.
 
