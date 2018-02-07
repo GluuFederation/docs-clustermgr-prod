@@ -34,14 +34,14 @@ Click `Add Server`
 You will be taken to the `Add Primary Server` screen. It is called Primary as it will be the base for which the other nodes will pull their Gluu configuration and certificates. After Deployment, all servers will function in a Master-Master configuration.
 
 !!! Note
-Hostname will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. If you selected the `Add IP Addresses and Hostnames to/etc/hosts file on each server` in the `Settings` menu, then this will be the hostname embedded automatically in the `/etc/hosts` files on this computer.
+    Hostname will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. If you selected the `Add IP Addresses and Hostnames to/etc/hosts file on each server` in the `Settings` menu, then this will be the hostname embedded automatically in the `/etc/hosts` files on this computer.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
 After you click `Submit`, you will be taken to the Dashboard.
 
 !!! Note
-Here you can see all the servers in your cluster, add more servers, edit the hostname and IP address of a server if you entered them incorrectly, and also Install Gluu automatically.
+    Here you can see all the servers in your cluster, add more servers, edit the hostname and IP address of a server if you entered them incorrectly, and also Install Gluu automatically.
 
 Click the `Add Server` button and add another node or 2. Note, the admin password set in the Primary server is the same for all the servers.
 
@@ -59,7 +59,7 @@ Click `Submit`
 ![Installing Gluu Server](../img/Cluster_Manager-09.png)
 
 !!! Note
-Gluu will now be installed on the server. This may take some time, so please be patient.
+    Gluu will now be installed on the server. This may take some time, so please be patient.
 
 Once completed, repeat the process for the other servers.
 
@@ -72,7 +72,7 @@ After that you'll be taken to the `LDAP Replication` screen where you can enable
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
 !!! Note
-You can also see the replication status and other replication information on this screen once you've deployed OpenDJ replication.
+    You can also see the replication status and other replication information on this screen once you've deployed OpenDJ replication.
 
 ![Replication Deployed screen](../img/Cluster_Manager-11.png)
 
@@ -81,7 +81,7 @@ From here we need to enable file system replication. Do this by clicking `Replic
 ![File System Replication](../img/Cluster_Manager-12.png)
 
 !!! Note
-You can also add replication paths for other file systems, if you deem it necessary.
+    You can also add replication paths for other file systems, if you deem it necessary.
 
 The last step for a functioning cluster configuration is the `Cache Management` option on the left menu. Click that and follow through the steps for deploying Cache Management.
 
@@ -90,13 +90,13 @@ The last step for a functioning cluster configuration is the `Cache Management` 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
 !!! Note
-We have to configure oxAuth to utilize an external, network capable caching service because of the nature of clustering. oxAuth caches short-lived tokens and in a balanced cluster, all the instances of oxAuth need access to the cache. To allow this capability, and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside of LDAP are also changed to allow access to these instances of Redis.
+    We have to configure oxAuth to utilize an external, network capable caching service because of the nature of clustering. oxAuth caches short-lived tokens and in a balanced cluster, all the instances of oxAuth need access to the cache. To allow this capability, and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside of LDAP are also changed to allow access to these instances of Redis.
 
 !!! Warning
-Redis doesn't utilize encrypted communication, so we will install and configure stunnel on all our servers to protect our information with SSL.
+    Redis doesn't utilize encrypted communication, so we will install and configure stunnel on all our servers to protect our information with SSL.
 
 !!! Note
-Twemproxy is also installed on the NGINX/Proxy server as a means for redundancy since Twemproxy can detect redis server communication failure, giving you high availability.
+    Twemproxy is also installed on the NGINX/Proxy server as a means for redundancy since Twemproxy can detect redis server communication failure, giving you high availability.
 
 All of the cache configuration settings can be customized per the (component configuration)[https://gluu.org/docs/cm/#default-components] documentation and also inside of oxTrust.
 
@@ -113,9 +113,9 @@ Installation is a breeze, just click `Setup Monitoring` and `Setup Logging`
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
 !!! Note
-Monitoring gives you an easily accessible means to quickly take a glimpse at your servers performance and potential issues.
+    Monitoring gives you an easily accessible means to quickly take a glimpse at your servers performance and potential issues.
 
 ![Logging Screen](../img/Cluster_Manager-16.png)
 
 !!! Note
-Logging is also another powerful tool to gather all of your Gluu logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
+    Logging is also another powerful tool to gather all of your Gluu logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
