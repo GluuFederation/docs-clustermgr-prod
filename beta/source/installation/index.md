@@ -12,7 +12,7 @@
 
 ### External ports
 
-The following external ports need to be opened:
+The following external ports need to be opened on the following machines:
 
 <table>
   <tr><th> Gluu Servers </th><th> Load Balancer </th> <th> Cluster Manager </th></tr>
