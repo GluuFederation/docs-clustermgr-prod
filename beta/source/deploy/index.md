@@ -2,6 +2,8 @@
 
 To deploy a functioning cluster, it is necessary to do a few things.
 
+## Getting Started
+
 Here is the first screen you'll see on the initial launch where you create the default administrator and password:
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
@@ -63,6 +65,8 @@ When all the installations have completed, you'll want to install NGINX. Do this
 
 After that you'll be taken to the `LDAP Replication` screen where you can enable and disable LDAP replication. There is also a `Deploy All` button to be used for initial deployments. Click it and wait for the process to finish.
 
+## Replication
+
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
 !!! Note
@@ -78,6 +82,8 @@ From here we need to enable file system replication. Do this by clicking `Replic
 You can also add replication paths for other file systems, if you deem it necessary.
 
 The last step for a functioning cluster configuration is the `Cache Management` option on the left menu. Click that and follow through the steps for deploying Cache Management.
+
+## Cache
 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
