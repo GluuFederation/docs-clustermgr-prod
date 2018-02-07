@@ -12,9 +12,6 @@ This service is in beta. Please report bugs or feature requests via the [Gluu su
 - Monitoring
 - Logging
 
-## Installation
-Get started by following the [installation guide](./installation/index.md). 
-
 ## Default Components
 
 By default the installation of a cluster installs five (5) services to manage high availabilty. 
@@ -30,6 +27,9 @@ These services are:
 1. **Twemproxy:** Used for cache failover, round-robin proxying and caching performance with Redis. The configuration file for this program can be found in `/etc/nutcracker/nutcracker.yml` on the proxy server. Runs locally on port 2222 of your NGINX/Proxy server. Because of demand for high availability, Twemproxy is a must as it automates detection of Redis server failure and redirects traffic to working instances. Please note that Twemproxy will not reintroduce failed servers. You can manually or create a script that automates the task of restarting twemproxy, which will reset the "down" flag of that server.
 
 1. **NGINX:** Used to proxy communication to the instances of Gluu. Configuration file located at `/etc/nginx/nginx.conf` on the load balancing server (if installed). Can be set to round-robin instances of oxAuth for balancing load across servers by changing the nginx.conf to use `backend` instead of `backend_id`. **Note:** this breaks SCIM functionality if one of the servers goes down and redundancy isn't built into the logic of your SCIM client.
+
+## Installation
+Get started by following the [installation guide](./installation/index.md). 
 
 ## License
 Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). Copyright Gluu 2018.
