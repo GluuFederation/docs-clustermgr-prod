@@ -1,10 +1,10 @@
 # Deploying a Gluu Cluster
 
-To deploy a functioning cluster, it is necessary to do a few things.
+Follow this doc to use Cluster Manager to deploy a cluster of Gluu Servers!
 
 ## Getting Started
 
-Here is the first screen you'll see on the initial launch where you create the default administrator and password:
+Here is the first screen you'll see upon initial launch where you create the default administrator and password:
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
@@ -17,8 +17,10 @@ Here is you `Settings` screen. You can access this screen again by clicking the 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
 !!! Note
-Replication Manager Password will be used in OpenDJ for replication purposes
+    The Replication Manager Password will be used in OpenDJ for replication purposes.
+
 - Load Balancer: This will be the hostname of either your NGINX proxy server, or the Load balancing server you'll be using for your cluster. Note, this cannot be changed after you deploy your Gluu servers, so please keep this in mind. To change the hostname, you'll have to redeploy Gluu Severs from scratch.
+
 - `Add IP Addresses and hostnames to /etc/hosts file on each server`: Use this option if you're using servers without Fully Qualified Domain Names. This will automatically assign hostnames to ip addresses in the `/etc/hosts` files inside and outside the Gluu chroot. Otherwise, you may run into complications with server connectivity unless you manually configure these correctly.
 
 Once these are properly configured, click the `Update Configuration button`.
