@@ -10,7 +10,7 @@
 
 - After initial setup, Cluster Manager no longer needs an active connection to the cluster. However, in order to take advantage of monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
 
-### External ports
+## Ports
 
 The following external ports need to be opened on the following machines:
 
@@ -39,7 +39,9 @@ The following external ports need to be opened on the following machines:
 | -- | --|
 | 22 | SSH |
 |1636| LDAP |
-   
+
+### Port usage
+
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems. 
 
 - 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server/oxAuth. 
