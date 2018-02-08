@@ -1,6 +1,6 @@
 # Deploying a Gluu Cluster
 
-Follow this doc to use Cluster Manager to deploy a cluster of Gluu Servers!
+Follow this doc to deploy a cluster of Gluu Servers!
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Next you'll be taken to the splash page where you can initiate building a cluste
 
 ![Setup Cluster](../img/Cluster_Manager-02.png)
 
-Here is you `Settings` screen. You can access this screen again by clicking the `Settings` button on the left menu bar.
+Here is your `Settings` screen. You can access this screen again by clicking the `Settings` button on the left menu bar.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
