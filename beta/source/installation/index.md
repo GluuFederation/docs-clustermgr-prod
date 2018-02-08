@@ -33,7 +33,7 @@ The following external ports need to be opened on the following machines:
 | 8888 | Stunnel |
 
 !!! Note
-    This is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
+    The Load Balancer is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
 
 | Cluster Manager | Description|
 | -- | --|
