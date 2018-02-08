@@ -14,32 +14,32 @@
 
 The following external ports need to be opened on the following machines:
 
-<table>
-  <tr><th> Gluu Servers </th><th> Load Balancer </th> <th> Cluster Manager </th></tr>
-<tr><td>
 
-|22| 443|30865| -- |
-|--| -- | -- | -- |
-|1636| 4444 | 8989 | 7777|
+| Gluu Servers | Description |
+| -- | -- |
+| 22 | SSH |
+| 443 | SSL |
+| 30865 | Csync2 |
+| 1636 | LDAP |
+| 4444 | LDAP Repl |
+| 8989 | LDAP Repl |
+| 7777 | Stunnel |
 
-</td><td>
+| Load Balancer | Description |
+|--| --|
+| 22 | SSH |
+| 80 | HTTP |
+| 443 | HTTPS |
+| 8888 | Stunnel |
 
-|22| 80 |
-|--|--|
-|443 | 8888 |
+!!! Note
+   This is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
 
-</td>
-
-</td><td>
-
-|22|
-|--|
-|1636|
-
-</td></tr> 
-
-</table>
-
+| Cluster Manager | Description|
+| -- | --|
+| 22 | SSH |
+|1636| LDAP |
+   
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems. 
 
 - 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server/oxAuth. 
@@ -51,7 +51,7 @@ The following external ports need to be opened on the following machines:
 - 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel.
 
 ## Default Components
-See the [homepage](../index.md#default-components) for a discussion of the components used by Cluster Manager. 
+See the [homepage](../index.md#default-components) for a discussion of default components installed with Cluster Manager. 
 
 ## Installing Cluster Manager
 
