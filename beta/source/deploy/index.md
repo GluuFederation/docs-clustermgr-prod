@@ -1,29 +1,31 @@
 # Deploying a Gluu Cluster
 
-Follow this doc to deploy a cluster of Gluu Servers!
+Follow this doc to deploy a cluster of Gluu Servers using Cluster Manager!
 
 ## Getting Started
 
-Here is the first screen you'll see upon initial launch where you create the default administrator and password:
+Upon initial launch of Cluster Manager, the following screen will be presented to create an admin user and password:
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
-Next you'll be taken to the splash page where you can initiate building a cluster with the `Setup Cluster` button:
+Afterwards, start the process of building a cluster by clicking the `Setup Cluster` button:
 
 ![Setup Cluster](../img/Cluster_Manager-02.png)
 
-Here is your `Settings` screen. You can access this screen again by clicking the `Settings` button on the left menu bar.
+Provide values for the fields in the Applications Settings page: 
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-!!! Note
-    The Replication Manager Password will be used in OpenDJ for replication purposes.
+- Replication Manager Password will be used in OpenDJ for replication purposes.
 
-- Load Balancer: This will be the hostname of either your NGINX proxy server, or the Load balancing server you'll be using for your cluster. Note, this cannot be changed after you deploy your Gluu servers, so please keep this in mind. To change the hostname, you'll have to redeploy Gluu Severs from scratch.
+- Load Balancer will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. 
 
-- `Add IP Addresses and hostnames to /etc/hosts file on each server`: Use this option if you're using servers without Fully Qualified Domain Names. This will automatically assign hostnames to ip addresses in the `/etc/hosts` files inside and outside the Gluu chroot. Otherwise, you may run into complications with server connectivity unless you manually configure these correctly.
+!!! Warning
+    The load balancer hostname **cannot** be changed after Gluu has been deployed. To change the hostname, it is necessary to redeploy Gluu.
 
-Once these are properly configured, click the `Update Configuration button`.
+- If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot. 
+
+Once the settings are configured, click the `Update Configuration button`.
 
 ![Add Server Prompt](../img/Cluster_Manager-04.png)
 
@@ -31,91 +33,101 @@ Click `Add Server`
 
 ![New Server - Primary Server](../img/Cluster_Manager-05.png)
 
-You will be taken to the `Add Primary Server` screen. It is called Primary as it will be the base for which the other nodes will pull their Gluu configuration and certificates. After Deployment, all servers will function in a Master-Master configuration.
+The following screen is used to add the Primary Server, which will be used by other nodes to pull their Gluu configuration and certificates. After Deployment, all servers will function in a Master-Master configuration.
 
 !!! Note
-    Hostname will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. If you selected the `Add IP Addresses and Hostnames to/etc/hosts file on each server` in the `Settings` menu, then this will be the hostname embedded automatically in the `/etc/hosts` files on this computer.
+    Hostname will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, this will be the hostname embedded automatically in the `/etc/hosts` files on this machine.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
-After you click `Submit`, you will be taken to the Dashboard.
+Click `Submit` to get routed to the Dashboard.
+
+The Dashboard lists all servers in the cluster and provides the ability to add more servers, edit hostnames and IP addresses, and install Gluu automatically.
+
+Click the `Add Server` button to add another node. 
 
 !!! Note
-    Here you can see all the servers in your cluster, add more servers, edit the hostname and IP address of a server if you entered them incorrectly, and also Install Gluu automatically.
+    The admin password set in the Primary server is the same for all the servers.
 
-Click the `Add Server` button and add another node or 2. Note, the admin password set in the Primary server is the same for all the servers.
-
-Once you've added all the servers you want in your cluster, back at the dashboard we will click `Install Gluu` on our primary server.
+Once all servers have been added to the cluster, `Install Gluu` on the primary server.
 
 ![Install Primary Gluu Server](../img/Cluster_Manager-07.png)
 
-- This screen is the equivalent of the standard `setup.py` installation in Gluu. The first 5 options are for certificate creation.
-- Next are inum configurations for Gluu and LDAP. Please don't touch these unless you know what you're doing.
-- Following that are the modules you want to install. The default Gluu Server installation options comes pre-selected.
-- Not seen are LDAP type, which is only one option at this time as OpenLDAP is not support, as well as license agreements.
+- Values for the first five fields are used to create certificates.
+- Values for inumOrg and inumAppliance are generated automatically. Changing the defaults is not recommended.
+- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.2/3.1.2/source/index.md#free-open-source-software). 
+- Currently only OpenDJ is supported in Cluster Manager. This is pre-selected. 
+- Accept the license agreements.
 
-Click `Submit`
+Click `Submit` to begin installation. 
 
 ![Installing Gluu Server](../img/Cluster_Manager-09.png)
 
-!!! Note
-    Gluu will now be installed on the server. This may take some time, so please be patient.
+!!! Note 
+    This may take some time, so please be patient.
 
-Once completed, repeat the process for the other servers.
+Once completed, repeat the process for the other servers in the cluster.
 
-When all the installations have completed, you'll want to install NGINX. Do this by clicking `Cluster` on the left menu and selecting `Install Nginx`.
+When all the installations have completed, install NGINX:
 
-After that you'll be taken to the `LDAP Replication` screen where you can enable and disable LDAP replication. There is also a `Deploy All` button to be used for initial deployments. Click it and wait for the process to finish.
+- Navigate to `Cluster` in the left menu
+- Select `Install Nginx`
+
+Finally, the `LDAP Replication` screen will appear, where LDAP replication can be enabled and disabled.  
+
+During initial deloyment click the `Deploy All` button and wait for the process to finish.
 
 ## Replication
 
+Next navigate to the `Replication` tab to setup replication across the cluster. 
+
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
-!!! Note
-    You can also see the replication status and other replication information on this screen once you've deployed OpenDJ replication.
+After configuring OpenDJ replication for the first time, this page will display replication status and other replication information.
 
 ![Replication Deployed screen](../img/Cluster_Manager-11.png)
 
-From here we need to enable file system replication. Do this by clicking `Replication` on the left menu and selecting `File system Replication`. Click `Install File System Replication` This installs and configures csync2 and replicates necessary configuration files if they're changed by oxTrust.
+Enable file system replication by clicking `Replication` on the left menu and selecting `File system Replication`. Click `Install File System Replication` to install and configure csync2 and replicate necessary configuration files.
 
 ![File System Replication](../img/Cluster_Manager-12.png)
 
 !!! Note
-    You can also add replication paths for other file systems, if you deem it necessary.
+    If necessary, replication paths for other file systems can be added here as well.
 
-The last step for a functioning cluster configuration is the `Cache Management` option on the left menu. Click that and follow through the steps for deploying Cache Management.
+Navigate to `Cache Management` in the left menu to complete the cluster configuration. 
 
 ## Cache
 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
-!!! Note
-    We have to configure oxAuth to utilize an external, network capable caching service because of the nature of clustering. oxAuth caches short-lived tokens and in a balanced cluster, all the instances of oxAuth need access to the cache. To allow this capability, and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside of LDAP are also changed to allow access to these instances of Redis.
+oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
 !!! Warning
-    Redis doesn't utilize encrypted communication, so we will install and configure stunnel on all our servers to protect our information with SSL.
+    Redis does not utilize encrypted communication, therefore stunnel needs to be installed and configured on all servers to protect information with SSL.
 
 !!! Note
-    Twemproxy is also installed on the NGINX/Proxy server as a means for redundancy since Twemproxy can detect redis server communication failure, giving you high availability.
+    Twemproxy is also installed on the NGINX/Proxy server to achieve redundancy. Twemproxy can detect redis server communication failure to ensure high availability.
 
-All of the cache configuration settings can be customized per the (component configuration)[https://gluu.org/docs/cm/#default-components] documentation and also inside of oxTrust.
+Cache configuration settings can be customized per the (component configuration)[https://gluu.org/docs/cm/#default-components] documentation and also inside oxTrust.
 
 ![Successful Cache Management Installation](../img/Cluster_Manager-14.png)
 
-Once this task is completed, you have a fully functional Gluu Server cluster. Please navigate to the hostname of the proxy server you provided in the `Settings` option.
+Once this task is complete, the Gluu Server cluster is fully functional. 
+
+Navigate to the hostname of the proxy server provided in the `Settings` option.
 
 ## Additional Management Components
 
-We've added a couple additional services to help deal with Gluu Server clusters. These are process monitoring and logging management. `Monitoring` and `Logging Management`, respectively, found on the left-hand menu.
+Cluster Manager offers a couple additional services to help manage a cluster of Gluu Servers, including process monitoring and logging management. 
 
-Installation is a breeze, just click `Setup Monitoring` and `Setup Logging`
+`Monitoring` and `Logging Management`, respectively, can be found in the left-hand menu.
+
+Simply click `Setup Monitoring` and `Setup Logging` to take advantage of these features. 
 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
-!!! Note
-    Monitoring gives you an easily accessible means to quickly take a glimpse at your servers performance and potential issues.
+Monitoring offers a quick glimpse at performance and potential issues.
 
 ![Logging Screen](../img/Cluster_Manager-16.png)
 
-!!! Note
-    Logging is also another powerful tool to gather all of your Gluu logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
+Logging gathers logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
