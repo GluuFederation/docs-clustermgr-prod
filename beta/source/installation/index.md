@@ -154,3 +154,7 @@ Navigate to the cluster-mgr web GUI on your local machine:
 ```
 http://localhost:5000/
 ```
+
+## Deploy clusters
+Next, move on to [deploy the Gluu cluster](../deploy/index.md). 
+
