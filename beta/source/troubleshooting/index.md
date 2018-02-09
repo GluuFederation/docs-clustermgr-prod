@@ -32,3 +32,4 @@ And then restart the processes (in one terminal if needed):
 
 `clustermgr-beat & clustermgr-celery & clustermgr-cli run`
 
+If you have any issues, please open a ticket at [support.gluu.org](https://support.gluu.org/)
