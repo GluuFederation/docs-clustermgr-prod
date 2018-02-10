@@ -8,7 +8,8 @@
 
 - Cluster Manager must have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
 
-- After initial setup, Cluster Manager no longer needs an active connection to the cluster. However, in order to take advantage of monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
+!!! Note
+    After initial setup, Cluster Manager no longer needs an active connection to the cluster. However, in order to take advantage of monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
 
 ## Ports
 
@@ -64,7 +65,7 @@ Give Cluster Manager the ability to establish an ssh connection to the servers i
 
 - Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used).
 
-**This HAS to be the root authorized_keys or Cluster Manager will not work**
+**This MUST be the root authorized_keys or Cluster Manager will not work**
 
 ### Install dependencies  
 
