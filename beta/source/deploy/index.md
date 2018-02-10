@@ -21,7 +21,7 @@ Provide values for the fields in the Applications Settings page:
 - Load Balancer will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. 
 
 !!! Warning
-    The load balancer hostname **cannot** be changed after Gluu has been deployed. To change the hostname, it is necessary to redeploy Gluu.
+    The load balancer hostname **cannot** be changed after Gluu has been deployed. To change the hostname, Gluu must be redeployed. 
 
 - If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot. 
 
