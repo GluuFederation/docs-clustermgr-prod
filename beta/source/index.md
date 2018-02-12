@@ -7,10 +7,12 @@ This service is in beta. Please report bugs or feature requests via the [Gluu su
 
 ## Features
 
-- LDAP Replication
-- Cache Management
-- Monitoring
-- Central Logging
+- LDAP Replication   
+- Cache Management   
+- Monitoring    
+- Central Logging   
+- Key Rotation   
+- Tunneling   
 
 ## Components
 
