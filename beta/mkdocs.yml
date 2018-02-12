@@ -14,7 +14,7 @@ markdown_extensions:
      permalink: '#'
 pages:
 - Home: 'index.md'
-- Authentication: 'authentication/index.md'
 - Install: 'installation/index.md'
+- Authentication: 'authentication/index.md'
 - Deploy Clusters: 'deploy/index.md'
 - Troubleshooting: 'troubleshooting/index.md'
