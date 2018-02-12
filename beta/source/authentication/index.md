@@ -22,13 +22,13 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 ## Using oxd and Gluu Server
 
-1. Install oxd server:
+1. Install oxd server:    
 
     ```    
     apt-get update
     apt-get install oxd-server
     ```    
-
+    
 1. Configure `oxd-conf.json`:                      
     ```    
     {    
@@ -57,8 +57,8 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
         }    
     }    
     ```    
-
-1. Configure `oxd-default-site-conf.json`:    
+    
+1. Configure `oxd-default-site-conf.json`:        
     
     ```    
     {    
@@ -78,7 +78,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     }    
     ```    
 
-1. Restart oxd-server:
+1. Restart oxd-server:    
     
     ```    
     service oxd-server restart    
@@ -88,8 +88,8 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
 
-1. Create `$HOME/.clustermgr/oxd-client.ini`:
-    
+1. Create `$HOME/.clustermgr/oxd-client.ini`:        
+        
     ```    
     [oxd]    
     host = localhost    
@@ -102,7 +102,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
     scopes = openid,profile,user_name,permission    
     ```    
-    
+        
 1. Logout from ClusterManager app.
 
 1. Move `$HOME/.clustermgr/auth.ini` file to another location.
