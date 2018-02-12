@@ -25,9 +25,9 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 1. Install oxd server:    
 
     ```    
-    apt-get update
+        apt-get update
     
-    apt-get install oxd-server
+        apt-get install oxd-server
     ```    
     
 1. Configure `oxd-conf.json`:                      
