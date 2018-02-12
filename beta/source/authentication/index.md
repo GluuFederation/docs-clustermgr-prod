@@ -9,6 +9,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 ## Using default admin user
 
 1. Create `$HOME/.clustermgr/auth.ini`:     
+    
     ```
         [user]
         username = admin
