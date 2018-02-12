@@ -25,7 +25,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
         apt-get update
         apt-get install oxd-server   
     
-1. Configure `oxd-conf.json`:                      
+1. Configure `/opt/oxd-server/conf/oxd-conf.json`:                      
     ```    
     {    
         "server_name":"<OXD_HOSTNAME>",    
@@ -54,7 +54,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     }    
     ```    
     
-1. Configure `oxd-default-site-conf.json`:        
+1. Configure `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
     
     ```    
     {    
