@@ -134,7 +134,7 @@ When Cluster Manager is run for the first time, it will prompt creation of an ad
 
 ### Intstall oxd (optional)
 
-We recommend utilizing the [oxd client software](https://github.com/GluuFederation/cluster-mgr/wiki/User-Authentication#using-oxd-and-gluu-server) to leverage Gluu for authentication to Cluster Manager.  After oxd has been installed and configured, [default authentication](https://github.com/GluuFederation/cluster-mgr/wiki/User-Authentication#using-default-admin-user) can be disabled. 
+We recommend utilizing the [oxd client software](../authentication/index.md) to leverage Gluu for authentication to Cluster Manager.  After oxd has been installed and configured, default authentication can be disabled. 
 
 ### Create new user
 It is recommended to create an additional "cluster" user, other than the one used to install and configure cluster manager. 
