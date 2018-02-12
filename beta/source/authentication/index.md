@@ -24,15 +24,15 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Install oxd server:
 
-    ```
+    ```    
     apt-get update
     apt-get install oxd-server
-    ```
+    ```    
 
 1. Configure `oxd-conf.json`:
 
-    ```
-    {
+    ```    
+    {    
         "server_name":"<OXD_HOSTNAME>",    
         "port":8099,    
         "localhost_only":true,    
@@ -61,8 +61,8 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Configure `oxd-default-site-conf.json`:    
 
-    ```
-    {
+    ```    
+    {    
         "op_host":"",    
         "op_discovery_path":"",    
         "authorization_redirect_uri":"",    
@@ -76,14 +76,14 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
         "claims_locales":["en"],    
         "client_jwks_uri":"",    
         "contacts":[]    
-    }
-    ```
+    }    
+    ```    
 
 1. Restart oxd-server:
 
-    ```
+    ```    
     service oxd-server restart    
-    ```
+    ```    
 
 1. Login to oxTrust using admin privilege. Go to `Users > Manage People` page. Search for `admin` user. When `admin` user found, click the link under UID column.
 
@@ -91,18 +91,18 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Create `$HOME/.clustermgr/oxd-client.ini`:
 
-    ```
+    ```    
     [oxd]    
     host = localhost    
     port = 8099    
     id =     
-
+    
     [client]    
     op_host = https://your.domain.com    
     client_name = ClusterManager    
     authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
     scopes = openid,profile,user_name,permission    
-    ```
+    ```    
 
 1. Logout from ClusterManager app.
 
