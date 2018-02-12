@@ -53,7 +53,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
             }    
         }       
     
-1. Configure `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
+1. [Configure](https://gluu.org/docs/oxd/configuration/#oxd-default-site-configjson-field-descriptions) `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
     
     ```    
     {    
