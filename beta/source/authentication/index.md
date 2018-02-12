@@ -8,17 +8,17 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 ## Using default admin user
 
-1) Create `$HOME/.clustermgr/auth.ini`:
+1. Create `$HOME/.clustermgr/auth.ini`:         
 
-```
-[user]
-username = admin
-password = secret_password
-```
+    ```
+    [user]
+    username = admin
+    password = secret_password
+    ```     
+             
+1. Login using default user as seen above.
 
-2) Login using default user as seen above.
-
-3) Deploy a cluster of Gluu Server.
+1. Deploy a cluster of Gluu Server.
 
 ## Using oxd and Gluu Server
 
