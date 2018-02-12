@@ -10,25 +10,21 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Create `$HOME/.clustermgr/auth.ini`:     
     
-    ```
+
         [user]
         username = admin
         password = secret_password     
-    ```
-    
+
 1. Login using default user as seen above.
 
 1. Deploy a cluster of Gluu Server.
 
 ## Using oxd and Gluu Server
 
-1. Install oxd server:    
-
-    ```    
+1. Install oxd server:       
+        
         apt-get update
-    
-        apt-get install oxd-server
-    ```    
+        apt-get install oxd-server   
     
 1. Configure `oxd-conf.json`:                      
     ```    
