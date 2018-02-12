@@ -29,8 +29,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     apt-get install oxd-server
     ```    
 
-1. Configure `oxd-conf.json`:
-
+1. Configure `oxd-conf.json`:                      
     ```    
     {    
         "server_name":"<OXD_HOSTNAME>",    
@@ -60,7 +59,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     ```    
 
 1. Configure `oxd-default-site-conf.json`:    
-
+    
     ```    
     {    
         "op_host":"",    
@@ -80,7 +79,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     ```    
 
 1. Restart oxd-server:
-
+    
     ```    
     service oxd-server restart    
     ```    
@@ -90,7 +89,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
 
 1. Create `$HOME/.clustermgr/oxd-client.ini`:
-
+    
     ```    
     [oxd]    
     host = localhost    
@@ -103,7 +102,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
     scopes = openid,profile,user_name,permission    
     ```    
-
+    
 1. Logout from ClusterManager app.
 
 1. Move `$HOME/.clustermgr/auth.ini` file to another location.
@@ -114,7 +113,7 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 The first time login using oxd and Gluu Server may returns error message about `user_name` scope being disabled 
 in OIDC client configuration. If this error occurs, follow the steps below:
-
+    
 1. login to oxTrust    
 1. click `OpenID Connect > Clients` submenu        
 1. click `ClusterManager` client    
@@ -122,3 +121,4 @@ in OIDC client configuration. If this error occurs, follow the steps below:
 1. make sure the `user_name` scope is checked and click `OK` button    
 1. click `Update` button at the bottom of the page    
 1. open ClusterManager web app and click `Login with Gluu Server`    
+    
