@@ -26,33 +26,32 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
         apt-get install oxd-server   
     
 1. Configure `/opt/oxd-server/conf/oxd-conf.json`:                      
-    ```    
-    {    
-        "server_name":"<OXD_HOSTNAME>",    
-        "port":8099,    
-        "localhost_only":true,    
-        "time_out_in_seconds":0,    
-        "use_client_authentication_for_pat":true,    
-        "trust_all_certs":true,    
-        "trust_store_path":"",    
-        "trust_store_password":"",    
-        "license_id":"<LICENSE_ID>",    
-        "public_key":"<ONELINER_PUBLIC_KEY>",        
-        "public_password":"<PUBLIC_PASSWORD>",        
-        "license_password":"<LICENSE_PASSWORD>",        
-        "support-google-logout":true,    
-        "state_expiration_in_minutes":5,    
-        "nonce_expiration_in_minutes":5,    
-        "public_op_key_cache_expiration_in_minutes":60,    
-        "protect_commands_with_access_token":false,    
-        "uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client":true,    
-        "migration_source_folder_path":"",    
-        "storage":"h2",    
-        "storage_configuration": {    
-        "dbFileLocation":"/opt/oxd-server/bin/oxd_db"    
-        }    
-    }    
-    ```    
+ 
+        {    
+            "server_name":"<OXD_HOSTNAME>",    
+            "port":8099,    
+            "localhost_only":true,    
+            "time_out_in_seconds":0,    
+            "use_client_authentication_for_pat":true,    
+            "trust_all_certs":true,    
+            "trust_store_path":"",    
+            "trust_store_password":"",    
+            "license_id":"<LICENSE_ID>",    
+            "public_key":"<ONELINER_PUBLIC_KEY>",        
+            "public_password":"<PUBLIC_PASSWORD>",        
+            "license_password":"<LICENSE_PASSWORD>",        
+            "support-google-logout":true,    
+            "state_expiration_in_minutes":5,    
+            "nonce_expiration_in_minutes":5,    
+            "public_op_key_cache_expiration_in_minutes":60,    
+            "protect_commands_with_access_token":false,    
+            "uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client":true,    
+            "migration_source_folder_path":"",    
+            "storage":"h2",    
+            "storage_configuration": {    
+            "dbFileLocation":"/opt/oxd-server/bin/oxd_db"    
+            }    
+        }       
     
 1. Configure `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
     
