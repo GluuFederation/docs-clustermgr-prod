@@ -55,48 +55,43 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
     
 1. [Configure](https://gluu.org/docs/oxd/configuration/#oxd-default-site-configjson-field-descriptions) `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
     
-    ```    
-    {    
-        "op_host":"",    
-        "op_discovery_path":"",    
-        "authorization_redirect_uri":"",    
-        "post_logout_redirect_uri":"",    
-        "redirect_uris":[""],    
-        "response_types":["code"],    
-        "grant_type":["authorization_code"],    
-        "acr_values":[""],    
-        "scope":["openid", "profile", "email", "user_name", "permission"],    
-        "ui_locales":["en"],    
-        "claims_locales":["en"],    
-        "client_jwks_uri":"",    
-        "contacts":[]    
-    }    
-    ```    
+        {    
+            "op_host":"",    
+            "op_discovery_path":"",    
+            "authorization_redirect_uri":"",    
+            "post_logout_redirect_uri":"",    
+            "redirect_uris":[""],    
+            "response_types":["code"],    
+            "grant_type":["authorization_code"],    
+            "acr_values":[""],    
+            "scope":["openid", "profile", "email", "user_name", "permission"],    
+            "ui_locales":["en"],    
+            "claims_locales":["en"],    
+            "client_jwks_uri":"",    
+            "contacts":[]    
+        }       
 
 1. Restart oxd-server:    
+   
+        service oxd-server restart    
     
-    ```    
-    service oxd-server restart    
-    ```    
 
 1. Login to oxTrust using admin privilege. Go to `Users > Manage People` page. Search for `admin` user. When `admin` user found, click the link under UID column.
 
 1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
 
 1. Create `$HOME/.clustermgr/oxd-client.ini`:        
-        
-    ```    
-    [oxd]    
-    host = localhost    
-    port = 8099    
-    id =     
+           
+        [oxd]    
+        host = localhost    
+        port = 8099    
+        id =     
     
-    [client]    
-    op_host = https://your.domain.com    
-    client_name = ClusterManager    
-    authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
-    scopes = openid,profile,user_name,permission    
-    ```    
+        [client]    
+        op_host = https://your.domain.com    
+        client_name = ClusterManager    
+        authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
+        scopes = openid,profile,user_name,permission        
         
 1. Logout from ClusterManager app.
 
