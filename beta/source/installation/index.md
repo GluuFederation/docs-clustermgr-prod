@@ -132,9 +132,9 @@ clustermgr-cli run
 
 When Cluster Manager is run for the first time, it will prompt creation of an administrator user name and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`. The default authentication method can be disabled by removing the file.
 
-### Intstall oxd (optional)
+### Install oxd (optional)
 
-We recommend utilizing the [oxd client software](../authentication/index.md) to leverage Gluu for authentication to Cluster Manager.  After oxd has been installed and configured, default authentication can be disabled. 
+We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled. 
 
 ### Create new user
 It is recommended to create an additional "cluster" user, other than the one used to install and configure cluster manager. 
