@@ -132,7 +132,7 @@ When Cluster Manager is run for the first time, it will prompt for creation of a
 
 ### Install oxd (optional)
 
-We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the config file [specified above](#create-credentials).
+We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the authentication config file [specified above](#create-credentials).
 
 ### Create new user
 We recommend creating an additional "cluster" user, other than the one used to install and configure cluster manager. 
