@@ -11,9 +11,6 @@
 
 - Cluster Manager **must** have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
 
-!!! Note
-    After initial setup, Cluster Manager can be disconnected from the cluster. However, in order to take advantage of monitoring, configuration, and logging features, **Cluster Manager must be connected to the cluster**. 
-
 ## Ports
 
 The following external ports need to be opened on the following machines:
