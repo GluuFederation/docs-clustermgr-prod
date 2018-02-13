@@ -29,7 +29,7 @@ Cluster Manager utilizes the following components:
 
 ## Get Started
 - [Install Cluster Manager](./installation/index.md). 
-- [Configure oxd authentication (optional)](./authentication/index.md)
+- [Configure oxd authentication](./authentication/index.md) (optional)
 - [Deploy Gluu Clusters](./deploy/index.md)
 - [Troubleshooting](./troubleshooting/index.md)
 
