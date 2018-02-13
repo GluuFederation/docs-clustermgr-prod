@@ -34,7 +34,7 @@ Cluster Manager utilizes the following components:
 - [Troubleshooting](./troubleshooting/index.md)
 
 ## License
-Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). See [support pricing](https://gluu.org/pricing) for more information. 
+Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). To obtain a Gluu Support contract, see [support pricing](https://gluu.org/pricing). 
 
 
 
