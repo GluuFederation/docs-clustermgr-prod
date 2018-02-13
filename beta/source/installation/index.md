@@ -9,7 +9,7 @@
 
 - Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines can have Ubuntu, CentOS, RHEL, or Debian.
 
-- Cluster Manager **must** have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
+- Cluster Manager **must** have SSH access to all servers in the cluster and should be installed on a secure administrator's computer or a VM. 
 
 ## Ports
 
