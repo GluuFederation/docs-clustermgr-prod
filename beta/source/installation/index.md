@@ -63,9 +63,7 @@ Give Cluster Manager the ability to establish an ssh connection to the servers i
 
 - This will initiate a prompt to create a key-pair. **Do not input a password here**. Cluster Manager must be able to open connections to the servers.
 
-- Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used).
-
-**This MUST be the root authorized_keys or Cluster Manager will not work**
+- Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
 
 ### Install dependencies  
 
@@ -130,14 +128,14 @@ clustermgr-cli run
 
 ### Create Credentials
 
-When Cluster Manager is run for the first time, it will prompt creation of an administrator user name and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`. The default authentication method can be disabled by removing the file.
+When Cluster Manager is run for the first time, it will prompt for creation of an admin user name and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`. 
 
 ### Install oxd (optional)
 
-We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled. 
+We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the config file [specified above](#create-credentials).
 
 ### Create new user
-It is recommended to create an additional "cluster" user, other than the one used to install and configure cluster manager. 
+We recommend creating an additional "cluster" user, other than the one used to install and configure cluster manager. 
 
 This is a basic security precaution, due to the fact that the user ssh'ing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager. 
 
