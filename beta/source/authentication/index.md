@@ -18,7 +18,7 @@ Local authentication is configured during [installation](../installation/index.m
 
 1. Deploy a cluster of Gluu Server.
 
-## Using oxd and Gluu Server
+## Using oxd
 
 1. Install oxd server:       
         
