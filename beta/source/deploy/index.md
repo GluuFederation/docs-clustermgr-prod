@@ -116,19 +116,18 @@ Once this task is complete, the Gluu Server cluster is fully functional.
 
 Navigate to the hostname of the proxy server provided in the `Settings` option.
 
-## Additional Management Components
+## Monitoring
 
-Cluster Manager offers a couple additional services to help manage a cluster of Gluu Servers, including process monitoring and logging management. 
+Cluster Manager offers monitoring of the servers in the cluster to help better understand performance and potential issues. 
 
-`Monitoring` and `Logging Management`, respectively, can be found in the left-hand menu.
-
-### Monitoring
-Monitoring offers a quick glimpse at performance and potential issues.
+Navigate to the `Monitoring` tab in the left-hand menu to see details about the servers in the cluster. 
 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
-### Logging
+## Logging
 Logging gathers logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
+
+Navigate to the `Logging` tab in the left-hand muni to view and sort logs related to servers in the cluster. 
 
 ![Logging Screen](../img/Cluster_Manager-16.png)
 
