@@ -27,8 +27,11 @@ Cluster Manager utilizes the following components:
 
 1. **NGINX:** Used to proxy communication between Gluu instances. The configuration file is located on the load balancing server (if installed) at `/etc/nginx/nginx.conf`. Can be set to round-robin for load balancing across servers by changing the nginx.conf to use `backend` instead of `backend_id`. **Note:** this breaks SCIM functionality if one of the servers goes down and redundancy isn't built into the logic of your SCIM client.
 
-## Installation
-Get started by following the [installation guide](./installation/index.md). 
+## Get Started
+- [Installation Cluster Manager](./installation/index.md). 
+- [Configure oxd authentication (optional)](./authentication/index.md)
+- [Deploy Clusters](./deploy/index.md)
+- [Troubleshooting](./troubleshooting/index.md)
 
 ## License
 Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). Copyright Gluu 2018.
