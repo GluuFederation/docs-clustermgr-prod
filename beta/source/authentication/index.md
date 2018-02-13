@@ -18,7 +18,7 @@ Local authentication is configured during [installation](../installation/index.m
 
 1. Deploy a cluster of Gluu Server.
 
-## Using oxd
+## Using oxd and Gluu Server
 
 1. Install oxd server:       
         
@@ -52,14 +52,17 @@ Local authentication is configured during [installation](../installation/index.m
             "dbFileLocation":"/opt/oxd-server/bin/oxd_db"    
             }    
         }       
+
+    !!! Note
+        If you need a license to start your oxd-server, you can register on the [oxd website](https://oxd.gluu.org). 
     
 1. [Configure](https://gluu.org/docs/oxd/configuration/#oxd-default-site-configjson-field-descriptions) `/opt/oxd-server/conf/oxd-default-site-conf.json`:        
     
         {    
-            "op_host":"",    
+            "op_host":"https://idp.example.org",    
             "op_discovery_path":"",    
-            "authorization_redirect_uri":"",    
-            "post_logout_redirect_uri":"",    
+            "authorization_redirect_uri":"http://localhost:5000",    
+            "post_logout_redirect_uri":"http://localhost:5000/auth/oxd_login_callback",    
             "redirect_uris":[""],    
             "response_types":["code"],    
             "grant_type":["authorization_code"],    
@@ -70,6 +73,7 @@ Local authentication is configured during [installation](../installation/index.m
             "client_jwks_uri":"",    
             "contacts":[]    
         }       
+
 
 1. Restart oxd-server:    
    
@@ -97,7 +101,7 @@ Local authentication is configured during [installation](../installation/index.m
         
 1. Logout from ClusterManager app.
 
-1. Login to ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser.
+1. Login to ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser to finish the authorization process.
 
 ### Troubleshooting
 
