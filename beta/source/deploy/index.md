@@ -122,12 +122,13 @@ Cluster Manager offers a couple additional services to help manage a cluster of 
 
 `Monitoring` and `Logging Management`, respectively, can be found in the left-hand menu.
 
-Simply click `Setup Monitoring` and `Setup Logging` to take advantage of these features. 
+### Monitoring
+Monitoring offers a quick glimpse at performance and potential issues.
 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
-Monitoring offers a quick glimpse at performance and potential issues.
+### Logging
+Logging gathers logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
 
 ![Logging Screen](../img/Cluster_Manager-16.png)
 
-Logging gathers logs from all the nodes for troubleshooting. These logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and also string search filters for easy sorting.
