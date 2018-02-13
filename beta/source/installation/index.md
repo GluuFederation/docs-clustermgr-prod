@@ -7,9 +7,9 @@
     - One (1) machine is for the Nginx load balancer and Twemproxy.    
     - The other two (2) machines will host Gluu Servers (additional Gluu machines can be added as needed).    
 
-- Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines hosting Gluu can have Ubuntu, CentOS, RHEL, or Debian.
+- Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines can have Ubuntu, CentOS, RHEL, or Debian.
 
-- Cluster Manager must have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
+- Cluster Manager **must** have SSH access to all servers in the cluster and should be installed on a secure administrators computer or a VM. 
 
 !!! Note
     After initial setup, Cluster Manager no longer needs an active connection to the cluster. However, in order to take advantage of monitoring, configuration, and logging features, Cluster Manager must be connected to the cluster. 
