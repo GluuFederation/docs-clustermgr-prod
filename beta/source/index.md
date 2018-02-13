@@ -10,9 +10,8 @@ This service is in beta. Please report bugs or feature requests via the [Gluu su
 - LDAP Replication   
 - Cache Management   
 - Monitoring    
-- Central Logging   
-- Key Rotation   
-- Tunneling   
+- Central Logging      
+- End-to-end secure tunneling between oxAuth and Redis
 
 ## Components
 
