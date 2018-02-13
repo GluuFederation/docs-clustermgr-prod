@@ -3,9 +3,9 @@
 ## Prerequisites
 
 - A minimum of four (4) machines: 
-    - One (1) machine is for cluster manager, which will proxy TCP and HTTP traffic. This could be localhost on the installers computer.    
-    - One (1) machine is for the Nginx load balancer and Twemproxy.    
-    - The other two (2) machines will host Gluu Servers (additional Gluu machines can be added as needed).    
+    - One (1) machine for cluster manager, which will proxy TCP and HTTP traffic. This could be localhost on the installers computer.    
+    - One (1) machine for the Nginx load balancer and Twemproxy.    
+    - Two (2) machines for Gluu Servers (additional Gluu machines can be added as needed).    
 
 - Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines can have Ubuntu, CentOS, RHEL, or Debian.
 
