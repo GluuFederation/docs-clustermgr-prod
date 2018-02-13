@@ -80,6 +80,8 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
 
 1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
 
+1. Go to `OpenID Connect > Scopes` and make sure in the `user_name` row that `Allow for dynamic registration` is set to **True**.
+
 1. Create `$HOME/.clustermgr/oxd-client.ini`:        
            
         [oxd]    
@@ -94,8 +96,6 @@ Local authentication is quick and easy. However, for ongoing use, we recommend u
         scopes = openid,profile,user_name,permission        
         
 1. Logout from ClusterManager app.
-
-1. Move `$HOME/.clustermgr/auth.ini` file to another location.
 
 1. Login to ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser.
 
