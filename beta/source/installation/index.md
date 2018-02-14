@@ -91,7 +91,7 @@ There may be a few innocuous warnings, but this is normal.
 Prepare the database using the following commands:
 
 ```
-clustermgr-cli db upgrade
+# clustermgr-cli db upgrade
 ```
 
 ### Add license validator 
@@ -112,10 +112,10 @@ Run celery scheduler and workers in separate terminals:
 
 ```
 # Terminal 1
-clustermgr-beat &
+# clustermgr-beat &
 
 # Terminal 2
-clustermgr-celery &
+# clustermgr-celery &
 ```
 
 ### Run clustermgr-cli
@@ -123,8 +123,11 @@ clustermgr-celery &
 Open another terminal to run clustermgr-cli:
 
 ```
-clustermgr-cli run
+# clustermgr-cli run
 ```
+
+!!! Warning
+    All clustermgr commands need to be run as root
 
 ### Create Credentials
 
