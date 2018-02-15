@@ -15,6 +15,6 @@ markdown_extensions:
 pages:
 - Home: 'index.md'
 - Install: 'installation/index.md'
-- Authentication: 'authentication/index.md'
 - Deploy Clusters: 'deploy/index.md'
+- Configure SSO (optional): 'authentication/index.md'
 - Troubleshooting: 'troubleshooting/index.md'
