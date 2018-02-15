@@ -6,18 +6,6 @@ There are two ways to configure authentication to Cluster Manager:
 
 Local authentication is configured during [installation](../installation/index.md#create-credentials). For ongoing use, we recommend using oxd to leverage your Gluu Server for authentication and single sign-on (SSO). 
 
-## Using default admin user
-
-1. Create `$HOME/.clustermgr/auth.ini`:     
-    
-        [user]
-        username = admin
-        password = secret_password     
-
-1. Login using default user as seen above.
-
-1. Deploy a cluster of Gluu Server.
-
 ## Using oxd and Gluu Server
 
 1. Install oxd server:       
