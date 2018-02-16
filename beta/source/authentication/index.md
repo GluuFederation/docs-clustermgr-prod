@@ -48,7 +48,7 @@ Follow these steps to configure oxd for SSO against your Gluu Server:
     !!! Note
         If you need a license to start your oxd-server, you can register on the [oxd website](https://oxd.gluu.org). 
     
-1. Configure `/opt/oxd-server/conf/oxd-default-site-conf.json` ([Read the docs](https://gluu.org/docs/oxd/configuration/#oxd-default-site-configjson-field-descriptions)):        
+1. Configure `/opt/oxd-server/conf/oxd-default-site-conf.json` ([read the docs](https://gluu.org/docs/oxd/configuration/#oxd-default-site-configjson-field-descriptions)):        
     
         {    
             "op_host":"https://idp.example.org",    
