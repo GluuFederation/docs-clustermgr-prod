@@ -1,5 +1,5 @@
 # Authentication
-There are two ways to configure authentication to Cluster Manager: 
+There are two ways to login to Cluster Manager: 
 
 1. Local authentication using the default admin user;    
 1. Authentication against your Gluu Server(s) using oxd.    
