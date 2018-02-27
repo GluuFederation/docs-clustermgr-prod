@@ -102,6 +102,10 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
 
 oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
+The `Fetch Cache Method` button is used to determine whether or not your LDAP is properly configured to utilize Redis or if it's still using `IN_MEMORY` which will cause failures. It's not necessary to click, but good to have to make sure everything is configured properly.
+
+Click `Setup Redis`
+
 !!! Warning
     Redis does not utilize encrypted communication, therefore stunnel needs to be installed and configured on all servers to protect information with SSL.
 
