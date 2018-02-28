@@ -54,6 +54,40 @@ The following external ports need to be opened on the following machines:
 
 - 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel.
 
+### Proxy
+
+If you're behind a proxy you'll have to configure it inside the container/chroot as well.
+
+Log in to each gluu node and set http proxy in container/chroot to your proxy's url like so:
+
+```
+
+# /sbin/gluu-server-3.1.2 login
+
+Gluu.root# vi /etc/yum.conf
+
+```
+
+insert into section [main]:
+
+```
+
+[main]
+.
+.
+proxy=http://proxy.example.org:3128/
+
+```
+
+Save the file.
+
+An example of an error shown in Cluster Manager if the proxy is not configured properly inside the chroot.
+
+```
+One of the configured repositories failed (Unknown), and yum doesn't have enough cached data to continue... etc.
+
+Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=updates&infra=stock error was 14: curl#7 - "Failed to connect to 2604:1580:fe02:2::10: Network is unreachable"
+```
 ## Installing Cluster Manager
 
 ### SSH & Keypairs
