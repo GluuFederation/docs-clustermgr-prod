@@ -144,14 +144,13 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 
 ### Run Celery
 
-Run celery scheduler and workers in separate terminals:
+Run celery scheduler in one terminal:
 
 ```
-# Terminal 1
-# clustermgr-beat &
 
-# Terminal 2
+# Terminal 1
 # clustermgr-celery &
+
 ```
 
 ### Run clustermgr-cli
@@ -159,11 +158,33 @@ Run celery scheduler and workers in separate terminals:
 Open another terminal to run clustermgr-cli:
 
 ```
+
+# Terminal 2
 # clustermgr-cli run
+
 ```
 
 !!! Warning
-    All clustermgr commands need to be run as root.
+    All Cluster Manager commands need to be run as root.
+    
+You can also run them in conjuction:
+
+```
+
+# clustermgr-celery & clustermgr-cli run
+
+```
+
+!!! Note
+    All the Cluster Manager logs will be presented in one terminal this way, which may make it difficult to find errors.
+
+Sometimes you'll need to stop the Cluster Manager services, i.e. if you're upgrading to the latest version, so that changes can take effect. To do that run:
+
+```
+
+# ps aux | grep clustermgr | awk '{print $2}' | xargs kill -9
+
+```
 
 ### Create Credentials
 
