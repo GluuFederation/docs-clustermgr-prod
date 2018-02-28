@@ -1,1 +1,1 @@
-# Release Notes for Cluster Manager 1.0
+# Release Notes for Cluster Manager 3.1.2
