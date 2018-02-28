@@ -5,7 +5,7 @@
 - A minimum of four (4) machines: 
     - One (1) machine for cluster manager, which will proxy TCP and HTTP traffic. This could be localhost on the installer's computer           
     !!! Note 
-        Cluster Manager requires 1GB of RAM to run comfortably
+        Cluster Manager requires 1GB of RAM to run comfortably.
     - One (1) machine for the Nginx load balancer and Twemproxy    
     - Two (2) machines for Gluu Servers (additional Gluu machines can be added as needed)    
 
@@ -163,7 +163,7 @@ Open another terminal to run clustermgr-cli:
 ```
 
 !!! Warning
-    All clustermgr commands need to be run as root
+    All clustermgr commands need to be run as root.
 
 ### Create Credentials
 
