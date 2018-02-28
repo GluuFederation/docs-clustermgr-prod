@@ -3,7 +3,9 @@
 ## Prerequisites
 
 - A minimum of four (4) machines: 
-    - One (1) machine for cluster manager, which will proxy TCP and HTTP traffic. This could be localhost on the installer's computer.            **Note:** Cluster Manager requires 1GB of RAM to run comfortably
+    - One (1) machine for cluster manager, which will proxy TCP and HTTP traffic. This could be localhost on the installer's computer           
+    !!! Note 
+        Cluster Manager requires 1GB of RAM to run comfortably
     - One (1) machine for the Nginx load balancer and Twemproxy    
     - Two (2) machines for Gluu Servers (additional Gluu machines can be added as needed)    
 
@@ -33,7 +35,7 @@ The following external ports need to be opened on the following machines:
 | 443 | HTTPS |
 | 8888 | Stunnel |
 
-**Note:**
+!!! Note
     The Load Balancer is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
 
 | Cluster Manager | Description|
@@ -137,7 +139,7 @@ mkdir -p $HOME/.clustermgr/javalibs
 wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicense-validator-3.2.0-SNAPSHOT-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
 ```
 
-**Note:**
+!!! Note
     License files are not currently enforced, it's on the honor system! In future versions, a license file may be required.  
 
 ### Run Celery
@@ -160,7 +162,7 @@ Open another terminal to run clustermgr-cli:
 # clustermgr-cli run
 ```
 
-**Warning:**
+!!! Warning
     All clustermgr commands need to be run as root
 
 ### Create Credentials
