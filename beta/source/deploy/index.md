@@ -4,7 +4,7 @@ Follow this doc to deploy a cluster of Gluu Servers using Cluster Manager!
 
 ## Getting Started
 
-Upon initial launch of Cluster Manager, the following screen will be presented to create an admin user and password:
+Upon initial launch of Cluster Manager, the following screen will be presented to create an admin username and password:
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
@@ -16,14 +16,14 @@ Provide values for the fields in the Applications Settings page:
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-- Replication Manager Password will be used in OpenDJ for replication purposes.
+- Replication Manager Password will be used in OpenDJ for replication purposes
 
-- Load Balancer will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. 
+- Load Balancer will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster 
 
 !!! Warning
     The load balancer hostname **cannot** be changed after Gluu has been deployed. To change the hostname, Gluu must be redeployed. 
 
-- If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot. 
+- If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot 
 
 Once the settings are configured, click the `Update Configuration button`.
 
@@ -53,11 +53,11 @@ Once all servers have been added to the cluster, `Install Gluu` on the primary s
 
 ![Install Primary Gluu Server](../img/Cluster_Manager-07.png)
 
-- Values for the first five fields are used to create certificates.
-- Values for inumOrg and inumAppliance are generated automatically. Changing the defaults is not recommended.
-- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.2/3.1.2/source/index.md#free-open-source-software). 
-- Currently only OpenDJ is supported in Cluster Manager. This is pre-selected. 
-- Accept the license agreements.
+- Values for the first five fields are used to create certificates
+- Values for inumOrg and inumAppliance are generated automatically. Changing the defaults is not recommended
+- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.2/3.1.2/source/index.md#free-open-source-software)
+- Currently only OpenDJ is supported in Cluster Manager. This is pre-selected
+- Accept the license agreements
 
 Click `Submit` to begin installation. 
 
@@ -79,7 +79,7 @@ During initial deloyment click the `Deploy All` button and wait for the process 
 
 ## Replication
 
-Next navigate to the `Replication` tab to setup replication across the cluster. 
+Next navigate to the `Replication` tab to set up replication across the cluster. 
 
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
@@ -100,14 +100,14 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
-oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high-availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
+oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high availability, Redis is installed outside the chroot on every Gluu server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
 The `Fetch Cache Method` button is used to determine whether or not your LDAP is properly configured to utilize Redis or if it's still using `IN_MEMORY` which will cause failures. It's not necessary to click, but good to have to make sure everything is configured properly.
 
 Click `Setup Redis`
 
 !!! Warning
-    Redis does not utilize encrypted communication, therefore stunnel needs to be installed and configured on all servers to protect information with SSL.
+    Redis does not utilize encrypted communication, so stunnel needs to be installed and configured on all servers to protect information with SSL.
 
 !!! Note
     Twemproxy is also installed on the NGINX/Proxy server to achieve redundancy. Twemproxy can detect redis server communication failure to ensure high availability.
