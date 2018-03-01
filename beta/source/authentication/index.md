@@ -1,8 +1,8 @@
 # Authentication
-There are two ways to login to Cluster Manager: 
+There are two ways to log in to Cluster Manager: 
 
-1. Local authentication using the default admin user;    
-1. Authentication against your Gluu Server(s) using oxd.    
+1. Local authentication using the default admin user   
+1. Authentication against your Gluu Server(s) using oxd   
 
 Local authentication is configured during [installation](../installation/index.md#create-credentials). For ongoing use, we recommend using oxd to leverage your Gluu Server for authentication and single sign-on (SSO). 
 
@@ -73,7 +73,7 @@ Follow these steps to configure oxd for SSO against your Gluu Server:
         service oxd-server restart    
     
 
-1. Login to oxTrust using admin privilege. Go to `Users > Manage People` page. Search for `admin` user. When `admin` user found, click the link under UID column.
+1. Log in to oxTrust using admin privilege. Go to `Users > Manage People` page. Search for `admin` user. When `admin` user found, click the link under UID column.
 
 1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
 
@@ -92,9 +92,9 @@ Follow these steps to configure oxd for SSO against your Gluu Server:
         authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
         scopes = openid,profile,user_name,permission        
         
-1. Logout from ClusterManager app.
+1. Log out from the ClusterManager app.
 
-1. Login to ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser to finish the authorization process.
+1. Log in to the ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser to finish the authorization process.
 
 ### Troubleshooting
 
