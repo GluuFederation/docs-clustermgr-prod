@@ -136,7 +136,7 @@ Cluster Manager gathers logs from all the nodes in the cluster for troubleshooti
 !!! Note
     Cluster Manager must be connected to the cluster in order to take advantage of logging features. 
 
-Navigate to the `Logging` tab in the left-hand muni to view and sort logs related to servers in the cluster. 
+Navigate to the `Logging` tab in the left-hand menu to view and sort logs related to servers in the cluster. 
 
 ![Logging Screen](../img/Cluster_Manager-16.png)
 
