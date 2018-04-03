@@ -7,7 +7,7 @@
     - One (1) machine with at least 1GB of RAM for the Nginx load balancer and Twemproxy.      
     - Two (2) machines for Gluu Servers (additional Gluu machines can be added as needed).        
 
-- Ubuntu 14 and 16 installed on the machine hosting Cluster Manager. The other three machines can have Ubuntu, CentOS, RHEL, or Debian
+- Ubuntu 14 or 16 installed on the machine hosting Cluster Manager. The other three machines can have Ubuntu, CentOS, RHEL, or Debian
 
 - Cluster Manager **must** have passwordless SSH root access to all servers in the cluster and should be installed on a secure administrator's computer or a VM
 
