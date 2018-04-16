@@ -137,7 +137,7 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 !!! Note
     License files are not currently enforced, it's on the honor system! In future versions, a license file may be required.  
 
-### Run Celery
+### Run Celery & Beat
 
 Run celery scheduler in one terminal:
 
@@ -145,6 +145,7 @@ Run celery scheduler in one terminal:
 
 # Terminal 1
 # clustermgr-celery &
+# clustermgr-beat
 
 ```
 
