@@ -4,9 +4,6 @@ Cluster Manager is a GUI tool for installing and managing a highly available, cl
 
 Cluster Manager is licensed under the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). 
 
-## Beta Release    
-This service is in beta. Please report bugs or feature requests via the [Gluu support portal](https://support.gluu.org). 
-
 ## Features
 
 - LDAP Replication   
