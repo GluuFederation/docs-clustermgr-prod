@@ -141,22 +141,33 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 
 Run celery scheduler in one terminal:
 
+Terminal 1
+
 ```
 
-# Terminal 1
-# clustermgr-celery &
+# clustermgr-celery
+
+```
+
+### Run Beat
+
+Terminal 2
+
+```
+
 # clustermgr-beat
 
 ```
 
-### Run clustermgr-cli
+### Run clustermgr.sh
 
-Open another terminal to run clustermgr-cli:
+Open another terminal to run clustermgr.sh:
+
+Terminal 3
 
 ```
 
-# Terminal 2
-# clustermgr-cli run
+# clustermgr.sh
 
 ```
 
@@ -167,7 +178,7 @@ You can also run them in conjuction:
 
 ```
 
-# clustermgr-celery & clustermgr-cli run
+# clustermgr-celery & clustermgr.sh
 
 ```
 
