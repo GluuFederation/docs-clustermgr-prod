@@ -35,7 +35,7 @@ Click Here To Use Your Standalone Gluu Server:
 
 This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load-balancing server, which will act as a proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
 
-![Standalone Server seed](../img/CM_Standalone image)
+![Standalone Server seed](../img/CM_Standalone.png)
 
 After it's finished, click the `Start` button to move on to the dashboard.
 
@@ -162,7 +162,7 @@ Key rotation is important for security.
 
 Click `Settings` to enable this functionality, as well as setting the time interval in hours.
 
-![Key Rotation Set](../img/CM_KeyRotationConfig)
+![Key Rotation Set](../img/CM_KeyRotationConfig.png)
 
 ## Custom Attributes
 
