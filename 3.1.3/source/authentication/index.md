@@ -1,5 +1,5 @@
 # Authentication
-There are two ways to log in to Cluster Manager: 
+There are two ways to log into Cluster Manager: 
 
 1. Local authentication using the default admin user   
 1. Authentication against your Gluu Server(s) using oxd   
@@ -73,9 +73,9 @@ Follow these steps to configure oxd for SSO against your Gluu Server:
         service oxd-server restart    
     
 
-1. Log in to oxTrust using admin privilege. Go to `Users > Manage People` page. Search for `admin` user. When `admin` user found, click the link under UID column.
+1. Log into oxTrust using admin credentials. Navigate to `Users > Manage People` and search for the `admin` user. Click the link under UID column.
 
-1. Add `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value. Click `Update` button.
+1. Add the `User Permission` attribute. A new form field will appear. Enter `cluster_manager` as its value and click the `Update` button.
 
 1. Go to `OpenID Connect > Scopes` and make sure in the `user_name` row that `Allow for dynamic registration` is set to **True**.
 
@@ -92,20 +92,20 @@ Follow these steps to configure oxd for SSO against your Gluu Server:
         authorization_redirect_uri = http://localhost:5000/auth/oxd_login_callback    
         scopes = openid,profile,user_name,permission        
         
-1. Log out from the ClusterManager app.
+1. Log out of the Cluster Manager app.
 
-1. Log in to the ClusterManager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser to finish the authorization process.
+1. Log into the Cluster Manager app, click `Login with Gluu Server` link. Follow the instructions displayed on your browser to finish the authorization process.
 
 ### Troubleshooting
 
-The first time login using oxd and Gluu Server may returns error message about `user_name` scope being disabled 
+The first time you log in using oxd and Gluu Server, it may return an error message about the `user_name` scope being disabled 
 in OIDC client configuration. If this error occurs, follow the steps below:
     
-1. login to oxTrust    
-1. click `OpenID Connect > Clients` submenu        
-1. click `ClusterManager` client    
-1. click `Add Scope` button at the bottom, and search for `user_name` scope        
-1. make sure the `user_name` scope is checked and click `OK` button    
-1. click `Update` button at the bottom of the page    
-1. open ClusterManager web app and click `Login with Gluu Server`    
+1. Log into oxTrust    
+1. Click `OpenID Connect > Clients` submenu        
+1. Click `ClusterManager` client    
+1. Click `Add Scope` button at the bottom, and search for `user_name` scope        
+1. Make sure the `user_name` scope is checked and click `OK` button    
+1. Click `Update` button at the bottom of the page    
+1. Open the Cluster Manager web app and click `Login with Gluu Server`    
     
