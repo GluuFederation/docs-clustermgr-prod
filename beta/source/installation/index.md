@@ -122,7 +122,7 @@ There may be a few innocuous warnings, but this is normal.
 Prepare the database using the following commands:
 
 ```
-# clustermgr-cli db upgrade
+# python -m clusterapp db
 ```
 
 ### Add License Validator 
