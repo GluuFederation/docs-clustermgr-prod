@@ -12,6 +12,7 @@
 
 The following external ports need to be opened on the following machines:
 
+![CM_Ports](../img/CM_Ports.png)
 
 | Gluu Servers | Description |
 | -- | -- |
