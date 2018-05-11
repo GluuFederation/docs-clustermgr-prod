@@ -123,7 +123,7 @@ There may be a few innocuous warnings, but this is normal.
 Prepare the database using the following commands:
 
 ```
-# python -m clusterapp db
+# python /usr/local/bin/clusterapp.py db upgrade
 ```
 
 ### Add License Validator 
