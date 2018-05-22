@@ -2,7 +2,8 @@
 ## Overview
 Cluster Manager is a GUI tool for installing and managing a highly available, clustered Gluu Server infrastructure. 
 
-Cluster Manager is licensed under the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). 
+!!! Note
+    Cluster Manager is licensed under the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). 
 
 ## Features
 
