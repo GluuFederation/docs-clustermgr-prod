@@ -138,50 +138,15 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 !!! Note
     License files are not currently enforced, it's on the honor system! In future versions, a license file may be required.  
 
-### Run Celery & Beat
-
-Run celery scheduler in one terminal:
-
-Terminal 1
-
-```
-
-# clustermgr-celery
-
-```
-
-### Run Beat
-
-Terminal 2
-
-```
-
-# clustermgr-beat
-
-```
-
-### Run clustermgr.sh
-
-Open another terminal to run clustermgr.sh:
-
-Terminal 3
-
-```
-
-# clustermgr.sh
-
-```
-
 !!! Warning
     All Cluster Manager commands need to be run as root.
-    
-You can also run them in conjuction:
 
-```
 
-# clustermgr-celery & clustermgr.sh
+### Stop/Start Cluster-Mgr 
 
-```
+ - `clustermgr-cli stop`
+ - `clustermgr-clie start`
+
 
 !!! Note
     All the Cluster Manager logs will be presented in one terminal this way, which may make it difficult to find errors.
