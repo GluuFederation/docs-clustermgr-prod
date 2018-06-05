@@ -89,11 +89,14 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 ### SSH & Keypairs
 
-Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/load-balancing server:
+Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
 
 `ssh-keygen -t rsa`
 
-- This will initiate a prompt to create a keypair. **Do not input a password here**. Cluster Manager must be able to open connections to the servers.
+- This will initiate a prompt to create a keypair. Cluster Manager must be able to open connections to the servers.
+
+!!! Note
+    Cluster Manager now works with encrypted keys and will prompt you for the password any time Cluster Manager is restarted.
 
 - Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
 
@@ -118,14 +121,6 @@ pip install clustermgr
 
 There may be a few innocuous warnings, but this is normal.
 
-### Prepare Database
-
-Prepare the database using the following commands:
-
-```
-# clustermgr-cli db upgrade
-```
-
 ### Add License Validator 
 
 Prepare the license validator by using the following commands:
@@ -136,28 +131,20 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 ```
 
 !!! Note
-    License files are not currently enforced, it's on the honor system! In future versions, a license file may be required.  
+    License files are not currently enforced, it's on the honor system! Please see the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE) to see if you're eligible to use Cluster Manager in production. In future versions, a license file may be required.  
 
 !!! Warning
     All Cluster Manager commands need to be run as root.
 
-
-### Stop/Start Cluster-Mgr 
+### Stop/Start/Restart Cluster-Mgr 
 
  - `clustermgr-cli stop`
- - `clustermgr-clie start`
+ - `clustermgr-cli start`
+ - `clustermgr-cli restart`
 
 
 !!! Note
-    All the Cluster Manager logs will be presented in one terminal this way, which may make it difficult to find errors.
-
-Sometimes you'll need to stop the Cluster Manager services, i.e. if you're upgrading to the latest version, so that changes can take effect. To do that run:
-
-```
-
-# ps aux | grep clustermgr | awk '{print $2}' | xargs kill -9
-
-```
+    All the Cluster Manager logs can be found in the `$HOME/.clustermgr/logs` directory
 
 ### Create Credentials
 
