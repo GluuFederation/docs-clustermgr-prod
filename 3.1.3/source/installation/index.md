@@ -10,7 +10,7 @@
 
 ## Ports
 
-The following external ports need to be opened on the following machines:
+The following external ports need to be opened on the following machines if you're using a default Cluster Manager configuration:
 
 ![CM_Ports](../img/CM_Ports.png)
 
