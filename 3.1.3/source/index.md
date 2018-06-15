@@ -7,7 +7,7 @@ Cluster Manager is a GUI tool for installing and managing a highly available, cl
 
 ## Features
 
-- LDAP Replication   
+- Gluu OpenDJ LDAP Replication   
 - Cache Management   
 - Monitoring    
 - Central Logging      
