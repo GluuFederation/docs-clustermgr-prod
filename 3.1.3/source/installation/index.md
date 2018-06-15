@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - A minimum of four (4) machines: 
-    - Cluster Manager: One (1) machine running Ubuntu 14 or 16 with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.     
+    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.     
     - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy.      
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.         
 - Cluster Manager must have passwordless SSH root access to all servers in the cluster and should be installed on a secure administrator's computer or a VM    
