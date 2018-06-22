@@ -7,7 +7,7 @@ repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/tree/beta/beta
 theme_dir: theme/material
 extra:
     version: 'beta'
-    logo: 'gluu.jpg'
+    logo: 'gluu.png'
 markdown_extensions:
 - admonition
 - toc:
