@@ -8,7 +8,7 @@ Local authentication is configured during [installation](../installation/index.m
 
 ## Using oxd for SSO
 
-oxd exposes simple, static APIs that simplify the process of performing user authentication and authorization against an external OAuth 2.0 identity provider like the Gluu Server. Learn more in the [oxd docs](https://gluu.org/docs). 
+oxd exposes simple, static APIs that simplify the process of performing user authentication and authorization against an external OAuth 2.0 identity provider like the Gluu Server. Learn more in the [oxd docs](https://gluu.org/docs/oxd). 
 
 Follow these steps to configure oxd for SSO against your Gluu Server:
 
