@@ -18,7 +18,8 @@ This document outline the setup procedure for both mode of operations.
 ### Pre-requisites
 
 1. Existing Gluu Server 3.0.1 installation. Refer [installation guide](https://gluu.org/docs/ce/latest/installation-guide/install/) for details.
-2. A new server to act as mirror.
+2.  [Install CE package on server 2](https://gluu.org/docs/ce/latest/installation-guide/install/).
+The aim here is to setup the LDAP and oxAuth only so, when going through components selection set of questions in `setup.py` interactive menus respond with "Yes" only to "Install oxAuth", "LDAP" and "JCE", and with "No" for all other componen
 3. Cluster Manager installed and accessible from web browser.
 
 ### Server 1 (Existing Gluu Server)
@@ -112,16 +113,13 @@ This document outline the setup procedure for both mode of operations.
 
 ### Server 2 (Mirror Server)
 
-1. [Install CE package on server 2](https://gluu.org/docs/ce/latest/installation-guide/install/).
-    The aim here is to setup the LDAP and oxAuth only so, when going through components selection set of questions in `setup.py` interactive menus respond with "Yes" only to "Install oxAuth", "LDAP" and "JCE", and with "No" for all other components.
-
-2. **Copy the archive you created at server1 from your local machine to server2:**
+1. **Copy the archive you created at server1 from your local machine to server2:**
 
     ```
     scp repfiles.tar.gz root@server2:/opt/gluu-server-3.0.1/root/
     ```
 
-3. **Replace the existing files with backup ones:** This sets up the second gluu-server to act like the twin of the first one
+2. **Replace the existing files with backup ones:** This sets up the second gluu-server to act like the twin of the first one
 
 
     `# ssh root@server_2`
@@ -142,7 +140,7 @@ This document outline the setup procedure for both mode of operations.
 
     `# /opt/jre/bin/keytool -import -trustcacerts -alias <server_1_hostname>_openldap_2 -file openldap.crt -keystore /opt/jre/jre/lib/security/cacerts -storepass changeit -noprompt`
 
-4. **Replace the OpenLDAP certificates:**
+3. **Replace the OpenLDAP certificates:**
 
     `# cd /etc/certs`
 
@@ -168,7 +166,7 @@ This document outline the setup procedure for both mode of operations.
 
     `# cp openldap.crt openldap.pem`
 
-5. **Edit the file** `/opt/symas/etc/openldap/symas-openldap.conf`
+4.. **Edit the file** `/opt/symas/etc/openldap/symas-openldap.conf`
     to allow servers within chroot to connect to LDAP and make OpenLDAP to use OLC (On-Line Configuration).
     As Gluu recommends to use FQDN or IP for its connections to LDAP.
 
@@ -182,7 +180,7 @@ This document outline the setup procedure for both mode of operations.
     to
     EXTRA_SLAPD_ARGS="-F /opt/symas/etc/openldap/slapd.d"`
 
-6. **Clean up the existing LDAP data files:** The data would be replicated from server 1 when configured.
+5. **Clean up the existing LDAP data files:** The data would be replicated from server 1 when configured.
 
     ```
     rm -rf /opt/gluu/data/
