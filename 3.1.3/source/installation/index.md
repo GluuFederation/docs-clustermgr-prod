@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-- A minimum of four (4) machines: 
-    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.     
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy.      
-    - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.         
-- Cluster Manager must have passwordless SSH root access to all servers in the cluster and should be installed on a secure administrator's computer or a VM    
+- A minimum of four (4) machines:
+    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy.
+    - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
+- Cluster Manager must have passwordless SSH root access to all servers in the cluster and should be installed on a secure administrator's computer or a VM
 
 ## Ports
 
@@ -100,7 +100,7 @@ Give Cluster Manager the ability to establish an ssh connection to the servers i
 
 - Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
 
-### Install Dependencies  
+### Install Dependencies
 
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
@@ -121,22 +121,31 @@ pip install clustermgr
 
 There may be a few innocuous warnings, but this is normal.
 
-### Add License Validator 
+### Add License Validator
 
 Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
-wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicense-validator-3.2.0-SNAPSHOT-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
+wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.3.Final/oxlicense-validator-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
-    License files are not currently enforced, it's on the honor system! Please see the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE) to see if you're eligible to use Cluster Manager in production. In future versions, a license file may be required.  
+    License files are not currently enforced, it's on the honor system! Please see the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE) to see if you're eligible to use Cluster Manager in production. In future versions, a license file may be required.
 
 !!! Warning
     All Cluster Manager commands need to be run as root.
 
-### Stop/Start/Restart Cluster-Mgr 
+### Add Key Generator
+
+Prepare the OpenID Connect keys generator by using the following commands:
+
+```
+mkdir -p $HOME/.clustermgr/javalibs
+wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.3.Final/oxauth-client-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
+```
+
+### Stop/Start/Restart Cluster-Mgr
 
  - `clustermgr-cli stop`
  - `clustermgr-cli start`
@@ -148,16 +157,16 @@ wget http://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.2.0-SNAPSHOT/oxlicen
 
 ### Create Credentials
 
-When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`. 
+When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`.
 
 ### Install oxd (optional)
 
 We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the authentication config file [specified above](#create-credentials).
 
 ### Create New User
-We recommend creating an additional "cluster" user, other than the one used to install and configure Cluster Manager. 
+We recommend creating an additional "cluster" user, other than the one used to install and configure Cluster Manager.
 
-This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager. 
+This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
 
 ```
 ssh -L 5000:localhost:5000 cluster@<server>
@@ -172,5 +181,4 @@ http://localhost:5000/
 ```
 
 ## Deploy Clusters
-Next, move on to [deploy the Gluu cluster](../deploy/index.md). 
-
+Next, move on to [deploy the Gluu cluster](../deploy/index.md).
