@@ -4,9 +4,8 @@
 
 - A minimum of four (4) machines:
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use redis-cluster on the Gluu server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
-- Cluster Manager must have passwordless SSH root access to all servers in the cluster and should be installed on a secure administrator's computer or a VM
 
 ## Ports
 
@@ -43,13 +42,13 @@ The following external ports need to be opened on the following machines if you'
 
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems
 
-- 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server/oxAuth
+- 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server
 
 - 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes
 
 - 30865 is the default port for csync2 file system replication
 
-- 7777 and 8888 are for securing communication between the Proxy server and the Gluu servers with stunnel
+- 7777 and 8888 are for securing the distributed caching communication the Gluu servers with Stunnel
 
 ### Proxy
 
@@ -85,6 +84,7 @@ One of the configured repositories failed (Unknown), and yum doesn't have enough
 
 Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=updates&infra=stock error was 14: curl#7 - "Failed to connect to 2604:1580:fe02:2::10: Network is unreachable"
 ```
+
 ## Installing Cluster Manager
 
 ### SSH & Keypairs
@@ -98,7 +98,7 @@ Give Cluster Manager the ability to establish an ssh connection to the servers i
 !!! Note
     Cluster Manager now works with encrypted keys and will prompt you for the password any time Cluster Manager is restarted.
 
-- Copy the key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
+- Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
 
 ### Install Dependencies
 
@@ -109,6 +109,7 @@ sudo apt-get update
 sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server default-jre
 sudo pip install --upgrade setuptools influxdb psutil
 ```
+
 Default-jre is for license requirements. It is not necessary if Java is already installed.
 
 ### Install the Package
@@ -138,14 +139,18 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.3.Final/oxlice
 
 ### Add Key Generator
 
-Prepare the OpenID Connect keys generator by using the following commands:
+If automated key-rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
 wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.3.Final/oxauth-client-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
 ```
 
+Automated key-rotation can be configured inside the Cluster Manager UI.
+
 ### Stop/Start/Restart Cluster-Mgr
+
+The following commands will stop/start/restart all the components of Cluster Manager:
 
  - `clustermgr-cli stop`
  - `clustermgr-cli start`
@@ -164,6 +169,7 @@ When Cluster Manager is run for the first time, it will prompt for creation of a
 We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the authentication config file [specified above](#create-credentials).
 
 ### Create New User
+
 We recommend creating an additional "cluster" user, other than the one used to install and configure Cluster Manager.
 
 This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
