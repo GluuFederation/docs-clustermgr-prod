@@ -91,7 +91,7 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
 
-`ssh-keygen -t rsa`
+`ssh-keygen -t rsa -b 4096`
 
 - This will initiate a prompt to create a keypair. Cluster Manager must be able to open connections to the servers.
 
