@@ -8,21 +8,46 @@ Upon initial launch of Cluster Manager, the following screen will be presented t
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
-Afterwards, start the process of building a cluster by clicking the `Setup Cluster` button:
+After the administrator is created, start the process of building a cluster by clicking the `Setup Cluster` button:
 
 ![Add Server Prompt](../img/CM_Intro.png)
 
-The two options are `Click Here To Use Your Standalone Gluu Server` and `Add Server`.
+The two options are `Click Here To Use Your Standalone Gluu Server` and `Create a New Gluu Server Cluster`.
 
-Click Here To Use Your Standalone Gluu Server:
+### Click Here To Use Your Standalone Gluu Server:
 
-This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load-balancing server, which will act as a proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
+This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load-balancing server, which will act as a front-end proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
 
 ![Standalone Server seed](../img/CM_Standalone.png)
 
 After it's finished, click the `Start` button to move on to the dashboard.
 
-Add Server:
+### Create a New Gluu Server Cluster:
+
+![Application Settings Screen](../img/Cluster_Manager-03.png)
+
+- `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't use this password ever, as OpenDJ replication is handled automatically, but it's useful to have on hand, for operations and maintenance. It can be the same as the LDAP password 
+
+- `Load Balancer Hostname` will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. Check the `This is an external load balancer` box if you are using an external load balancer like Amazon ELB or F5 
+
+!!! Warning
+    The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
+    
+- `Cache Proxy Hostname` will be the hostname of the Twemproxy server if you're using an external load balancer. This is necessary as the redis instances need 
+
+- If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot 
+
+- `Custom Schema Files` can be added here as well.
+
+- `Upgrade` will automatically upgrade your Cluster Manager instance to the latest version. This requires you restart the instance with `clustermgr-cli restart`. Alternatively this can be done manually with `pip install clustermgr` and restarting Cluster Manager `clustermgr-cli restart`.
+
+Once the settings are configured, click the `Update Configuration button`.
+
+A successful configuration will prompt you `Gluu Replication Manager application configuration has been updated.` at the top of the screen.
+
+Now we should navigate to the Dashboard so we can add our Gluu Servers and prepare to connect them.
+
+Click `Add Server`
 
 ![New Server - Primary Server](../img/Cluster_Manager-05.png)
 
@@ -30,19 +55,6 @@ The following screen is used to add the Primary Server, which will be used as a 
 
 !!! Note
     Hostname here will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. This is so that Cluster Manager can discover and connect to the server for installation and configuration. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, the hostname here will be embedded automatically in the `/etc/hosts` files on this machine.
-
-![Application Settings Screen](../img/Cluster_Manager-03.png)
-
-- Replication Manager Password will be used in OpenDJ for replication purposes
-
-- Load Balancer will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster 
-
-!!! Warning
-    The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
-
-- If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot 
-
-Once the settings are configured, click the `Update Configuration button`.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
