@@ -1,35 +1,21 @@
+## Default Components
+
+Cluster Manager utilizes the following components:
+
+1. **Gluu Server:** free open source software package for identity and access management 
+
+1. **Redis-Server:** a value key-store known for it's high performance, installed outside the chroot on all servers. This is used a cache storage mechanism for tokens, session data and general caching of all the oxAuth and oxTrust/Identity services. The configuration file is located on the servers with Gluu at /etc/redis/redis.conf or /etc/redis.conf
+
+1. **Stunnel:** used to protect communications between oxAuth, oxTrust and Redis with a proxy bounce through Twemproxy. The configuration file is located at `/etc/stunnel/stunnel.conf` on **all** servers. It runs on port 8888 of the NGINX/Proxy server and 7777 on the Gluu servers. **For security Redis runs on localhost.** Stunnel faciliates SSL communication over the Internet for Redis, which doesn't come default with encrypted traffic
+
+1. **Twemproxy:** (Optional) used for cache failover, round-robin proxying and caching performance with Redis. The configuration file for this program can be found on the proxy server in `/etc/nutcracker/nutcracker.yml`. It runs on localhost port 2222 of the NGINX/Proxy server. Twemproxy enables high availability by automatically detecting Redis server failure and redirecting traffic to other working instances. Twemproxy will **not** reintroduce failed servers. Restarting Twemproxy can be performed manually, or a script can be written to automate the task of resetting the "down" flag of the failed server. A proxy server is required for HA, unless you use redis cluster. Additional documentation about that can be found [here](https://github.com/GluuFederation/cluster-mgr/wiki/Protecting-a-Redis-Cluster-with-Stunnel) 
+
+1. **NGINX:** (Optional) used to proxy communication between Gluu instances. The configuration file is located on the proxy server (if used) at `/etc/nginx/nginx.conf`. If you are using an external HTTP load-balancer, this is not a necessary component. Session stickiness will need to be handled for all paths with the exception of `/oxAuth`
+
 ## Logging for Errors and Troubleshooting
 
 Cluster Manager displays logs in the GUI about what's happening on the system it's interacting with.
 
-There is also additional information in the terminals: `clustermgr-celery` and `clustermgr-cli run`. 
+There is also additional logging information in the `$HOME/.clustermgr/logs` directory of the user who installed Cluster Manager.
 
-Here's a standard successful connection message:
-
-```
-INFO:werkzeug:127.0.0.1 - - [02/Feb/2018 08:11:12] "GET /log/0a4c3f1f-e2c2-4d0a-81ff-08c808cf6269 HTTP/1.1" 200 -
-[2018-02-02 08:11:12,749: INFO/ForkPoolWorker-2] Connected (version 2.0, client OpenSSH_7.4)
-[2018-02-02 08:11:13,083: INFO/ForkPoolWorker-2] Authentication (publickey) successful!
-[2018-02-02 08:11:13,476: INFO/ForkPoolWorker-2] [chan 0] Opened sftp connection (server version 3)
-```
-
-Most of the time you get rudimentary status checks like this:
-
-```
-INFO:werkzeug:127.0.0.1 - - [02/Feb/2018 08:07:59] "GET /log/0a4c3f1f-e2c2-4d0a-81ff-08c808cf6269 HTTP/1.1" 200 -
-127.0.0.1 - - [02/Feb/2018 08:08:00] "GET /log/0a4c3f1f-e2c2-4d0a-81ff-08c808cf6269 HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [02/Feb/2018 08:08:00] "GET /log/0a4c3f1f-e2c2-4d0a-81ff-08c808cf6269 HTTP/1.1" 200 -
-127.0.0.1 - - [02/Feb/2018 08:08:01] "GET /log/0a4c3f1f-e2c2-4d0a-81ff-08c808cf6269 HTTP/1.1" 200 -
-```
-
-You'll get error messages if there's a problem in a process. Use the error messages to help with troubleshooting issues.
-
-Patience is recommended, but sometimes the process does hang irreparably. Stop and restart the process to troubleshoot. You can do this by running the following command:
-
-`ps aux | grep clustermgr | awk \'{print $2}\' | sudo xargs kill -9`
-
-Then, restart the processes (in one terminal if needed):
-
-`clustermgr-beat & clustermgr-celery & clustermgr-cli run`
-
-If you have any issues, please open a ticket at [support.gluu.org](https://support.gluu.org/).
+If you have any other issues or concerns, please open a ticket at [support.gluu.org](https://support.gluu.org/).
