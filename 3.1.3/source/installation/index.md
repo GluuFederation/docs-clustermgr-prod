@@ -58,7 +58,7 @@ Log in to each gluu node and set http proxy in container/chroot to your proxy's 
 
 ```
 
-# /sbin/gluu-server-3.1.2 login
+# /sbin/gluu-server-3.1.3 login
 
 Gluu.root# vi /etc/yum.conf
 
