@@ -30,10 +30,16 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 - `Load Balancer Hostname` will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. Check the `This is an external load balancer` box if you are using an external load balancer like Amazon ELB or F5 
 
+- `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for twemproxy to handle the multiple redis servers you deploy, _or_ you can use a redis-cluster. Cluster Manager will automatically install a twemproxy and redis-server cache configuration for you, with Stunnel protecting communication. Using redis-cluster requires some manual configuration on your end.
+
+- `Cache Proxy Hostname` will be the hostname of the server you'll be using to proxy TCP traffic for redis. This is necessary as the redis cache data needs to be sharded and twemproxy detects redis-server failure. If you're deploying a redis-cluster configuration, you can enter some fake information here, as you'll be skipping the `Cache Management` process later.
+
+If you want to demo redis-cluster, please read [this wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Deploy-A-Highly-Available-Redis-Cache-Cluster-For-Gluu-Server) first to fully understand how the implementation of redis-cluster works and if it is a fit for your operational requirements. If you still want to use it, then follow the instructions on [this cluster manager wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Protecting-a-Redis-Cluster-with-Stunnel) to help implement this function.
+
 !!! Warning
     The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
-    
-- `Cache Proxy Hostname` will be the hostname of the Twemproxy server if you're using an external load balancer. This is necessary as the redis instances need 
+
+- `LDAP Status Check Period (mins)` is how often you would like Cluster Manager to ping the LDAP server for liveness, as can be seen in the Dashboard and Replication menus.
 
 - If any servers do not have Fully Qualified Domain Names (FQDNs), enable the `Add IP Addresses and hostnames to /etc/hosts file on each server` option. This will automatically assign hostnames to IP addresses in the `/etc/hosts` files inside and outside the Gluu chroot 
 
@@ -85,7 +91,7 @@ Click `Submit` to begin installation.
 
 Once completed, repeat the process for the other servers in the cluster.
 
-When all the installations have completed, install NGINX:
+When all the installations have completed, and you're not using your own loadbalancer, you should install NGINX:
 
 - Navigate to `Cluster` in the left menu
 - Select `Install Nginx`
@@ -94,9 +100,31 @@ Finally, the `LDAP Replication` screen will appear, where LDAP replication can b
 
 During initial deloyment click the `Deploy All` button and wait for the process to finish.
 
+## External Load-balancers
+
+Load balancing Gluu Server is relatively easy, there are some caveats with how connections should be made. Please refer to the [Nginx template](https://github.com/GluuFederation/cluster-mgr/blob/master/clustermgr/templates/nginx/nginx.temp#L26) for reference on how to properly route paths. For default functionality you should use the following as guidance:
+
+- `/` should redirect to `/identity`
+
+- `/identity`, `/passport` and `/idp` require sticky sessions. You can see this in the Nginx template as denoted by the [ip_hash](https://github.com/GluuFederation/cluster-mgr/blob/master/clustermgr/templates/nginx/nginx.temp#L7). There is further explanation for F5[0](https://www.f5.com/services/resources/white-papers/cookies-sessions-and-persistence) and AWS ELB[0](https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/)[1](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#sticky-sessions)[2](https://shlomoswidler.com/2010/04/elastic-load-balancing-with-sticky-sessions.html)
+
+- `/oxauth` is stateless unless you're using SCIM, wherein it will need sticky sessions as mentioned above.
+
+All the necessary paths are as follows:
+
+- /
+- /.well-known
+- /oxauth
+- /identity
+- /passport
+- /idp
+
+
 ## Replication
 
 Next navigate to the `Replication` tab to set up replication across the cluster. 
+
+Click the `deploy all` button to enable LDAP replication between all the nodes in your cluster.
 
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
@@ -109,7 +137,7 @@ If using Shibboleth, enable file system replication by clicking `Replication` on
 ![File System Replication](../img/Cluster_Manager-12.png)
 
 !!! Note
-    If necessary, replication paths for other file systems can be added here as well.
+    If necessary, replication paths for other file systems can be added here as well. Be careful as this may lead to unexpected results if you don't know what you're doing.
     
 !!! Warning
     Do not try to replicate databases with Csync2.
@@ -117,6 +145,9 @@ If using Shibboleth, enable file system replication by clicking `Replication` on
 Navigate to `Cache Management` in the left menu to complete the cluster configuration. 
 
 ## Cache
+
+!!! Note
+    This step can be skipped if you're using a redis-cluster configuration.
 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
