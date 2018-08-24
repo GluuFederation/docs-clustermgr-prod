@@ -106,7 +106,9 @@ Load balancing Gluu Server is relatively easy, there are some caveats with how c
 
 - `/` should redirect to `/identity`
 
-- `/identity`, `/passport` and `/idp` require sticky sessions. You can see this in the Nginx template as denoted by the [ip_hash](https://github.com/GluuFederation/cluster-mgr/blob/master/clustermgr/templates/nginx/nginx.temp#L7). There is further explanation for F5[0](https://www.f5.com/services/resources/white-papers/cookies-sessions-and-persistence) and AWS ELB[0](https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/)[1](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#sticky-sessions)[2](https://shlomoswidler.com/2010/04/elastic-load-balancing-with-sticky-sessions.html)
+- `/identity`, `/passport` and `/idp` require sticky sessions. You can see this in the Nginx template as denoted by the [ip_hash](https://github.com/GluuFederation/cluster-mgr/blob/master/clustermgr/templates/nginx/nginx.temp#L7). 
+
+There is further explanation about sticky sessions for F5 [here](https://www.f5.com/services/resources/white-papers/cookies-sessions-and-persistence) and AWS ELB [[0]](https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/)[[1]](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#sticky-sessions)[[2]](https://shlomoswidler.com/2010/04/elastic-load-balancing-with-sticky-sessions.html). We also have documentation on how to deploy an AWS Application Load Balancer in front of a cluster: [Configure AWS Load Balancer](../aws-config/index.md).
 
 - `/oxauth` is stateless unless you're using SCIM, wherein it will need sticky sessions as mentioned above.
 
