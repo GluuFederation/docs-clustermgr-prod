@@ -17,5 +17,5 @@ pages:
 - Install: 'installation/index.md'
 - Deploy Clusters: 'deploy/index.md'
 - Configure SSO (optional): 'authentication/index.md'
-- Configure AWS Load Balancer: 'aws-config/aws_load_balancer_configuration.md'
+- Configure AWS Load Balancer: 'aws-config/index.md'
 - Troubleshooting: 'troubleshooting/index.md'
