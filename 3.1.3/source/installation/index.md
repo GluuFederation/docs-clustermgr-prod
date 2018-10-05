@@ -4,7 +4,7 @@
 
 - A minimum of four (4) machines:
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use redis-cluster on the Gluu server installations.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
 
 ## Ports
@@ -54,7 +54,7 @@ The following external ports need to be opened on the following machines if you'
 
 If you're behind a proxy you'll have to configure it inside the container/chroot as well.
 
-Log in to each gluu node and set http proxy in container/chroot to your proxy's url like so:
+Log in to each Gluu node and set HTTP proxy in container/chroot to your proxy's URL like so:
 
 ```
 
@@ -64,7 +64,7 @@ Gluu.root# vi /etc/yum.conf
 
 ```
 
-insert into section [main]:
+insert into the [main] section:
 
 ```
 
@@ -89,7 +89,7 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 ### SSH & Keypairs
 
-Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
+Give Cluster Manager the ability to establish an SSH connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple key generation example:
 
 `ssh-keygen -t rsa -b 4096`
 
@@ -110,11 +110,11 @@ sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap red
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
-Default-jre is for license requirements. It is not necessary if Java is already installed.
+`default-jre` is for license requirements. It is not necessary if Java is already installed.
 
 ### Install the Package
 
-Install cluster manager using the following command:
+Install Cluster Manager using the following command:
 
 ```
 pip install clustermgr
@@ -139,16 +139,16 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.3.Final/oxlice
 
 ### Add Key Generator
 
-If automated key-rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
+If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect key generator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
 wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.3.Final/oxauth-client-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
 ```
 
-Automated key-rotation can be configured inside the Cluster Manager UI.
+Automated key rotation can be configured inside the Cluster Manager UI.
 
-### Stop/Start/Restart Cluster-Mgr
+### Stop/Start/Restart Cluster Manager
 
 The following commands will stop/start/restart all the components of Cluster Manager:
 
@@ -180,7 +180,7 @@ ssh -L 5000:localhost:5000 cluster@<server>
 
 ### Log In
 
-Navigate to the cluster-mgr web GUI on your local machine:
+Navigate to the Cluster Manager web GUI on your local machine:
 
 ```
 http://localhost:5000/
