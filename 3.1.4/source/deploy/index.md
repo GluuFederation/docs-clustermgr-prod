@@ -16,7 +16,7 @@ The two options are `Click Here To Use Your Standalone Gluu Server` and `Create 
 
 ### Click Here To Use Your Standalone Gluu Server:
 
-This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load-balancing server, which will act as a front-end proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
+This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load balancing server, which will act as a front-end proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
 
 ![Standalone Server seed](../img/CM_Standalone.png)
 
@@ -26,15 +26,15 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-- `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't use this password ever, as OpenDJ replication is handled automatically, but it's useful to have on hand, for operations and maintenance. It can be the same as the LDAP password 
+- `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't need this password, as OpenDJ replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
 - `Load Balancer Hostname` will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. Check the `This is an external load balancer` box if you are using an external load balancer like Amazon ELB or F5 
 
-- `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for twemproxy to handle the multiple redis servers you deploy, _or_ you can use a redis-cluster. Cluster Manager will automatically install a twemproxy and redis-server cache configuration for you, with Stunnel protecting communication. Using redis-cluster requires some manual configuration on your end.
+- `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for Twemproxy to handle the multiple redis servers you deploy, _or_ you can use a Redis cluster. Cluster Manager will automatically install a Twemproxy and Redis server cache configuration for you, with Stunnel protecting communication. Using Redis cluster requires some manual configuration on your end.
 
-- `Cache Proxy Hostname` will be the hostname of the server you'll be using to proxy TCP traffic for redis. This is necessary as the redis cache data needs to be sharded and twemproxy detects redis-server failure. If you're deploying a redis-cluster configuration, you can enter some fake information here, as you'll be skipping the `Cache Management` process later.
+- `Cache Proxy Hostname` will be the hostname of the server you'll be using to proxy TCP traffic for Redis. This is necessary as the Redis cache data needs to be sharded and Twemproxy detects Redis server failure. If you're deploying a Redis cluster configuration, you can enter some fake information here, as you'll be skipping the `Cache Management` process later.
 
-If you want to demo redis-cluster, please read [this wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Deploy-A-Highly-Available-Redis-Cache-Cluster-For-Gluu-Server) first to fully understand how the implementation of redis-cluster works and if it is a fit for your operational requirements. If you still want to use it, then follow the instructions on [this cluster manager wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Protecting-a-Redis-Cluster-with-Stunnel) to help implement this function.
+If you want to demo Redis cluster, please read [this wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Deploy-A-Highly-Available-Redis-Cache-Cluster-For-Gluu-Server) first to fully understand how the implementation of Redis cluster works and if it is a fit for your operational requirements. If you still want to use it, then follow the instructions on [this Cluster Manager wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Protecting-a-Redis-Cluster-with-Stunnel) to help implement this function.
 
 !!! Warning
     The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
@@ -78,7 +78,7 @@ Once all servers have been added to the cluster, `Install Gluu` on the Primary S
 ![Install Primary Gluu Server](../img/Cluster_Manager-07.png)
 
 - The values for the first five fields are used to create certificates
-- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.3/3.1.3/source/index.md#free-open-source-software)
+- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.4/3.1.4/source/index.md#free-open-source-software)
 - Currently only OpenDJ is supported in Cluster Manager. This is pre-selected
 - Accept the license agreements if you agree to the terms
 
@@ -91,7 +91,7 @@ Click `Submit` to begin installation.
 
 Once completed, repeat the process for the other servers in the cluster.
 
-When all the installations have completed, and you're not using your own loadbalancer, you should install NGINX:
+When all the installations have completed, and you're not using your own load balancer, you should install Nginx:
 
 - Navigate to `Cluster` in the left menu
 - Select `Install Nginx`
@@ -149,7 +149,7 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
 ## Cache
 
 !!! Note
-    This step can be skipped if you're using a redis-cluster configuration.
+    This step can be skipped if you're using a Redis cluster configuration.
 
 ![Cache Management](../img/Cluster_Manager-13.png)
 
@@ -163,7 +163,7 @@ Click `Setup Redis`
     Redis does not utilize encrypted communication, so Stunnel is installed and configured on all servers to protect information with SSL/TLS.
 
 !!! Note
-    Twemproxy is also installed on the NGINX/Proxy server to achieve redundancy. Twemproxy can detect Redis server communication failure to ensure high availability.
+    Twemproxy is also installed on the Nginx/Proxy server to achieve redundancy. Twemproxy can detect Redis server communication failure to ensure high availability.
 
 Cache configuration settings can be customized per the [component configuration](https://gluu.org/docs/cm/#default-components) documentation and also inside oxTrust.
 
@@ -207,7 +207,7 @@ Click `Settings` to enable this functionality, as well as setting the time inter
 
 ## Custom Attributes
 
-It can be a pain to add custom attributes into OpenDJ properly, so we've created a method to do it through the GUI. It will create a custom attribute object class you can define and then add attributes to that object class, which you can register in oxTrust.
+It can be a pain to directly add custom attributes into OpenDJ properly, so we've created a method to do it through the GUI. It will create a custom attribute object class that you can define and then add attributes to that object class, which you can register in oxTrust.
 
 ![Custom ObjectClass Image](../img/CM_CustomObjectClass.png)
 
