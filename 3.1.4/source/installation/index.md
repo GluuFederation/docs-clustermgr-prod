@@ -4,7 +4,7 @@
 
 - A minimum of four (4) machines:
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use redis-cluster on the Gluu server installations.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
 
 ## Ports
@@ -42,7 +42,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems
 
-- 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server
+- 80 and 443 are self-explanatory. 443 must be open between the Load Balancer and the Gluu Server
 
 - 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes
 
@@ -52,9 +52,9 @@ The following external ports need to be opened on the following machines if you'
 
 ### Proxy
 
-If you're behind a proxy you'll have to configure it inside the container/chroot as well.
+If you're behind a proxy, you'll have to configure it inside the container/chroot as well.
 
-Log in to each gluu node and set http proxy in container/chroot to your proxy's url like so:
+Log into each Gluu node and set the HTTP proxy in the container/chroot to your proxy's URL like so:
 
 ```
 
@@ -64,7 +64,7 @@ Gluu.root# vi /etc/yum.conf
 
 ```
 
-insert into section [main]:
+insert into the `[main]` section:
 
 ```
 
@@ -89,7 +89,7 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 ### SSH & Keypairs
 
-Give Cluster Manager the ability to establish an ssh connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
+Give Cluster Manager the ability to establish an SSH connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
 
 `ssh-keygen -t rsa -b 4096`
 
@@ -114,7 +114,7 @@ Default-jre is for license requirements. It is not necessary if Java is already 
 
 ### Install the Package
 
-Install cluster manager using the following command:
+Install Cluster Manager using the following command:
 
 ```
 pip install clustermgr
@@ -139,16 +139,16 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.4.Final/oxlice
 
 ### Add Key Generator
 
-If automated key-rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
+If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
 wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.4.Final/oxauth-client-3.1.4.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
 ```
 
-Automated key-rotation can be configured inside the Cluster Manager UI.
+Automated key rotation can be configured inside the Cluster Manager UI.
 
-### Stop/Start/Restart Cluster-Mgr
+### Stop/Start/Restart Cluster Manager
 
 The following commands will stop/start/restart all the components of Cluster Manager:
 
@@ -172,7 +172,7 @@ We recommend using the [oxd client software](../authentication/index.md) to leve
 
 We recommend creating an additional "cluster" user, other than the one used to install and configure Cluster Manager.
 
-This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
+This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to Cluster Manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
 
 ```
 ssh -L 5000:localhost:5000 cluster@<server>
@@ -180,7 +180,7 @@ ssh -L 5000:localhost:5000 cluster@<server>
 
 ### Log In
 
-Navigate to the cluster-mgr web GUI on your local machine:
+Navigate to the Cluster Manager web GUI on your local machine:
 
 ```
 http://localhost:5000/
