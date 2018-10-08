@@ -4,7 +4,7 @@
 
 - A minimum of four (4) machines:
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use Redis Cluster on the Gluu Server installations.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
 
 ## Ports
@@ -46,7 +46,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes
 
-- 30865 is the default port for csync2 file system replication
+- 30865 is the default port for Csync2 file system replication
 
 - 7777 and 8888 are for securing the distributed caching communication the Gluu servers with Stunnel
 
@@ -89,11 +89,11 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 ### SSH & Keypairs
 
-Give Cluster Manager the ability to establish an SSH connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple keygeneration example:
+Give Cluster Manager the ability to establish an SSH connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple key generation example:
 
 `ssh-keygen -t rsa -b 4096`
 
-- This will initiate a prompt to create a keypair. Cluster Manager must be able to open connections to the servers.
+- This will initiate a prompt to create a key pair. Cluster Manager must be able to open connections to the servers.
 
 !!! Note
     Cluster Manager now works with encrypted keys and will prompt you for the password any time Cluster Manager is restarted.
