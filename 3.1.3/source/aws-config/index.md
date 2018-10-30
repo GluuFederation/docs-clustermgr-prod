@@ -44,7 +44,7 @@ We are going to configure a 'Application Level' Load balancer for this operation
     - An overview of configuration which will be used to create this new load balancer. You can double check and reconfigure any component if required. After successful completion, you should see a confirmation from AWS like below.
   ![Confirmation](../img/clb-confirmation.png)
   - Step 7: Enable Stickiness
-      We need to enable 'Stickiness' for this Target Group. Select 'Target Group' > Scroll down to 'Attributes' > Hit 'Edit Attributes' > Enable 'Stickiness' and set 'Stickiness Duration' ( for our testing purpose we set duration to 120 seconds
+    - We need to enable 'Stickiness' for this Target Group. Select 'Target Group' > Scroll down to 'Attributes' > Hit 'Edit Attributes' > Enable 'Stickiness' and set 'Stickiness Duration' ( for our testing purpose we set duration to 120 seconds
 
 ## Testing
 
