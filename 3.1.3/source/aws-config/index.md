@@ -33,7 +33,7 @@ We are going to configure a 'Application Level' Load balancer for this operation
       - Name: Some test name
       - Protocol: HTTPS
       - Port: 443
-      - Target Group: ip
+      - Target type: ip
       - Health check: HTTPS
       - Path: /monitoring.html [image]. Make sure to create a html file named 'monitoring.html' inside /var/www/html/ of your Gluu Server and restart apache after that. Otherwise AWS load balancer health check will fail and it won't be able to detect our Gluu Servers. 
   ![Routing](../img/clb_configure_routing.png)
