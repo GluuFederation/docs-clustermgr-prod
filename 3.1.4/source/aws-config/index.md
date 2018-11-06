@@ -25,8 +25,7 @@ We are going to configure a 'Application Level' Load balancer for this operation
       - Certificate Chain: Add cert chain if you have any
    ![Certificate](../img/clb_certificate_chain.png)
     - Add Security Group: 
-      - Add security groups where your Gluu Servers are configured.
-   ![Security](../img/clb_security_group.png)
+      - Create a new Security Group which will route 443 traffic from internet to Gluu Servers. ![Security_Group_Creation](../img/clb_security_group_creation_1.png)
   - Step 4: Configure Routing
     - If you have a Target Group already, you can select that from drop down menu. But if you don't have any then: 
       - Target Group: New target Group
@@ -43,7 +42,12 @@ We are going to configure a 'Application Level' Load balancer for this operation
   - Step 6: Review: 
     - An overview of configuration which will be used to create this new load balancer. You can double check and reconfigure any component if required. After successful completion, you should see a confirmation from AWS like below.
   ![Confirmation](../img/clb-confirmation.png)
-
+  - Step 7: Enable Stickiness: 
+    - We need to enable 'Stickiness' for this Target Group. Select 'Target Group' > Scroll down to 'Attributes' > Hit 'Edit Attributes' > Enable 'Stickiness' and set 'Stickiness Duration' ( for our testing purpose we set duration to 120 seconds
+  - Step 8: Firewall rule in Gluu Server: 
+    - For all Gluu Server VMs you have to allow 443 Inbound from Load balancer secrity group.
+    - It's possible to grab the info of security group from Load balancer config page. ![Security_Group_info](../img/clb_security_group_info.png)
+  
 ## Testing
 
  - If you select your load balancer from AWS control panel, you will see a setup like below. Get the IP address of A record and map that in your computer's /etc/hosts file. As for example for our case it would be: `1.2.3.4 testfast.gluu.org`. 'testfast.gluu.org' is the hostname we used for our Gluu Server.
