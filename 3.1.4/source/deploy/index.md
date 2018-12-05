@@ -4,6 +4,9 @@ Follow this doc to deploy a cluster of Gluu Servers using Cluster Manager!
 
 ## Getting Started
 
+!!! Note
+    Cluster Manager must be accessed in Chrome or Firefox.
+
 Upon initial launch of Cluster Manager, the following screen will be presented to create an admin username and password:
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
