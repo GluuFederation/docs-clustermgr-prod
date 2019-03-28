@@ -35,9 +35,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 - `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for Twemproxy to handle the multiple redis servers you deploy, _or_ you can use a Redis cluster. Cluster Manager will automatically install a Twemproxy and Redis server cache configuration for you, with Stunnel protecting communication. Using Redis cluster requires some manual configuration on your end.
 
-- `Cache Proxy Hostname` will be the hostname of the server you'll be using to proxy TCP traffic for Redis. This is necessary as the Redis cache data needs to be sharded and Twemproxy detects Redis server failure. If you're deploying a Redis cluster configuration, you can enter some fake information here, as you'll be skipping the `Cache Management` process later.
-
-If you want to demo Redis cluster, please read [this wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Deploy-A-Highly-Available-Redis-Cache-Cluster-For-Gluu-Server) first to fully understand how the implementation of Redis cluster works and if it is a fit for your operational requirements. If you still want to use it, then follow the instructions on [this Cluster Manager wiki](https://github.com/GluuFederation/cluster-mgr/wiki/Protecting-a-Redis-Cluster-with-Stunnel) to help implement this function.
+- `Use LDAP Cache`, if you check this LDAP server will be used for caching. For big organizations we suggest to use a Redis Cache Server. For Redis Cache Server uncheck this, you'll be skipping the `Cache Management` process later.
 
 !!! Warning
     The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
