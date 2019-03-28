@@ -29,7 +29,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr/gluu_repo` (please refresh this page after putting package), here is a sample: ![Offline mode](../img/Cluster_Manager_offline.png). Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/3.1.6/offline_install.md) whcih are implemented by Cluster Manager in non-offile mode.
+- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr/gluu_repo` (please refresh this page after putting package), here is a sample: ![Offline mode](../img/Cluster_Manager_offline.png). Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/3.1.6/offline_install.md) which are implemented by Cluster Manager in non-offile mode.
 
 - `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't need this password, as OpenDJ replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
@@ -63,7 +63,10 @@ Click `Add Server`
 The following screen is used to add the Primary Server, which will be used as a "seed" by other nodes to pull their Gluu configuration and certificates. After deployment, all servers will function in a Master-Master configuration.
 
 !!! Note
-    Hostname here will be the actual hostname of the server, not the hostname of the NGINX/Proxy server. This is so that Cluster Manager can discover and connect to the server for installation and configuration. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, the hostname here will be embedded automatically in the `/etc/hosts` files on this machine.
+    Hostname here will be the actual hostname of the server, not the hostname of the Load Balancer (NGINX/Proxy) server. This is so that Cluster Manager can discover and connect to the server for installation and configuration. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, the hostname here will be embedded automatically in the `/etc/hosts` files on this machine.
+    
+!!! Note
+    For AWS deployment, use internal ip address.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
@@ -152,21 +155,17 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
 ## Cache
 
 !!! Note
-    This step can be skipped if you're using a Redis cluster configuration.
-
-![Cache Management](../img/Cluster_Manager-13.png)
+    This step is not available if you are using LDAP Cache.
 
 oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high availability, Redis is installed outside the chroot on every Gluu Server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
-The `Fetch Cache Method` button is used to determine whether or not your LDAP is properly configured to utilize Redis or if it's still using `IN_MEMORY`, which will cause failures. It's not necessary to click, but good to have to make sure everything is configured properly.
+Currently Cluster Manages supports single Redis Cache Server. To add cache server click `Add Cache Server`:
 
-Click `Setup Redis`
+![Cache Server](../img/Cluster_Manager-13.png)
 
-!!! Note
-    Redis does not utilize encrypted communication, so Stunnel is installed and configured on all servers to protect information with SSL/TLS.
+For demonstration purpose I am using Load Balancer as Cache Server, but it is higly recommended to use seperate server. Hit `Setup Cache` to begin installation. Cluster Manager will install Redis Server on Cache Server and make it reachable for Gluu Server nodes through stunnel (port 16379). So stuennel will be installed on Cache Server and all Gluu Server nodes. 
 
-!!! Note
-    Twemproxy is also installed on the Nginx/Proxy server to achieve redundancy. Twemproxy can detect Redis server communication failure to ensure high availability.
+![Cache Management](../img/Cluster_Manager-13b.png)
 
 Cache configuration settings can be customized per the [component configuration](https://gluu.org/docs/cm/#default-components) documentation and also inside oxTrust.
 
@@ -189,7 +188,7 @@ Navigate to the `Monitoring` tab in the left-hand menu to see details about the 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
 ## Logging   
-Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and string search filters for easy sorting.
+Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and string search filters for easy sorting. Hit `Collect Logs` after configuration to see logs.
 
 !!! Note
     Cluster Manager must be connected to the cluster in order to take advantage of logging features. 
