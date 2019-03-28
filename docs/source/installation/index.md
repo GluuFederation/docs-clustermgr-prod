@@ -4,8 +4,9 @@
 
 - A minimum of four (4) machines:
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
-    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load-balancer **and** you use Redis Cluster on the Gluu Server installations.
+    - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
+    - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
 
 ## Ports
 
@@ -16,55 +17,58 @@ The following external ports need to be opened on the following machines if you'
 | Gluu Servers | Description |
 | -- | -- |
 | 22 | SSH |
-| 443 | SSL |
+| 443 | HTTPS |
 | 30865 | Csync2 |
-| 1636 | LDAP |
+| 1636 | LDAPS |
 | 4444 | LDAP Repl |
 | 8989 | LDAP Repl |
-| 7777 | Stunnel |
+| 16379 | Stunnel |
 
 | Load Balancer | Description |
 |--| --|
 | 22 | SSH |
 | 80 | HTTP |
 | 443 | HTTPS |
-| 8888 | Stunnel |
 
 !!! Note
     The Load Balancer is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
 
+| Redis Cache Server | Description |
+|--| --|
+| 16379 | Stunnel |
+
 | Cluster Manager | Description|
 | -- | --|
 | 22 | SSH |
-|1636| LDAP |
+|1636| LDAPS |
 
 ### Port Usage
 
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems
 
-- 80 and 443 are self explanatory. 443 must be open between the Load Balancer and the Gluu Server
+- 80 and 443 are self-explanatory. 443 must be open between the Load Balancer and the Gluu Server
 
 - 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes
 
-- 30865 is the default port for csync2 file system replication
+- 30865 is the default port for Csync2 file system replication
 
-- 7777 and 8888 are for securing the distributed caching communication the Gluu servers with Stunnel
+- 16379 is for securing the caching communication between Gluu servers and Redis Cache Server over Stunnel
 
 ### Proxy
 
-If you're behind a proxy you'll have to configure it inside the container/chroot as well.
+If you're behind a proxy, you'll have to configure it inside the container/chroot as well.
 
-Log in to each Gluu node and set HTTP proxy in container/chroot to your proxy's URL like so:
+Log into each Gluu node and set the HTTP proxy in the container/chroot to your proxy's URL like so:
 
 ```
 
-# /sbin/gluu-server-3.1.3 login
+# /sbin/gluu-server-3.1.4 login
 
 Gluu.root# vi /etc/yum.conf
 
 ```
 
-insert into the [main] section:
+insert into the `[main]` section:
 
 ```
 
@@ -93,12 +97,12 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 `ssh-keygen -t rsa -b 4096`
 
-- This will initiate a prompt to create a keypair. Cluster Manager must be able to open connections to the servers.
+- This will initiate a prompt to create a key pair. Cluster Manager must be able to open connections to the servers.
 
 !!! Note
     Cluster Manager now works with encrypted keys and will prompt you for the password any time Cluster Manager is restarted.
 
-- Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
+- Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
 ### Install Dependencies
 
@@ -110,7 +114,7 @@ sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap red
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
-`default-jre` is for license requirements. It is not necessary if Java is already installed.
+Default-jre is for license requirements. It is not necessary if Java is already installed.
 
 ### Install the Package
 
@@ -128,7 +132,7 @@ Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.3.Final/oxlicense-validator-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
+wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.4.Final/oxlicense-validator-3.1.4.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
@@ -139,11 +143,11 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.3.Final/oxlice
 
 ### Add Key Generator
 
-If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect key generator by using the following commands:
+If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.3.Final/oxauth-client-3.1.3.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
+wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.4.Final/oxauth-client-3.1.4.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
 ```
 
 Automated key rotation can be configured inside the Cluster Manager UI.
@@ -164,15 +168,12 @@ The following commands will stop/start/restart all the components of Cluster Man
 
 When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`.
 
-### Install oxd (optional)
-
-We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the authentication config file [specified above](#create-credentials).
 
 ### Create New User
 
 We recommend creating an additional "cluster" user, other than the one used to install and configure Cluster Manager.
 
-This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to cluster manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
+This is a basic security precaution, due to the fact that the user SSHing into this server has unfettered access to every server connected to Cluster Manager. By using a separate user, which will still be able to connect to localhost:5000, an administrator can give an operator limited access to a server, while still being able to take full control of Cluster Manager.
 
 ```
 ssh -L 5000:localhost:5000 cluster@<server>
