@@ -52,7 +52,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 30865 is the default port for Csync2 file system replication
 
-- 1636 is for securing the caching communication the Gluu servers and Redis Cache Server over Stunnel
+- 16379 is for securing the caching communication between Gluu servers and Redis Cache Server over Stunnel
 
 ### Proxy
 
