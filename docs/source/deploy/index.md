@@ -29,6 +29,8 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
+- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr/gluu_repo` (please refresh this page after putting package), here is a sample: (../img/Cluster_Manager_offline.png). Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions] (https://github.com/GluuFederation/cluster-mgr/blob/3.1.6/offline_install.md) whcih are implemented by Cluster Manager in non-offile mode.
+
 - `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't need this password, as OpenDJ replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
 - `Load Balancer Hostname` will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. Check the `This is an external load balancer` box if you are using an external load balancer like Amazon ELB or F5 
