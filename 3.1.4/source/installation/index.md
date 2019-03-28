@@ -6,6 +6,7 @@
     - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
     - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
+    - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
 
 ## Ports
 
@@ -16,27 +17,30 @@ The following external ports need to be opened on the following machines if you'
 | Gluu Servers | Description |
 | -- | -- |
 | 22 | SSH |
-| 443 | SSL |
+| 443 | HTTPS |
 | 30865 | Csync2 |
-| 1636 | LDAP |
+| 1636 | LDAPS |
 | 4444 | LDAP Repl |
 | 8989 | LDAP Repl |
-| 7777 | Stunnel |
+| 16379 | Stunnel |
 
 | Load Balancer | Description |
 |--| --|
 | 22 | SSH |
 | 80 | HTTP |
 | 443 | HTTPS |
-| 8888 | Stunnel |
 
 !!! Note
     The Load Balancer is the only node that should be externally accessible through 80 and 443 from outside your cluster network.
 
+| Redis Cache Server | Description |
+|--| --|
+| 16379 | Stunnel |
+
 | Cluster Manager | Description|
 | -- | --|
 | 22 | SSH |
-|1636| LDAP |
+|1636| LDAPS |
 
 ### Port Usage
 
@@ -48,7 +52,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 30865 is the default port for Csync2 file system replication
 
-- 7777 and 8888 are for securing the distributed caching communication the Gluu servers with Stunnel
+- 1636 is for securing the caching communication the Gluu servers and Redis Cache Server over Stunnel
 
 ### Proxy
 
@@ -98,7 +102,7 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 !!! Note
     Cluster Manager now works with encrypted keys and will prompt you for the password any time Cluster Manager is restarted.
 
-- Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the NGINX server (unless another load-balancing service will be used). **This MUST be the root authorized_keys.**
+- Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
 ### Install Dependencies
 
@@ -164,9 +168,6 @@ The following commands will stop/start/restart all the components of Cluster Man
 
 When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`.
 
-### Install oxd (optional)
-
-We recommend using the [oxd client software](../authentication/index.md) to leverage your Gluu Server(s) for authentication to Cluster Manager. After oxd has been installed and configured, default authentication can be disabled by removing the authentication config file [specified above](#create-credentials).
 
 ### Create New User
 
