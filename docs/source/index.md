@@ -16,7 +16,6 @@ Cluster Manager is a GUI tool for installing and managing a highly available, cl
 ## Get Started
 - [Install Cluster Manager](./installation/index.md)   
 - [Deploy Gluu Clusters](./deploy/index.md)
-- [Configure SSO](./authentication/index.md) (optional)
 - [Troubleshooting](./troubleshooting/index.md)
 
 ## License
