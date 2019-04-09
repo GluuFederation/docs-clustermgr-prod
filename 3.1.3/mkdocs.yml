@@ -13,7 +13,7 @@ markdown_extensions:
 - toc:
      permalink: '#'
 - pymdownx.superfences
-nav:
+pages:
 - Home: 'index.md'
 - Install: 'installation/index.md'
 - Deploy Clusters: 'deploy/index.md'
