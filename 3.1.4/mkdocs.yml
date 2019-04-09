@@ -12,7 +12,7 @@ markdown_extensions:
 - admonition
 - toc:
      permalink: '#'
-nav:
+pages:
 - Home: 'index.md'
 - Install: 'installation/index.md'
 - Deploy Clusters: 'deploy/index.md'
