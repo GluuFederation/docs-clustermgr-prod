@@ -1,17 +1,49 @@
+# Project information
 site_name: Cluster Manager Docs
 site_description: Documentation for Gluu Cluster Manager
 site_favicon: 'favicon.ico'
+
+# Copyright
 copyright: Copyright &copy; 2019, Gluu, Inc.
+
+# Repository
 docs_dir: source
+#repo_name: GluuFederation/docs-clustermgr-prod
 repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/tree/4.0/docs
+#repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/
+#edit_uri: edit/4.0/docs/source
+
+# Configuration
 theme_dir: theme/material
+#theme: 
+#    name: material
+#    palette:
+#        primary: 'green'
+#        accent: 'green'
+#    logo: 'gluu.jpg'
+#    favicon: 'favicon.ico'
 extra:
     version: '4.0'
     logo: 'gluu.png'
+    
+# Extensions
 markdown_extensions:
 - admonition
 - toc:
      permalink: '#'
+#- codehilite     
+- pymdownx.superfences
+
+# Navigation
+#nav:
+#- 'Versions':
+#    - '4.0': 'https://gluu.org/docs/cm/4.0/'
+#    - '3.1.6': 'https://gluu.org/docs/cm/3.1.6/'
+#    - '3.1.4': 'https://gluu.org/docs/cm/3.1.4/'
+#    - '3.1.3': 'https://gluu.org/docs/cm/3.1.3/'
+#    - 'beta': 'https://gluu.org/docs/cm/beta/'
+#- ' ': 'https:/gluu.org/docs'
+#- ' ': 'https:/gluu.org/docs'
 pages:
 - Home: 'index.md'
 - Install: 'installation/index.md'
