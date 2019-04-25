@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - A minimum of four (4) machines:
-    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 1GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
+    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 2GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
     - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu 16 for Gluu Servers.
     - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
@@ -54,6 +54,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 16379 is for securing the caching communication between Gluu servers and Redis Cache Server over Stunnel
 
+<!--
 ### Proxy
 
 If you're behind a proxy, you'll have to configure it inside the container/chroot as well.
@@ -62,7 +63,7 @@ Log into each Gluu node and set the HTTP proxy in the container/chroot to your p
 
 ```
 
-# /sbin/gluu-server-3.1.4 login
+# service gluu-server-3.1.6 login
 
 Gluu.root# vi /etc/yum.conf
 
@@ -88,6 +89,7 @@ One of the configured repositories failed (Unknown), and yum doesn't have enough
 
 Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_64&repo=updates&infra=stock error was 14: curl#7 - "Failed to connect to 2604:1580:fe02:2::10: Network is unreachable"
 ```
+-->
 
 ## Installing Cluster Manager
 
@@ -126,6 +128,7 @@ pip install clustermgr
 
 There may be a few innocuous warnings, but this is normal.
 
+<!--
 ### Add License Validator
 
 Prepare the license validator by using the following commands:
@@ -140,6 +143,8 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.4.Final/oxlice
 
 !!! Warning
     All Cluster Manager commands need to be run as root.
+
+--> 
 
 ### Add Key Generator
 
