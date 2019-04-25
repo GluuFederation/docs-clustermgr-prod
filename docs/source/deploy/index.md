@@ -29,7 +29,11 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr/gluu_repo` (please refresh this page after putting package), here is a sample: ![Offline mode](../img/Cluster_Manager_offline.png). Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/3.1.6/offline_install.md) which are implemented by Cluster Manager in non-offile mode.
+- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr/gluu_repo` (please refresh this page after putting package), here is a sample:  
+
+![Offline mode](../img/Cluster_Manager_offline.png)  
+
+Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/3.1.6/offline_install.md) which are implemented by Cluster Manager in non-offline mode.
 
 - `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't need this password, as OpenDJ replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
@@ -66,7 +70,7 @@ The following screen is used to add the Primary Server, which will be used as a 
     Hostname here will be the actual hostname of the server, not the hostname of the Load Balancer (NGINX/Proxy) server. This is so that Cluster Manager can discover and connect to the server for installation and configuration. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, the hostname here will be embedded automatically in the `/etc/hosts` files on this machine.
     
 !!! Note
-    For AWS deployment, use internal ip address.
+    For AWS deployment, use the internal IP address.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
