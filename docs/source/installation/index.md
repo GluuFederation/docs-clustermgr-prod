@@ -171,6 +171,9 @@ The following commands will stop/start/restart all the components of Cluster Man
 !!! Note
     All the Cluster Manager logs can be found in the `$HOME/.clustermgr/logs` directory
 
+!!! Warning
+    Cluster Manager need to be started by root or at least user should be able to run `sudo <command>` without password.
+
 ### Create Credentials
 
 When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`.
