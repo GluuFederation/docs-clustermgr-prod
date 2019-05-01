@@ -141,10 +141,12 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.4.Final/oxlice
 !!! Note
     License files are not currently enforced, it's on the honor system! Please see the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE) to see if you're eligible to use Cluster Manager in production. In future versions, a license file may be required.
 
+-->
+
 !!! Warning
     All Cluster Manager commands need to be run as root.
 
---> 
+ 
 
 ### Add Key Generator
 
