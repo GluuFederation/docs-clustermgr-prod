@@ -7,7 +7,7 @@
     - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu 16 for Gluu Servers. All nodes should have same OS.
     - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
-    - Browser: We recommend using Firefox or Chrome.
+- We recommend using Firefox or Chrome.
 
 ## Ports
 
