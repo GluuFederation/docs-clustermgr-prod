@@ -1,7 +1,5 @@
 # Deploying a Gluu Cluster
 
-Follow this doc to deploy a cluster of Gluu Servers using Cluster Manager!
-
 ## Getting Started
 
 !!! Note
@@ -11,7 +9,7 @@ Upon initial launch of Cluster Manager, the following screen will be presented t
 
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
-After the administrator is created, start the process of building a cluster by clicking the `Setup Cluster` button:
+After the admin user is created, start the process of building a cluster by clicking the `Setup Cluster` button:
 
 ![Add Server Prompt](../img/CM_Intro.png)
 
@@ -19,7 +17,7 @@ The two options are `Click Here To Use Your Standalone Gluu Server` and `Create 
 
 ### Click Here To Use Your Standalone Gluu Server:
 
-This method is used to take a standalone Gluu Server deployment and prepare it for clustering. This is achieved by changing the hostname of the Gluu Server to that of the load balancing server, which will act as a front-end proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
+This method can be used to leverage a standalone Gluu Server deployment as the seed for a new cluster. This is achieved by changing the hostname of the Gluu Server to that of the load balancing server, which will act as a front-end proxy between all the Gluu Server nodes. From there, it will use the standalone server as your seed for each new server added.
 
 ![Standalone Server seed](../img/CM_Standalone.png)
 
