@@ -111,10 +111,21 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
+#### on Ubuntu 16
 ```
 sudo apt-get update
 sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server default-jre
 sudo pip install --upgrade setuptools influxdb psutil
+```
+
+#### on CentOS 7
+```
+sudo yum install -y epel-release
+sudo yum repolist
+sudo yum install gcc gcc-c++ make python-devel openldap-devel python-pip redis
+sudo pip install --upgrade setuptools influxdb psutil
+sudo systemctl enable redis
+sudo systemctl start redis
 ```
 
 Default-jre is for license requirements. It is not necessary if Java is already installed.
