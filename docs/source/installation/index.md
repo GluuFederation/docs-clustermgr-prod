@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - A minimum of four (4) machines:
-    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** with at least 2GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
+    - Cluster Manager: One (1) machine running **Ubuntu 14 or 16** / **CentOS 7** with at least 2GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
     - Load Balancer: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 1GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines running Ubuntu 16 or CentOS 7 for Gluu Servers. All nodes should have same OS.
     - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
