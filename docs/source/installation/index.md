@@ -41,6 +41,7 @@ The following external ports need to be opened on the following machines if you'
 | Cluster Manager | Description|
 | -- | --|
 | 22 | SSH |
+| 443 | HTTPS |
 |1636| LDAPS |
 
 ### Port Usage
