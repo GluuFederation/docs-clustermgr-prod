@@ -48,7 +48,7 @@ The following external ports need to be opened on the following machines if you'
 
 - 22 will be used by Cluster Manager to pull logs and make adjustments to the systems
 
-- 80 and 443 are self-explanatory. 443 must be open between the Load Balancer and the Gluu Server
+- 80 and 443 are self-explanatory. 443 must be open between the Load Balancer and the Gluu Servers, and also between Cluster Manager and Gluu Servers
 
 - 1636, 4444 and 8989 are necessary for LDAP usage and replication. These should be open between Gluu Server nodes
 
