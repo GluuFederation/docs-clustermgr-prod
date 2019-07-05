@@ -176,6 +176,8 @@ Cache configuration settings can be customized per the [component configuration]
 
 ![Successful Cache Management Installation](../img/Cluster_Manager-14.png)
 
+Status indicators will be displayed in few seconds.
+
 Once this task is complete, the Gluu Server cluster is fully functional. 
 
 Navigate to the hostname of the proxy server provided in the `Settings` option.
