@@ -180,7 +180,11 @@ Once this task is complete, the Gluu Server cluster is fully functional.
 
 Navigate to the hostname of the proxy server provided in the `Settings` option.
 
-You can also go back to the cache management screen and check the status of Redis and Stunnel. 
+You can also go back to the cache management screen and check the status of Redis and Stunnel.
+
+Broken stunnel installations on nodes (except primary server) can be re-installed by clicking Install/Reinstall button next to the stuennel liveness status.
+
+If you add a new node to existing clsuter, you can install stunnel on the new node by clicking Install button next to the stuennel liveness status, instead of full Cache Management setup.
 
 ## Monitoring   
 Cluster Manager monitors the servers in the cluster to help better understand performance and potential issues. 
