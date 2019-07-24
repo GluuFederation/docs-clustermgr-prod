@@ -23,9 +23,10 @@ This method can be used to leverage a standalone Gluu Server deployment as the s
 
 After it's finished, click the `Start` button to move on to the dashboard.
 
-!! Note
-    After setting up cluster by making your stand alone server as primary of cluster, you need to update IDP metadata on Relaying Parties, since IDP metadata will be re-created to reflect your load balancer hostname.
-
+<!--
+!!! Note
+    After setting up a cluster using a standalone server as the seed, update IDP metadata on Relying Parties, since IDP metadata will be re-created to reflect your load balancer hostname.
+-->
 
 ### Create a New Gluu Server Cluster:
 
