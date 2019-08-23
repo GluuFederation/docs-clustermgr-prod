@@ -121,6 +121,7 @@ sudo pip install --upgrade setuptools influxdb psutil
 
 #### on CentOS 7
 ```
+sudo yum update
 sudo yum install -y epel-release
 sudo yum repolist
 sudo yum install gcc gcc-c++ make python-devel openldap-devel python-pip redis
