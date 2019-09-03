@@ -127,12 +127,12 @@ There is further explanation about sticky sessions for F5 [here](https://www.f5.
 
 All the necessary paths are as follows:
 
-- /
-- /.well-known
-- /oxauth
-- /identity
-- /passport
-- /idp
+- `/`
+- `/.well-known`
+- `/oxauth`
+- `/identity`
+- `/passport`
+- `/idp`
 
 
 ## Replication
