@@ -211,5 +211,38 @@ Navigate to the Cluster Manager web GUI on your local machine:
 http://localhost:5000/
 ```
 
+## systemd Startup Script (Optional)
+
+To start/stop Cluster Manager we use `clustermgr-cli` command, in some cases you may need auto-start Cluster Manager when you 
+reboot your server. For this, you need systemd startup script. Here is how you will do (all command will be executed 
+with root privileges):
+
+### Stop cluster manager
+```
+# clustermgr-cli stop
+```
+
+### Get Startup Script
+```
+# wget https://raw.githubusercontent.com/GluuFederation/cluster-mgr/master/clustermgr.service -O /lib/systemd/system/clustermgr.service
+# systemctl daemon-reload
+```
+
+### Enable and start
+```
+# systemctl enable clustermgr
+# systemctl start clustermgr
+```
+
+After installing systemd script, please use the following commands instead of clustermgr-cli directly
+
+```
+systemctl start clustermgr
+systemctl status clustermgr
+systemctl stop clustermgr
+```
+
+
+
 ## Deploy Clusters
 Next, move on to [deploy the Gluu cluster](../deploy/index.md).
