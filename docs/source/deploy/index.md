@@ -162,7 +162,7 @@ Currently Cluster Manages supports single Redis Cache Server. To add cache serve
 
 ![Cache Server](../img/Cluster_Manager-13.png)
 
-For demonstration purpose I am using Load Balancer as Cache Server, but it is higly recommended to use seperate server. Hit `Setup Cache` to begin installation. Cluster Manager will install Redis Server on Cache Server and make it reachable for Gluu Server nodes through stunnel (port 16379). So stuennel will be installed on Cache Server and all Gluu Server nodes. 
+For demonstration purpose I am using Load Balancer as Cache Server, but it is higly recommended to use seperate server. Hit `Setup Cache` to begin installation. Cluster Manager will install Redis Server on Cache Server and make it reachable for Gluu Server nodes through stunnel (default port 16379). So stuennel will be installed on Cache Server and all Gluu Server nodes. You can restrict access to redis server by setting password. Clustermanager creates random password for redis. If you don't want to set up password, just clear **Redis Password** box. 
 
 ![Cache Management](../img/Cluster_Manager-13b.png)
 
