@@ -135,7 +135,7 @@ Click the `deploy all` button to enable LDAP replication between all the nodes i
 
 ![Deploying LDAP Replication](../img/Cluster_Manager-10.png)
 
-After configuring OpenDJ replication for the first time, this page will display replication status and other replication information.
+After configuring WrenDS replication for the first time, this page will display replication status and other replication information.
 
 ![Replication Deployed screen](../img/Cluster_Manager-11.png)
 
@@ -187,7 +187,7 @@ Navigate to the `Monitoring` tab in the left-hand menu to see details about the 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
 ## Logging   
-Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], OpenDJ and Redis), Host and string search filters for easy sorting. Hit `Collect Logs` after configuration to see logs.
+Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], WrenDS and Redis), Host and string search filters for easy sorting. Hit `Collect Logs` after configuration to see logs.
 
 !!! Note
     Cluster Manager must be connected to the cluster in order to take advantage of logging features. 
@@ -208,7 +208,7 @@ Click `Settings` to enable this functionality, as well as setting the time inter
 
 ## Custom Attributes
 
-It can be a pain to directly add custom attributes into OpenDJ properly, so we've created a method to do it through the GUI. It will create a custom attribute object class that you can define and then add attributes to that object class, which you can register in oxTrust.
+It can be a pain to directly add custom attributes into WrenDS properly, so we've created a method to do it through the GUI. It will create a custom attribute object class that you can define and then add attributes to that object class, which you can register in oxTrust.
 
 ![Custom ObjectClass Image](../img/CM_CustomObjectClass.png)
 
