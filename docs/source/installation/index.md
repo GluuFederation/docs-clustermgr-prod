@@ -148,7 +148,7 @@ If automated key rotation is required, you'll need to download the keygen.jar. P
 
 ```
 mkdir -p $HOME/.clustermgr4/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.6.Final/oxauth-client-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/keygen.jar
+wget -q https://ox.gluu.org/maven/org/gluu/oxauth-client/4.0.Final/oxauth-client-4.0.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/keygen.jar
 ```
 
 Automated key rotation can be configured inside the Cluster Manager UI.
