@@ -70,7 +70,7 @@ The following screen is used to add the Primary Server, which will be used as a 
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
-Click `Submit` to get routed to the Dashboard.
+Click `Submit` to get routed to the Dashboard. OS will be displayed as **None** for newly added servers and a background process will run to determine OS. In 10 seconds OS will be displayed.
 
 The Dashboard lists all servers in the cluster and provides the ability to add more servers, edit hostnames and IP addresses, and install Gluu automatically.
 
