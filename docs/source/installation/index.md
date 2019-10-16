@@ -124,7 +124,7 @@ On Ubuntu 18
 sudo apt-get install openjdk-8-jre-headless
 ```
 
-Default-jre is for license requirements. It is not necessary if Java is already installed.
+Java is required for license requirements and key rotation. It is not necessary if Java (up to 8) is already installed.
 
 ### Install the Package
 
