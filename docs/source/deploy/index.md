@@ -84,9 +84,8 @@ Once all servers have been added to the cluster, `Install Gluu` on the Primary S
 ![Install Primary Gluu Server](../img/Cluster_Manager-07.png)
 
 - The values for the first five fields are used to create certificates
-- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.6/3.1.6/source/index.md#free-open-source-software)
-- Currently only OpenDJ is supported in Cluster Manager. This is pre-selected
-- Accept the license agreements if you agree to the terms
+- Next, select which modules should be installed. The default Gluu components are pre-selected. For more information on each component, see the [Gluu docs](https://github.com/GluuFederation/docs-ce-prod/blob/4.0/docs/source/index.md#free-open-source-software)
+- Accept the license agreement if you agree to the terms
 
 Click `Submit` to begin installation. 
 
