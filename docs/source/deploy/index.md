@@ -223,6 +223,7 @@ Click `Settings` to enable this functionality, as well as setting the time inter
 
 ![Key Rotation Set](../img/CM_KeyRotationConfig.png)
 
+<!--
 ## Custom Attributes
 
 It can be a pain to directly add custom attributes into OpenDJ properly, so we've created a method to do it through the GUI. It will create a custom attribute object class that you can define and then add attributes to that object class, which you can register in oxTrust.
@@ -238,3 +239,4 @@ Create Custom Attribute:
 ![Custom Attribute Image](../img/CM_CustomAttributesSet.png)
 
 Please refer to the [LDAP Schema RFC](https://tools.ietf.org/html/rfc4519) and [this documentation](https://www.ldap.com/understanding-ldap-schema) on descriptions of LDAP schema attributes, if you're not already familiar with them.
+-->
