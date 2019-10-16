@@ -132,7 +132,7 @@ Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr4/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlicense-validator-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
+wget -q https://ox.gluu.org/maven/org/gluu/oxlicense-validator/4.0.Final/oxlicense-validator-4.0.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
