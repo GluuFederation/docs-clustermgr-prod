@@ -108,14 +108,20 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
-
-!!! Note
-    If you are installing Cluster Manager on Ubuntu 18, replace `default-jre` with `openjdk-8-jre-headless` in the following command
-
 ```
 sudo apt-get update
-sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server default-jre
+sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server
 sudo pip install --upgrade setuptools influxdb psutil
+```
+
+On Ubunutu 16
+```
+sudo apt-get install default-jre
+```
+
+On Ubuntu 18
+```
+sudo apt-get install openjdk-8-jre-headless
 ```
 
 Default-jre is for license requirements. It is not necessary if Java is already installed.
