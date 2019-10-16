@@ -132,7 +132,7 @@ Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlicense-validator-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
+wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlicense-validator-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
@@ -147,8 +147,8 @@ wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlice
 If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
 
 ```
-mkdir -p $HOME/.clustermgr/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.4.Final/oxauth-client-3.1.4.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/keygen.jar
+mkdir -p $HOME/.clustermgr4/javalibs
+wget -q https://ox.gluu.org/maven/org/xdi/oxauth-client/3.1.6.Final/oxauth-client-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/keygen.jar
 ```
 
 Automated key rotation can be configured inside the Cluster Manager UI.
@@ -157,17 +157,17 @@ Automated key rotation can be configured inside the Cluster Manager UI.
 
 The following commands will stop/start/restart all the components of Cluster Manager:
 
- - `clustermgr-cli stop`
- - `clustermgr-cli start`
- - `clustermgr-cli restart`
+ - `clustermgr4-cli stop`
+ - `clustermgr4-cli start`
+ - `clustermgr4-cli restart`
 
 
 !!! Note
-    All the Cluster Manager logs can be found in the `$HOME/.clustermgr/logs` directory
+    All the Cluster Manager logs can be found in the `$HOME/.clustermgr4/logs` directory
 
 ### Create Credentials
 
-When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr/auth.ini`.
+When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr4/auth.ini`.
 
 
 ### Create New User
