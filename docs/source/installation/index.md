@@ -62,7 +62,7 @@ Log into each Gluu node and set the HTTP proxy in the container/chroot to your p
 
 ```
 
-# /sbin/gluu-server-3.1.4 login
+# /sbin/gluu-serverd login
 
 Gluu.root# vi /etc/yum.conf
 
@@ -121,7 +121,7 @@ Default-jre is for license requirements. It is not necessary if Java is already 
 Install Cluster Manager using the following command:
 
 ```
-pip install clustermgr
+pip install clustermgr4
 ```
 
 There may be a few innocuous warnings, but this is normal.
@@ -131,7 +131,7 @@ There may be a few innocuous warnings, but this is normal.
 Prepare the license validator by using the following commands:
 
 ```
-mkdir -p $HOME/.clustermgr/javalibs
+mkdir -p $HOME/.clustermgr4/javalibs
 wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlicense-validator-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
 ```
 
