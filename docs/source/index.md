@@ -1,8 +1,9 @@
-# Gluu Cluster Manager Documentation
+# Cluster Manager Documentation
 ## Overview
-Cluster Manager is a GUI tool for installing and managing a highly available, clustered Gluu Server infrastructure. 
+Cluster Manager (CM) is a GUI tool for installing and managing a highly available, clustered [Gluu Server](https://gluu.org/docs/ce) infrastructure on physical servers or VMs.  
 
 ## Features
+CM automates many tasks associated with building and operating an HA/DR Gluu Server environment, including: 
 
 - Gluu OpenDJ LDAP Replication   
 - Cache Management   
