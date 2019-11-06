@@ -205,7 +205,7 @@ Key rotation is important for security.
 Click `Settings` to enable this functionality, as well as setting the time interval in hours.
 
 ![Key Rotation Set](../img/CM_KeyRotationConfig.png)
-<!--
+<!---
 ## Custom Attributes
 
 It can be a pain to directly add custom attributes into WrenDS properly, so we've created a method to do it through the GUI. It will create a custom attribute object class that you can define and then add attributes to that object class, which you can register in oxTrust.
