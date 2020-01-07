@@ -13,7 +13,7 @@ CM automates many tasks associated with building and operating an HA/DR Gluu Ser
 - End-to-end secure tunneling between oxAuth and Redis   
 
 ## Get Started
-- [Review the Reference Architecture](./architecture/index.md) 
+- Review the [Reference Architecture](./architecture/index.md) 
 - [Install Cluster Manager](./installation/index.md)   
 - [Deploy Gluu Clusters](./deploy/index.md)
 - [Troubleshooting](./troubleshooting/index.md)
