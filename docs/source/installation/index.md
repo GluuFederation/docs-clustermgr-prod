@@ -8,12 +8,7 @@
     - Gluu Server(s): At least two (2) machines running Ubuntu, CentOS, RHEL, or Debian for Gluu Servers.
     - Redis Cache Server: One (1) machine running Ubuntu, CentOS, RHEL, or Debian with at least 4GB of RAM
 
-## Architecture
-
-The web tier of the Gluu Server (i.e. oxAuth) is stateless and can be scaled horizontally. The local LDAP server included in all Gluu Server deployments (i.e. Gluu LDAP) supports multi-master replication (MMR). Any instance can be written to and changes are propagated to other instances.![CM_Ports](../img/cluster-manager-diagram.png)
-
 ## Ports
-
 
 | Gluu Servers | Description |
 | -- | -- |
