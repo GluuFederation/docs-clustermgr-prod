@@ -21,8 +21,8 @@ The web tier of the Gluu Server (i.e. oxAuth) is stateless and can be scaled hor
 | 443 | HTTPS |
 | 30865 | Csync2 |
 | 1636 | LDAPS |
-| 4444 | LDAP Repl |
-| 8989 | LDAP Repl |
+| 4444 | LDAP Administration |
+| 8989 | LDAP Replication |
 | 16379 | Stunnel |
 
 | Load Balancer | Description |
