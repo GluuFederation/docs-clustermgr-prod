@@ -1,6 +1,7 @@
-## Backup & Restore
+# Backup & Restore
 
-Cluster Manager stores all data under `~/.clustermgr4`. 
+## Overview
+Cluster Manager stores all data under `~/.clustermgr4`. The process to backup and restore is described below. 
 
 ### Backup
 To backup Cluster Manager, simply:
