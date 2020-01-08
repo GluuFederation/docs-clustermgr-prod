@@ -8,7 +8,7 @@
 # tar -zcf clustermgr4-backup.tgz .clustermgr4
 ```
 
-and keep clustermgr4-backup.tgz` in a safe palce. Once you need to restore backup you can extract as follows:
+and keep `clustermgr4-backup.tgz` in a safe palce. Once you need to restore backup you can extract as follows:
 
 ```
 # cd ~
@@ -19,7 +19,7 @@ and keep clustermgr4-backup.tgz` in a safe palce. Once you need to restore backu
 
 Cluster Manager has builtin upgrade feature, it checks version on github twice a day. If version is changed it will ask you to
 perform upgrade from github. Otherwise you can perfom upgrade manually, just uninstall current installation and install 
-latest package. Uninstall and re-install won't touch `~/.clustermgr4`, so it is keep to uninstall and re-install. But we still
+latest package. Uninstall and re-install won't touch `~/.clustermgr4`, so it is safe to uninstall and re-install. But we still
 recommend you to perform backup as explained above. To uninstull Cluster Manager:
 
 ```
