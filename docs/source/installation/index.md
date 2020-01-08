@@ -196,3 +196,11 @@ http://localhost:5000/
 
 ## Deploy Clusters
 Next, move on to [deploy the Gluu cluster](../deploy/index.md).
+
+## Uninstallation
+
+To uninstall Cluster Manager, simply:
+
+```
+# pip uninstall clustermgr4
+```
