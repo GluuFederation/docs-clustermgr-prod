@@ -1,18 +1,22 @@
 # Upgrades
 
-## Overview
-Cluster Manager has a built-in upgrade feature which checks the GitHub repo for new versions twice a day. If a new version is available, CM will prompt you to upgrade. 
+## Auto-upgrades
+Cluster Manager has a built-in upgrade feature which checks the GitHub repo for new versions twice a day. If a new version is available, CM will prompt you to upgrade. Simply accept the prompt to automatically upgrade your instance of Cluster Manager. 
 
-To perfom an upgrade manually, simply uninstall the current installation and install latest package. Although this process won't affect `~/.clustermgr4`, and is therefore safe, a [backup](./backup.md) is still recommended before proceeding. 
+## Manual Upgrades
+To perfom an upgrade manually, simply uninstall the current installation and install latest package. 
 
-## Uninstall
+!!! Attention
+    Although this process won't affect `~/.clustermgr4`, and is therefore safe, a [backup](./backup.md) is still recommended before proceeding. 
+
+### Uninstall
 To uninstall Cluster Manager:
 
 ```
 # pip uninstall clustermgr4
 ```
 
-## Reinstall
+### Reinstall
 To re-install latest package from githbu
 
 ```
