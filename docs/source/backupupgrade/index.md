@@ -1,7 +1,7 @@
 # Backing Up and Upgrading Cluster Manager
 
 ## Backup and Restore
-**Cluster Manager** keeps all data under `~/.clustermgr4`, so it is ehough to keep somehere to backup. So, for backup Cluster Manager:
+**Cluster Manager** keeps all data under `~/.clustermgr4`, so it is enough to keep somehere to backup. So, for backup Cluster Manager:
 
 ```
 # cd ~
