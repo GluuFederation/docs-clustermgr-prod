@@ -21,5 +21,5 @@ To restore from backup, extract as follows:
 ```
 # cd ~
 # tar -zxf clustermgr4-backup.tgz
-# # clustermgr4-cli start
+# clustermgr4-cli start
 ```
