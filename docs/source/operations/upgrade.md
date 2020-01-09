@@ -13,6 +13,7 @@ To perfom an upgrade manually, simply uninstall the current installation and ins
 To uninstall Cluster Manager:
 
 ```
+# # clustermgr4-cli stop
 # pip uninstall clustermgr4
 ```
 
@@ -21,4 +22,5 @@ To re-install latest package from githbu
 
 ```
 # pip install https://github.com/GluuFederation/cluster-mgr/archive/4.0.zip
+# # clustermgr4-cli start
 ```
