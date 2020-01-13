@@ -37,7 +37,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 - `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for Twemproxy to handle the multiple redis servers you deploy, _or_ you can use a Redis cluster. Cluster Manager will automatically install a Twemproxy and Redis server cache configuration for you, with Stunnel protecting communication. Using Redis cluster requires some manual configuration on your end.
 
-- `Use LDAP Cache`, if you check this LDAP server will be used for caching. For big organizations we suggest to use a Redis Cache Server. For Redis Cache Server uncheck this, you'll be skipping the `Cache Management` process later.
+- `Use LDAP Cache`, if you check this LDAP server will be used for caching. For big organizations we suggest to use a Redis Cache Server. For Redis Cache Server uncheck this, you'll be skipping the `Cache Management` process later. **Note!** If you installed Shibboleth, Cluster Manager will use LDAP as cache provider since redis is not available as cache provider for Shibbolet at the moment. Hence this option is not available if you installed Shibboleth.
 
 !!! Warning
     The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
