@@ -18,7 +18,7 @@ To uninstall Cluster Manager:
 ```
 
 ### Reinstall
-To re-install latest package from githbu
+To re-install latest package from Github.
 
 ```
 # pip install https://github.com/GluuFederation/cluster-mgr/archive/4.0.zip
