@@ -209,6 +209,9 @@ Key rotation is important for security.
 Click `Settings` to enable this functionality, as well as setting the time interval in hours.
 
 ![Key Rotation Set](../img/CM_KeyRotationConfig.png)
+
+If you want to keep copies of old keys check **Backup old keys** option. This enables you keep track of your keys. Cluster Manager saves current keys to `~/.clustermgr4/backup_oxAuthConfWebKeys` in json format.
+
 <!---
 ## Custom Attributes
 
