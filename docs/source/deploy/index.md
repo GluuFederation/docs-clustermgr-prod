@@ -108,6 +108,9 @@ During initial deloyment click the `Deploy All` button and wait for the process 
 !!! Note 
     If you are deploying offline Gluu Server 4.0, you need to replace `/opt/gluu/jetty/oxauth/webapps/oxauth.war` with https://ox.gluu.org/maven/org/gluu/oxauth-server/4.0.Final.patch1/oxauth-server-4.0.Final.patch1.war in case you will use Key Rotation feature.
 
+!!! Warning
+    Cluster manager will set `keyRegenerationEnabled` to `false`, so oxAuth won't rotate keys automatically. Instead Key Rotation is supposed to be used.
+
 ## External Load-balancers
 
 Load balancing Gluu Server is relatively easy, there are some caveats with how connections should be made. Please refer to the [Nginx template](https://github.com/GluuFederation/cluster-mgr/blob/master/clustermgr/templates/nginx/nginx.temp#L26) for reference on how to properly route paths. For default functionality you should use the following as guidance:
