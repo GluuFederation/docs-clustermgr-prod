@@ -132,6 +132,7 @@ pip install clustermgr4
 
 There may be a few innocuous warnings, but this is normal.
 
+<!--
 ### Add License Validator
 
 Prepare the license validator by using the following commands:
@@ -144,6 +145,8 @@ wget -q https://ox.gluu.org/maven/org/gluu/oxlicense-validator/4.0.Final/oxlicen
 !!! Note
     License files are not currently enforced, it's on the honor system! Please see the [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE) to see if you're eligible to use Cluster Manager in production. In future versions, a license file may be required.
     oxlicense-validator works with Java version up to 8. **Please use Java 7 or 8.**
+
+-->
 
 !!! Warning
     All Cluster Manager commands need to be run as root.
