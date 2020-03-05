@@ -19,7 +19,8 @@ CM automates many tasks associated with building and operating an HA/DR Gluu Ser
 - [Troubleshooting](./troubleshooting/index.md)
 
 ## License
-Licensed under the [GLUU SUPPORT LICENSE](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). To obtain a Gluu Support contract, see [support pricing](https://gluu.org/pricing). 
+
+Cluster Manager is made available under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
 
 
