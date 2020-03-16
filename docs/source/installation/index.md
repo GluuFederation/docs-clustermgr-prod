@@ -102,8 +102,6 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 ### Install Dependencies on Ubuntu
 
-#### Install Dependencies
-
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
@@ -124,7 +122,7 @@ sudo apt-get install openjdk-8-jre-headless
 
 Jre is required for <!--license requirements and --> key rotation. It is not necessary if Java (up to 8) is already installed.
 
-### Instal CM on RedHat 7
+### Install Dependencies on RedHat 7
 
 
 If you don't have registered RHEL7 repo, write the following content to `/etc/yum.repos.d/centos7.repo`
@@ -160,7 +158,7 @@ gpgkey=http://ftp.heanet.ie/pub/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 `# systemctl start redis`
 
 
-### Install CM on CentOS 7
+### Install Dependencies on CentOS 7
 
 `# yum install -y epel-release`
 
