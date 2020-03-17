@@ -263,6 +263,7 @@ Click **Operations/Oxd Login** and fill the form as in the following figure.
 ![Oxd Settings](../img/CM_oxda.png)
 
 **Oxd Server** oxd server url
+
 **OP Host** Gluu server url
 
 and click "Register Client". It will automatically register client on OP.
