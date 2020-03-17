@@ -107,7 +107,7 @@ When all the installations have completed, and you're not using your own load ba
 - Navigate to `Cluster` in the left menu
 - Select `Install Nginx`
 
-![Installing Gluu Server](../img/CM_Nginx.png)
+![Installing Load Balancer](../img/CM_Nginx.png)
 
 If you are going to use casa and passport, we recommend using sticky session enabled binaries from gluu repository. These binaries are compiled from source rpm and deb packages which are delivered by distributions. We included this addon https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/src as described in the doc. Please use this option at your own risc.
 
@@ -150,6 +150,10 @@ All the necessary paths are as follows:
 
 ## Replication
 
+Deployemnt of Ldap and File System replication is possible with Cluster Manager.
+
+### LDAP Replication
+
 Next navigate to the `Replication` tab to set up replication across the cluster. 
 
 Click the `deploy all` button to enable LDAP replication between all the nodes in your cluster.
@@ -159,6 +163,8 @@ Click the `deploy all` button to enable LDAP replication between all the nodes i
 After configuring WrenDS replication for the first time, this page will display replication status and other replication information.
 
 ![Replication Deployed screen](../img/Cluster_Manager-11.png)
+
+### File System Replication
 
 If using Shibboleth, enable file system replication by clicking `Replication` on the left menu and selecting `File system Replication`. Click `Install File System Replication` to install and configure Csync2 and replicate necessary configuration files.
 
@@ -175,7 +181,7 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
 ## Cache
 
 !!! Note
-    This step is not available if you are using LDAP Cache.
+    This step is not available if you are using LDAP Cache or you installed Shibboleth.
 
 !!! Note
     If OS of your gluu nodes is Red Hat, each node is needed to be registered to offical Red Hat repo.
