@@ -98,9 +98,25 @@ Once completed, repeat the process for the other servers in the cluster.
 
 When all the installations have completed, and you're not using your own load balancer, you should install Nginx:
 
+## Installing Nginx Load-balancer
+
+Gluu recommends use of Nginx as load balancer, but you can also use external load balancer.
+
+When all the installations have completed, and you're not using your own load balancer, you should install Nginx:
+
 - Navigate to `Cluster` in the left menu
 - Select `Install Nginx`
 
+![Installing Gluu Server](../img/CM_Nginx.png)
+
+If you are going to use casa and passport, we recommend using sticky session enabled binaries from gluu repository. These binaries are compiled from source rpm and deb packages which are delivered by distributions. We included this addon https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/src as described in the doc. Please use this option at your own risc.
+
+!!! Note
+    Installation of sticky session enabled Nginx binaries are available only at install time.
+
+To begin installation click **here** link on the page.
+
+## Deploy LDAP Replication
 Finally, the `LDAP Replication` screen will appear, where LDAP replication can be enabled and disabled.  
 
 During initial deloyment click the `Deploy All` button and wait for the process to finish.
