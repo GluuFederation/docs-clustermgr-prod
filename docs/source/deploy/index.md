@@ -116,7 +116,6 @@ If you are going to use casa and passport, we recommend using sticky session ena
 
 To begin installation click **here** link on the page.
 
-## Deploy LDAP Replication
 Finally, the `LDAP Replication` screen will appear, where LDAP replication can be enabled and disabled.  
 
 During initial deloyment click the `Deploy All` button and wait for the process to finish.
