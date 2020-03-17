@@ -239,6 +239,47 @@ Click `Settings` to enable this functionality, as well as setting the time inter
 
 If you want to keep copies of old keys check **Backup old keys** option. This enables you keep track of your keys. Cluster Manager saves current keys to `~/.clustermgr4/backup_oxAuthConfWebKeys` in json format.
 
+## Certificates
+
+All fresh Gluu Server installations uses self siged certifiactes. If you want to install a valid certifiacte to your web server (all web servers in the cluster and Nginx Load Balancer), you can use **Operations/Certificates** menu. Cluster Manager will display current certificate.
+
+## Oxd Login
+
+Cluster Manager 4.1 provides oxd external authororizations.To be able to use, you need an oxd server. 
+
+### Prepare OP Server
+Login your Gluu Server, adn perform the followings
+
+ * Navigate **Configuration/Manage Custom Scripts** and click **Dynamic Scopes** tab. Expand **dynamic_permisson**, check `Enabled` and click **Update** button
+ * Navigate **OpenID Connect/Scopes** and edit **user_name**, `Check Default scope` and click **Update** button
+ * Only admin and users having `clusteradmin` in their **role** (User Permission) claim will be able to login Cluster Manager. So add a user, Click `User Permission` under `gluuPerson` on the left **Available User Claims** pane. Write `clusteradmin` to the `User Permission` attrbiute as in the following figure
+
+![Oxd User](../img/CM_oxd_user.png)
+
+### Configure Cluster Manager
+
+Click **Operations/Oxd Login** and fill the form as in the following figure.
+
+![Oxd Settings](../img/CM_oxda.png)
+
+**Oxd Server** oxd server url
+**OP Host** Gluu server url
+
+and click "Register Client". It will automatically register client on OP.
+
+![Oxd Settings](../img/CM_oxdb.png)
+
+Logout from Cluster Manager. You will see `Login with Gluu Server` link. Once you click this link, you will be redirected to OP server. Login either user **admin** or any user having `clusteradmin` in his role. Oxd logged in user is identified as **username@openid**
+
+![Oxd Settings](../img/CM_oxd_user_login.png)
+
+You can see who made the changes in logs. For example in `~/.clustermgr4/logs/sql.log`, user `mike` updated configuration:
+
+```
+2020-03-17 15:06:31,787 - mike@openid - DEBUG - UPDTE[AppConfiguration]: {"object_class_base": null, "cache_host": null, "nginx_host": "c3.gluu.org", "id": 1, "gluu_version": "4.1.0", "monitoring": true, "replication_dn": null, "last_test": null, "nginx_os": "Ubuntu 16", "use_ldap_cache": false, "nginx_ip": "159.89.38.138", "nginx_os_type": "Ubuntu 16", "offline": false, "external_load_balancer": false, "modify_hosts": false, "log_purge": null, "attribute_oid": 100, "gluu_archive": "", "use_ip": null, "latest_version": "4.0-6", "ldap_update_period_unit": "s", "replication_pw": "1234.Gluu", "ldap_update_period": "300", "cache_ip": null, "admin_email": null}
+```
+
+
 <!---
 ## Custom Attributes
 
