@@ -1,6 +1,8 @@
 # Deploying a Gluu Cluster
 
-Follow this doc to deploy a cluster of Gluu Servers using Cluster Manager!
+## Overview
+
+This guide describes how to deploy a cluster of Gluu Servers using Cluster Manager.
 
 ## Getting Started
 
@@ -12,7 +14,7 @@ Upon initial launch of Cluster Manager, the following screen will be presented t
 ![Admin_Creation](../img/Cluster_Manager-01.png)
 
 !!! Note
-    Cluster Manager also supports Oxd Logins, see  [Oxd Login](#oxd-login)
+    Cluster Manager also supports oxd logins, see  [oxd Login](#oxd-login)
 
 After the administrator is created, start the process of building a cluster by clicking the `Setup Cluster` button:
 
@@ -32,7 +34,11 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
-- `Offline installation` Cluster Manager can intsall Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr4/gluu_repo` (please refresh this page after putting package), here is a sample: ![Offline mode](../img/Cluster_Manager_offline.png). Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/4.1/docs/offline_install.md) which are implemented by Cluster Manager in non-offile mode.
+- `Offline installation` Cluster Manager can install Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr4/gluu_repo` (please refresh this page after putting package), here is a sample:
+
+  ![Offline mode](../img/Cluster_Manager_offline.png)
+
+  Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/4.1/docs/offline_install.md) which are implemented by Cluster Manager in non-offline mode.
 
 - `Replication Manager Password` will be used in WrenDS for replication purposes. You generally won't need this password, as WrenDS replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
@@ -40,7 +46,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 - `This is an external load balancer` will remove the requirement for an IP address and you will only need to use a hostname here. There will be additional options here for caching; `Cache Proxy Hostname` and `Cache Proxy IP Address`. You will need to either use a cache proxy server specifically for Twemproxy to handle the multiple redis servers you deploy, _or_ you can use a Redis cluster. Cluster Manager will automatically install a Twemproxy and Redis server cache configuration for you, with Stunnel protecting communication. Using Redis cluster requires some manual configuration on your end.
 
-- `Use LDAP Cache`, if you check this LDAP server will be used for caching. For big organizations we suggest to use a Redis Cache Server. For Redis Cache Server uncheck this, you'll be skipping the `Cache Management` process later. **Note!** If you installed Shibboleth, Cluster Manager will use LDAP as cache provider since redis is not available as cache provider for Shibbolet at the moment. Hence this option is not available if you installed Shibboleth.
+- `Use LDAP Cache`, if you check this LDAP server will be used for caching. For big organizations, we suggest to use a Redis Cache Server. For Redis Cache Server uncheck this, you'll be skipping the `Cache Management` process later. **Note!** If you installed Shibboleth, Cluster Manager will use LDAP as cache provider since redis is not available as cache provider for Shibbolet at the moment. Hence this option is not available if you installed Shibboleth.
 
 !!! Warning
     The load balancer hostname cannot be changed *easily* after Gluu Server has been deployed. Please follow [these instructions](https://github.com/GluuFederation/community-edition-setup/tree/master/static/scripts/change_hostname) for every Gluu Server in your cluster if you must change the hostname.
@@ -69,7 +75,7 @@ The following screen is used to add the Primary Server, which will be used as a 
     Hostname here will be the actual hostname of the server, not the hostname of the Load Balancer (NGINX/Proxy) server. This is so that Cluster Manager can discover and connect to the server for installation and configuration. If the `Add IP Addresses and Hostnames to/etc/hosts file on each server` option was enabled in the `Settings` menu, the hostname here will be embedded automatically in the `/etc/hosts` files on this machine.
     
 !!! Note
-    For AWS deployment, use internal ip address.
+    For AWS deployment, use the internal IP address.
 
 ![Dashboard](../img/Cluster_Manager-06.png)
 
@@ -139,7 +145,7 @@ Load balancing Gluu Server is relatively easy, there are some caveats with how c
 
 There is further explanation about sticky sessions for F5 [here](https://www.f5.com/services/resources/white-papers/cookies-sessions-and-persistence) and AWS ELB [[0]](https://aws.amazon.com/blogs/aws/new-elastic-load-balancing-feature-sticky-sessions/)[[1]](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#sticky-sessions)[[2]](https://shlomoswidler.com/2010/04/elastic-load-balancing-with-sticky-sessions.html). We also have documentation on how to deploy an AWS Application Load Balancer in front of a cluster: [Configure AWS Load Balancer](../aws-config/index.md).
 
-- `/oxauth` is stateless unless you're using SCIM, wherein it will need sticky sessions as mentioned above.
+- `/oxauth` is stateless unless you're using SCIM, which will need sticky sessions as mentioned above.
 
 All the necessary paths are as follows:
 
@@ -153,7 +159,7 @@ All the necessary paths are as follows:
 
 ## Replication
 
-Deployemnt of Ldap and File System replication is possible with Cluster Manager.
+Deployment of LDAP and File System replication is possible with Cluster Manager.
 
 ### LDAP Replication
 
@@ -187,16 +193,15 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
     This step is not available if you are using LDAP Cache or you installed Shibboleth.
 
 !!! Note
-    If OS of your gluu nodes is Red Hat, each node is needed to be registered to offical Red Hat repo.
-
+    If OS of your Gluu nodes is Red Hat, each node is needed to be registered to offical Red Hat repo.
 
 oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high availability, Redis is installed outside the chroot on every Gluu Server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
-Currently Cluster Manages supports single Redis Cache Server. To add cache server click `Add Cache Server`:
+Currently Cluster Manager supports a single Redis Cache Server. To add cache server click `Add Cache Server`:
 
 ![Cache Server](../img/Cluster_Manager-13.png)
 
-For demonstration purpose I am using Load Balancer as Cache Server, but it is higly recommended to use seperate server. Hit `Setup Cache` to begin installation. Cluster Manager will install Redis Server on Cache Server and make it reachable for Gluu Server nodes through stunnel (default port 16379). So stunnel will be installed on Cache Server and all Gluu Server nodes. You can restrict access to redis server by setting password. Clustermanager creates random password for redis. If you don't want to set up password, just clear **Redis Password** box. 
+For demonstration purposes I am using Load Balancer as Cache Server, but it is highly recommended to use a seperate server. Hit `Setup Cache` to begin installation. Cluster Manager will install Redis Server on the Cache Server and make it reachable for Gluu Server nodes through stunnel (default port 16379). So stunnel will be installed on Cache Server and all Gluu Server nodes. You can restrict access to redis server by setting password. Cluster Manager creates random password for redis. If you don't want to set up password, just clear **Redis Password** box. 
 
 ![Cache Management](../img/Cluster_Manager-13b.png)
 
@@ -221,7 +226,7 @@ Navigate to the `Monitoring` tab in the left-hand menu to see details about the 
 ![Monitoring Screen](../img/Cluster_Manager-15.png)
 
 ## Logging   
-Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD[Apache2], WrenDS and Redis), Host and string search filters for easy sorting. Hit `Collect Logs` after configuration to see logs.
+Cluster Manager gathers logs from all the nodes in the cluster for troubleshooting. Logs can be sorted by log type (oxAuth, oxTrust, HTTPD (Apache2), WrenDS and Redis), Host and string search filters for easy sorting. Hit `Collect Logs` after configuration to see logs.
 
 !!! Note
     Cluster Manager must be connected to the cluster in order to take advantage of logging features. 
@@ -246,12 +251,12 @@ If you want to keep copies of old keys check **Backup old keys** option. This en
 
 All fresh Gluu Server installations uses self siged certifiactes. If you want to install a valid certifiacte to your web server (all web servers in the cluster and Nginx Load Balancer), you can use **Operations/Certificates** menu. Cluster Manager will display current certificate.
 
-## Oxd Login
+## oxd Login
 
-Cluster Manager 4.1 provides oxd external authororizations.To be able to use, you need an oxd server. 
+Cluster Manager 4.1 provides oxd external authorization. To be able to use this feature, you need an oxd server. 
 
 ### Prepare OP Server
-Login your Gluu Server, adn perform the followings
+Log in to your Gluu Server, and perform the followings
 
  * Navigate **Configuration/Manage Custom Scripts** and click **Dynamic Scopes** tab. Expand **dynamic_permisson**, check `Enabled` and click **Update** button
  * Navigate **OpenID Connect/Scopes** and edit **user_name**, `Check Default scope` and click **Update** button
@@ -265,19 +270,19 @@ Click **Operations/Oxd Login** and fill the form as in the following figure.
 
 ![Oxd Settings](../img/CM_oxda.png)
 
-**Oxd Server** oxd server url
+**oxd Server** oxd server URL
 
-**OP Host** Gluu server url
+**OP Host** Gluu server URL
 
 and click "Register Client". It will automatically register client on OP.
 
 ![Oxd Settings](../img/CM_oxdb.png)
 
-Logout from Cluster Manager. You will see `Login with Gluu Server` link. Once you click this link, you will be redirected to OP server. Login either user **admin** or any user having `clusteradmin` in his role. Oxd logged in user is identified as **username@openid**
+Log out from Cluster Manager. You will see `Login with Gluu Server` link. Once you click this link, you will be redirected to OP server. Log in either the **admin** user or any user having `clusteradmin` in his role. A user logged into oxd is identified as **username@openid**
 
 ![Oxd Settings](../img/CM_oxd_user_login.png)
 
-You can see who made the changes in logs. For example in `~/.clustermgr4/logs/sql.log`, user `mike` updated configuration:
+You can see who made changes in the logs. For example in `~/.clustermgr4/logs/sql.log`, user `mike` updated configuration:
 
 ```
 2020-03-17 15:06:31,787 - mike@openid - DEBUG - UPDTE[AppConfiguration]: {"object_class_base": null, "cache_host": null, "nginx_host": "c3.gluu.org", "id": 1, "gluu_version": "4.1.0", "monitoring": true, "replication_dn": null, "last_test": null, "nginx_os": "Ubuntu 16", "use_ldap_cache": false, "nginx_ip": "159.89.38.138", "nginx_os_type": "Ubuntu 16", "offline": false, "external_load_balancer": false, "modify_hosts": false, "log_purge": null, "attribute_oid": 100, "gluu_archive": "", "use_ip": null, "latest_version": "4.0-6", "ldap_update_period_unit": "s", "replication_pw": "1234.Gluu", "ldap_update_period": "300", "cache_ip": null, "admin_email": null}
