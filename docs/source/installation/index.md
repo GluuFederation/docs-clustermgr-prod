@@ -133,7 +133,7 @@ Jre is required for <!--license requirements and --> key rotation. It is not nec
 If you installed OS release of pynas1, first remove:
 
 ```
-yum remove python-pyasn1 python-pyasn1-modules
+yum remove python2-pyasn1 python2-pyasn1-modules
 ```
 
 If you don't have registered RHEL7 repo, write the following content to `/etc/yum.repos.d/centos7.repo`
@@ -174,7 +174,7 @@ gpgkey=http://ftp.heanet.ie/pub/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 If you installed OS release of pynas1, first remove:
 
 ```
-yum remove python-pyasn1 python-pyasn1-modules
+yum remove python2-pyasn1 python2-pyasn1-modules
 ```
 
 `# yum install -y epel-release`
