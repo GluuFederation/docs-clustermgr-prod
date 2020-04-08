@@ -102,11 +102,17 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 ### Install Dependencies on Ubuntu
 
+If you installed ubuntu release of pynas1, first remove:
+
+```
+sudo apt-get remove python-pyasn1 python-pyasn1-modules
+```
+
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
 sudo apt-get update
-sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server
+sudo apt-get install python-pip python-dev redis-server
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
@@ -124,6 +130,11 @@ Jre is required for <!--license requirements and --> key rotation. It is not nec
 
 ### Install Dependencies on RedHat 7
 
+If you installed OS release of pynas1, first remove:
+
+```
+yum remove python-pyasn1 python-pyasn1-modules
+```
 
 If you don't have registered RHEL7 repo, write the following content to `/etc/yum.repos.d/centos7.repo`
 
@@ -159,6 +170,12 @@ gpgkey=http://ftp.heanet.ie/pub/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 
 
 ### Install Dependencies on CentOS 7
+
+If you installed OS release of pynas1, first remove:
+
+```
+yum remove python-pyasn1 python-pyasn1-modules
+```
 
 `# yum install -y epel-release`
 
