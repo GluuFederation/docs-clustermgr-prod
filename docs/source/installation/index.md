@@ -133,13 +133,17 @@ Jre is required for <!--license requirements and --> key rotation. It is not nec
 If you installed OS release of pynas1, first remove:
 
 ```
-yum remove python2-pyasn1 python2-pyasn1-modules
+# yum remove python2-pyasn1 python2-pyasn1-modules
 ```
 Install epel release:
 
 `# rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
 
 `# yum repolist`
+
+Install curl and wget if missing:
+
+`# yum install -y wget curl`
 
 !!! Note
     If your Gluu Server nodes will be Red Hat 7, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
