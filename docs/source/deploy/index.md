@@ -193,7 +193,7 @@ Navigate to `Cache Management` in the left menu to complete the cluster configur
     This step is not available if you are using LDAP Cache or you installed Shibboleth.
 
 !!! Note
-    If OS of your Gluu nodes is Red Hat, each node is needed to be enabled epel repo as explained [here](/installation/#install-dependencies-on-redhat-7).
+    If OS of your Gluu nodes is Red Hat, each node is needed to be enabled epel repo as explained [here](/docs/source/installation/index.md#install-dependencies-on-redhat-7).
 
 oxAuth caches short-lived tokens, and in a balanced cluster all instances of oxAuth need access to the cache. To support this requirement and still enable high availability, Redis is installed outside the chroot on every Gluu Server. Configuration settings inside LDAP are also changed to allow access to these instances of Redis.
 
