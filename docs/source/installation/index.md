@@ -116,7 +116,7 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 ```
 sudo apt-get update
 sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server default-jre
-sudo pip install --upgrade setuptools influxdb psutil
+pip install --upgrade setuptools==41.0.0 influxdb==5.2.3 psutil==5.7.0
 ```
 
 #### on CentOS 7
@@ -125,7 +125,7 @@ sudo yum update
 sudo yum install -y epel-release
 sudo yum repolist
 sudo yum install gcc gcc-c++ make python-devel openldap-devel python-pip redis
-sudo pip install --upgrade setuptools influxdb psutil
+pip install --upgrade setuptools==41.0.0 influxdb==5.2.3 psutil==5.7.0
 sudo systemctl enable redis
 sudo systemctl start redis
 ```
@@ -149,7 +149,7 @@ Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr/javalibs
-wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.4.Final/oxlicense-validator-3.1.4.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
+wget -q https://ox.gluu.org/maven/org/xdi/oxlicense-validator/3.1.6.Final/oxlicense-validator-3.1.6.Final-jar-with-dependencies.jar -O $HOME/.clustermgr/javalibs/oxlicense-validator.jar
 ```
 
 !!! Warning
