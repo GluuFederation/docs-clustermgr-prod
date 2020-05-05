@@ -3,7 +3,7 @@ site_name: Cluster Manager Beta Docs
 site_description: Documentation for Gluu Cluster Manager
 
 # Copyright
-copyright: Copyright &copy; 2019, Gluu, Inc.
+copyright: Copyright &copy; 2020, Gluu, Inc.
 
 # Repository
 docs_dir: source
@@ -42,8 +42,7 @@ nav:
     - '4.1': 'https://gluu.org/docs/cm/4.1/'
     - '4.0': 'https://gluu.org/docs/cm/4.0/'
     - '3.1.6': 'https://gluu.org/docs/cm/3.1.6/'    
-    - '3.1.4': 'https://gluu.org/docs/cm/3.1.4/'
-    - '3.1.3': 'https://gluu.org/docs/cm/3.1.3/'
+    - 'EOL Versions': 'https://gluu.org/docs/eol/'
 - ' ': 'https:/gluu.org/docs'
 - ' ': 'https:/gluu.org/docs'
 - Home: 'index.md'
