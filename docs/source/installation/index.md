@@ -100,7 +100,62 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
-### Install Dependencies on Ubuntu
+### Install Binary Package
+If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we have rpm package. Steps to install Cluster Manager on these distrubutios:
+
+0. Install Epel Release
+```
+sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum clean all
+```
+
+1. Install Redis and Start
+```
+sudo yum install redis
+sudo systemctl enable redis
+sudo systemctl start redis
+```
+
+2. Install Java
+```
+sudo yum install java-1.8.0-openjdk
+```
+
+3. Install Cluster Manager
+```
+sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
+sudo wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+sudo yum clean all
+sudo yum install clustermgr
+```
+
+4. Download Key Generator
+```
+sudo mkdir -p $HOME/.clustermgr4/javalibs
+sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.1.0.Final/oxauth-client-4.1.0.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr4/javalibs/keygen.jar
+```
+
+5. Start Cluster Manager
+```
+sudo systemctl enable clustermgr
+sudo systemctl start clustermgr
+```
+
+6. Connect Cluster Manager
+On your desktop, execute the following command:
+```
+ssh -L 5000:localhost:5000 root@address.of.cluster.manager
+```
+Use address of you Cluster Manager machine for `address.of.cluster.manager`
+
+Open your borwser and point to http://localhost:5000
+
+### Install Using PyPi or Github
+
+Most recent version of Cluster Manager is available on Github, once we decided it stable we push to PyPi. In this scetion we will explain how to install Cluster Manager using **pip**.
+
+#### Install Dependencies on Ubuntu
 
 If you installed ubuntu release of pynas1, first remove:
 
@@ -193,6 +248,15 @@ Install Cluster Manager using the following command:
 ```
 pip install clustermgr4
 ```
+
+---
+or if you want to install from github:
+
+```
+pip install https://github.com/GluuFederation/cluster-mgr/archive/4.1.zip
+```
+---
+
 
 There may be a few innocuous warnings, but this is normal.
 
