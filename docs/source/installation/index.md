@@ -144,7 +144,7 @@ sudo systemctl start clustermgr
 
 6. Connect Cluster Manager
 
-On your desktop, execute the following command:
+    On your desktop, execute the following command:
 ```
 ssh -L 5000:localhost:5000 root@address.of.cluster.manager
 ```
