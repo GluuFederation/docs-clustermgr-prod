@@ -103,25 +103,25 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 ### Install Binary Package
 If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we have rpm package. Steps to install Cluster Manager on these distrubutios:
 
-0. Install Epel Release
+1. Install Epel Release
 ```
 sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum clean all
 ```
 
-1. Install Redis and Start
+2. Install Redis and Start
 ```
 sudo yum install redis
 sudo systemctl enable redis
 sudo systemctl start redis
 ```
 
-2. Install Java
+3. Install Java
 ```
 sudo yum install java-1.8.0-openjdk
 ```
 
-3. Install Cluster Manager
+4. Install Cluster Manager
 ```
 sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
 sudo wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
@@ -130,19 +130,30 @@ sudo yum clean all
 sudo yum install clustermgr
 ```
 
-4. Download Key Generator
+5. Download Key Generator
 ```
 sudo mkdir -p $HOME/.clustermgr4/javalibs
 sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.1.0.Final/oxauth-client-4.1.0.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr4/javalibs/keygen.jar
 ```
 
-5. Start Cluster Manager
+6. Start Cluster Manager and restart the CLI
 ```
 sudo systemctl enable clustermgr
+```
+
+```
 sudo systemctl start clustermgr
 ```
 
-6. Connect Cluster Manager
+```
+clustermgr4-cli stop
+```
+
+```
+clustermgr4-cli start
+```
+
+7. Connect Cluster Manager
 
     On your desktop, execute the following command:
 ```
@@ -150,7 +161,7 @@ ssh -L 5000:localhost:5000 root@address.of.cluster.manager
 ```
 Use address of you Cluster Manager machine for `address.of.cluster.manager`
 
-Open your borwser and point to http://localhost:5000
+Open your browser and point to http://localhost:5000
 
 ### Install Using PyPi or Github
 
