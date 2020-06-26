@@ -105,95 +105,95 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
 
 1. Install Epel Release
 
-```
-sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-```
+    ```
+    sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    ```
 
-```
-sudo yum clean all
-```
+    ```
+    sudo yum clean all
+    ```
 
 2. Install Redis and Start
 
-```
-sudo yum install redis
-```
+    ```
+    sudo yum install redis
+    ```
 
-```
-sudo systemctl enable redis
-```
+    ```
+    sudo systemctl enable redis
+    ```
 
-```
-sudo systemctl start redis
-```
+    ```
+    sudo systemctl start redis
+    ```
 
 3. Install Java
 
-```
-sudo yum install java-1.8.0-openjdk
-```
+    ```
+    sudo yum install java-1.8.0-openjdk
+    ```
 
 4. Install Cluster Manager
 
-```
-sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
-```
+    ```
+    sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
+    ```
 
-```
-sudo wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-```
+    ```
+    sudo wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+    ```
 
-```
-sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-```
+    ```
+    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+    ```
 
-```
-sudo yum clean all
-```
+    ```
+    sudo yum clean all
+    ```
 
-```
-sudo yum install clustermgr
-```
+    ```
+    sudo yum install clustermgr
+    ```
 
 5. Download Key Generator
 
-```
-sudo mkdir -p $HOME/.clustermgr4/javalibs
-```
+    ```
+    sudo mkdir -p $HOME/.clustermgr4/javalibs
+    ```
 
-```
-sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.1.0.Final/oxauth-client-4.1.0.Final-jar-with-dependencies.jar  -O 
-```
+    ```
+    sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.1.0.Final/oxauth-client-4.1.0.Final-jar-with-dependencies.jar  -O 
+    ```
 
-```
-$HOME/.clustermgr4/javalibs/keygen.jar
-```
+    ```
+    $HOME/.clustermgr4/javalibs/keygen.jar
+    ```
 
 6. Start Cluster Manager and restart the CLI
 
-```
-sudo systemctl enable clustermgr
-```
+    ```
+    sudo systemctl enable clustermgr
+    ```
 
-```
-sudo systemctl start clustermgr
-```
+    ```
+    sudo systemctl start clustermgr
+    ```
 
-```
-clustermgr4-cli stop
-```
+    ```
+    clustermgr4-cli stop
+    ```
 
-```
-clustermgr4-cli start
-```
+    ```
+    clustermgr4-cli start
+    ```
 
 7. Connect Cluster Manager
 
     On your desktop, execute the following command:
     
-```
-ssh -L 5000:localhost:5000 root@address.of.cluster.manager
-```
+    ```
+    ssh -L 5000:localhost:5000 root@address.of.cluster.manager
+    ```
 
 Use address of you Cluster Manager machine for `address.of.cluster.manager`
 
