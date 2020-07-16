@@ -113,27 +113,13 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     sudo yum clean all
     ```
 
-2. Install Redis and Start
-
-    ```
-    sudo yum install redis
-    ```
-
-    ```
-    sudo systemctl enable redis
-    ```
-
-    ```
-    sudo systemctl start redis
-    ```
-
-3. Install Java
+2. Install Java
 
     ```
     sudo yum install java-1.8.0-openjdk
     ```
 
-4. Install Cluster Manager
+3. Install Cluster Manager
 
     ```
     sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
@@ -155,7 +141,7 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     sudo yum install clustermgr
     ```
 
-5. Download Key Generator
+4. Download Key Generator
 
     ```
     sudo mkdir -p $HOME/.clustermgr4/javalibs
@@ -169,7 +155,7 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     $HOME/.clustermgr4/javalibs/keygen.jar
     ```
 
-6. Start Cluster Manager and restart the CLI
+5. Start Cluster Manager and restart the CLI
 
     ```
     sudo systemctl enable clustermgr
@@ -187,7 +173,7 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     clustermgr4-cli start
     ```
 
-7. Connect Cluster Manager
+6. Connect Cluster Manager
 
     On your desktop, execute the following command:
     
@@ -255,13 +241,7 @@ Install curl and wget if missing:
 
 `# yum install java-1.8.0-openjdk`
 
-`# yum install -y redis`
-
 `# pip install python-ldap`
-
-`# systemctl enable redis`
-
-`# systemctl start redis`
 
 
 ### Install Dependencies on CentOS 7
@@ -280,13 +260,7 @@ yum remove python2-pyasn1 python2-pyasn1-modules
 
 `# yum install gcc gcc-c++ make python-devel  openldap-devel python-pip`
 
-`# yum install -y redis`
-
 `# pip install python-ldap`
-
-`# systemctl enable redis`
-
-`# systemctl start redis`
 
 
 ### Install the Package
