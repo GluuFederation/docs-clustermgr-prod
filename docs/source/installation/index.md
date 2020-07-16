@@ -201,7 +201,7 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
 sudo apt-get update
-sudo apt-get install python-pip python-dev redis-server
+sudo apt-get install python-pip python-dev
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
