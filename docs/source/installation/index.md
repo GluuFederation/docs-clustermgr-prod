@@ -202,6 +202,7 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 ```
 sudo apt-get update
 sudo apt-get install python-pip python-dev
+sudo pip install https://github.com/mbaser/redislite/archive/master.zip
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
@@ -237,12 +238,15 @@ Install curl and wget if missing:
 !!! Note
     If your Gluu Server nodes will be Red Hat 7, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
 
-`# yum install gcc gcc-c++ make python-devel  openldap-devel python-pip`
+```
+sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
 
-`# yum install java-1.8.0-openjdk`
+sudo yum install java-1.8.0-openjdk
 
-`# pip install python-ldap`
+sudo pip install https://github.com/mbaser/redislite/archive/master.zip
 
+sudo pip install python-ldap
+```
 
 ### Install Dependencies on CentOS 7
 
@@ -250,32 +254,33 @@ If you installed OS release of pynas1, first remove:
 
 ```
 yum remove python2-pyasn1 python2-pyasn1-modules
+
+sudo yum install -y epel-release
+
+sudo yum repolist
+
+sudo yum install java-1.8.0-openjdk
+
+sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
+
+sudo pip install python-ldap
+
+sudo pip install https://github.com/mbaser/redislite/archive/master.zip
 ```
-
-`# yum install -y epel-release`
-
-`# yum repolist`
-
-`# yum install java-1.8.0-openjdk`
-
-`# yum install gcc gcc-c++ make python-devel  openldap-devel python-pip`
-
-`# pip install python-ldap`
-
 
 ### Install the Package
 
 Install Cluster Manager using the following command:
 
 ```
-pip install clustermgr4
+sudo pip install clustermgr4
 ```
 
 ---
 or if you want to install from github:
 
 ```
-pip install https://github.com/GluuFederation/cluster-mgr/archive/4.1.zip
+sudo pip install https://github.com/GluuFederation/cluster-mgr/archive/4.1.zip
 ```
 ---
 
