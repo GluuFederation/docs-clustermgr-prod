@@ -202,7 +202,7 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 ```
 sudo apt-get update
 sudo apt-get install python-pip python-dev
-sudo pip install https://github.com/mbaser/redislite/archive/master.zip
+sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 sudo pip install --upgrade setuptools influxdb psutil
 ```
 
@@ -243,7 +243,7 @@ sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
 
 sudo yum install java-1.8.0-openjdk
 
-sudo pip install https://github.com/mbaser/redislite/archive/master.zip
+sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 
 sudo pip install python-ldap
 ```
@@ -265,7 +265,7 @@ sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
 
 sudo pip install python-ldap
 
-sudo pip install https://github.com/mbaser/redislite/archive/master.zip
+sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
 ### Install the Package
