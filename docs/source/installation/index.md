@@ -200,10 +200,12 @@ sudo apt-get remove python-pyasn1 python-pyasn1-modules
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
-sudo apt-get update
-sudo apt-get install python-pip python-dev
-sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
-sudo pip install --upgrade setuptools influxdb psutil
+apt-get update
+apt-get remove python-pyasn1 python-pyasn1-modules
+apt-get install python-pip python-dev libssl-dev libffi-dev
+pip install --upgrade setuptools==42.0.0
+pip install --upgrade psutil==5.7.2
+pip install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
 On Ubunutu 16
