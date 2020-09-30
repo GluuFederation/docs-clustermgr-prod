@@ -38,7 +38,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
   ![Offline mode](../img/Cluster_Manager_offline.png)
 
-  Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/4.1/docs/offline_install.md) which are implemented by Cluster Manager in non-offline mode.
+  Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/4.2/docs/offline_install.md) which are implemented by Cluster Manager in non-offline mode.
 
 - `Replication Manager Password` will be used in WrenDS for replication purposes. You generally won't need this password, as WrenDS replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
@@ -253,7 +253,7 @@ All fresh Gluu Server installations uses self siged certifiactes. If you want to
 
 ## oxd Login
 
-Cluster Manager 4.1 provides oxd external authorization. To be able to use this feature, you need an oxd server. 
+Cluster Manager 4.2 provides oxd external authorization. To be able to use this feature, you need an oxd server. 
 
 ### Prepare OP Server
 Log in to your Gluu Server, and perform the followings
