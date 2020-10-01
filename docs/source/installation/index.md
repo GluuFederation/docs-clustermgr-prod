@@ -245,6 +245,10 @@ sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
 
 sudo yum install java-1.8.0-openjdk
 
+sudo pip install --upgrade setuptools==42.0.0
+
+pip install --upgrade psutil==5.7.2
+
 sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 
 sudo pip install python-ldap
@@ -267,6 +271,10 @@ sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
 
 sudo pip install python-ldap
 
+sudo pip install --upgrade setuptools==42.0.0
+
+pip install --upgrade psutil==5.7.2
+
 sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
@@ -278,13 +286,12 @@ Install Cluster Manager using the following command:
 sudo pip install clustermgr4
 ```
 
----
+
 or if you want to install from github:
 
 ```
 sudo pip install https://github.com/GluuFederation/cluster-mgr/archive/4.2.zip
 ```
----
 
 
 There may be a few innocuous warnings, but this is normal.
