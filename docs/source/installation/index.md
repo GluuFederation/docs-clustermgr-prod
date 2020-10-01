@@ -242,15 +242,10 @@ Install curl and wget if missing:
 
 ```
 sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
-
 sudo yum install java-1.8.0-openjdk
-
 sudo pip install --upgrade setuptools==42.0.0
-
-pip install --upgrade psutil==5.7.2
-
+sudo pip install --upgrade psutil==5.7.2
 sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
-
 sudo pip install python-ldap
 ```
 
@@ -259,22 +254,14 @@ sudo pip install python-ldap
 If you installed OS release of pynas1, first remove:
 
 ```
-yum remove python2-pyasn1 python2-pyasn1-modules
-
+sudo yum remove python2-pyasn1 python2-pyasn1-modules
 sudo yum install -y epel-release
-
 sudo yum repolist
-
 sudo yum install java-1.8.0-openjdk
-
 sudo yum install gcc gcc-c++ make python-devel  openldap-devel python-pip
-
 sudo pip install python-ldap
-
 sudo pip install --upgrade setuptools==42.0.0
-
-pip install --upgrade psutil==5.7.2
-
+sudo pip install --upgrade psutil==5.7.2
 sudo pip install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
