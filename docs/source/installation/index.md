@@ -184,8 +184,8 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     Cluster Manager CLI can also be used for starting/stopping
 
     ```
-    /opt/clustermgr/bin/clustermgr4-cli start
-    /opt/clustermgr/bin/clustermgr4-cli stop
+    clustermgr4-cli start
+    clustermgr4-cli stop
     ```
 
 6. Connect Cluster Manager
