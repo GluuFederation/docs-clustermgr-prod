@@ -155,22 +155,37 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
     $HOME/.clustermgr4/javalibs/keygen.jar
     ```
 
-5. Start Cluster Manager and restart the CLI
+5. Cluster Manager Service
+
+    Enable Cluster Manager so that it startrs on boot
 
     ```
     sudo systemctl enable clustermgr
     ```
 
+    Now start
+
     ```
     sudo systemctl start clustermgr
     ```
 
-    ```
-    clustermgr4-cli stop
-    ```
+    You can see status
 
     ```
-    clustermgr4-cli start
+    sudo systemctl status clustermgr
+    ```
+
+    To stop
+    
+    ```
+    sudo systemctl stop clustermgr
+    ```
+
+    Cluster Manager CLI can also be used for starting/stopping
+
+    ```
+    /opt/clustermgr/bin/clustermgr4-cli start
+    /opt/clustermgr/bin/clustermgr4-cli stop
     ```
 
 6. Connect Cluster Manager
