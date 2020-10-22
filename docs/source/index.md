@@ -17,4 +17,4 @@ Cluster Manager (CM) is a GUI tool for installing and managing a highly availabl
 
 ## License
 
-Cluster Manager is made available under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0.html). 
+Cluster Manager is made available under [Gluu Support License](https://github.com/GluuFederation/cluster-mgr/blob/master/LICENSE). 
