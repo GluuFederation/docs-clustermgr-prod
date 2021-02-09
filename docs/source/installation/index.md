@@ -214,7 +214,7 @@ add-apt-repository universe
 apt install wget
 apt install python2
 wget https://bootstrap.pypa.io/2.7/get-pip.py
-python get-pip.py
+python2 get-pip.py
 pip install --upgrade setuptools==42.0.0
 apt-get install python-dev libssl-dev libffi-dev
 apt-get install openjdk-8-jre-headless
