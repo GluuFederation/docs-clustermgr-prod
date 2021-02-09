@@ -214,6 +214,29 @@ sudo apt-get remove python-pyasn1 python-pyasn1-modules
 
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
+##### On Ubuntu 20
+
+```
+add-apt-repository universe
+apt install wget
+apt install python2
+wget https://bootstrap.pypa.io/2.7/get-pip.py
+python get-pip.py
+pip install --upgrade setuptools==42.0.0
+apt-get install python-dev libssl-dev libffi-dev
+apt-get install openjdk-8-jre-headless
+apt install build-essential
+pip install --upgrade psutil==5.7.2
+pip install https://github.com/GluuFederation/cluster-mgr/archive/4.2.zip
+```
+
+Install Cluster Manager from github
+```
+pip install https://github.com/GluuFederation/cluster-mgr/archive/4.2.zip
+```
+
+
+#####  On Ubuntu 18
 ```
 apt-get update
 apt-get remove python-pyasn1 python-pyasn1-modules
@@ -221,15 +244,6 @@ apt-get install python-pip python-dev libssl-dev libffi-dev
 pip install --upgrade setuptools==42.0.0
 pip install --upgrade psutil==5.7.2
 pip install https://github.com/GluuFederation/redislite/archive/master.zip
-```
-
-On Ubunutu 16
-```
-sudo apt-get install default-jre
-```
-
-On Ubuntu 18
-```
 sudo apt-get install openjdk-8-jre-headless
 ```
 
