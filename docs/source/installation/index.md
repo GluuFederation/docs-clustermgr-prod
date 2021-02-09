@@ -204,15 +204,7 @@ Open your browser and point to http://localhost:5000
 
 Most recent version of Cluster Manager is available on Github, once we decided it stable we push to PyPi. In this scetion we will explain how to install Cluster Manager using **pip**.
 
-#### Install Dependencies on Ubuntu
-
-If you installed ubuntu release of pynas1, first remove:
-
-```
-sudo apt-get remove python-pyasn1 python-pyasn1-modules
-```
-
-Install the necessary dependencies on the Gluu Cluster Manager machine:
+#### Install on Ubuntu
 
 ##### On Ubuntu 20
 
@@ -248,6 +240,12 @@ pip install --upgrade psutil==5.7.2
 pip install https://github.com/GluuFederation/redislite/archive/master.zip
 sudo apt-get install openjdk-8-jre-headless
 ```
+
+Install Cluster Manager from github
+```
+pip install https://github.com/GluuFederation/cluster-mgr/archive/4.2.zip
+```
+
 
 Jre is required for <!--license requirements and --> key rotation. It is not necessary if Java (up to 8) is already installed.
 
