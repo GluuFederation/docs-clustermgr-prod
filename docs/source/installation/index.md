@@ -217,6 +217,7 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 ##### On Ubuntu 20
 
 ```
+apt-get install software-properties-common
 add-apt-repository universe
 apt install wget
 apt install python2
@@ -227,6 +228,7 @@ apt-get install python-dev libssl-dev libffi-dev
 apt-get install openjdk-8-jre-headless
 apt install build-essential
 pip install --upgrade psutil==5.7.2
+pip install https://github.com/GluuFederation/redislite/archive/master.zip
 pip install https://github.com/GluuFederation/cluster-mgr/archive/4.2.zip
 ```
 
