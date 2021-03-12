@@ -105,9 +105,11 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
 ```
-sudo apt-get update
-sudo apt-get install python-pip python-dev libffi-dev libssl-dev python-ldap redis-server
-sudo pip install --upgrade setuptools influxdb psutil
+apt-get update
+apt-get remove python-pyasn1 python-pyasn1-modules
+apt-get install python-pip python-dev libssl-dev libffi-dev
+pip install --upgrade setuptools==42.0.0
+pip install --upgrade psutil==5.7.2
 ```
 
 On Ubunutu 16
