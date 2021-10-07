@@ -379,5 +379,5 @@ Next, move on to [deploy the Gluu cluster](../deploy/index.md).
 To uninstall Cluster Manager, simply:
 
 ```
-# pip uninstall clustermgr4
+pip3 uninstall clustermgr4
 ```
