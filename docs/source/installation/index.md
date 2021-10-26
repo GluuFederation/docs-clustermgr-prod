@@ -6,7 +6,7 @@
     - Cluster Manager: One (1) machine with at least 4GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
     - Load Balancer: One (1) machine 4GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines with at least 8GB of RAM for Gluu Servers. *SeLinux should be disabled in case of nochroot installation*.
-    - Redis Cache Server: One (1) machine with at least 4GB of RAM
+    - Redis Cache Server (optional): One (1) machine with at least 4GB of RAM if you want to use redis for caching.
 
 ## Ports
 
