@@ -34,6 +34,10 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 ![Application Settings Screen](../img/Cluster_Manager-03.png)
 
+!!! Note
+    If you are installing nochroot package, SeLinux should be disabled on all nodes.
+
+
 - `Offline installation` Cluster Manager can install Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr4/gluu_repo` (please refresh this page after putting package), here is a sample:
 
   ![Offline mode](../img/Cluster_Manager_offline.png)
