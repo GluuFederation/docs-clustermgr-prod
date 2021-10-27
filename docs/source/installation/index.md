@@ -100,14 +100,14 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
-<!--
+
 ### Install Binary Package
-If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we have rpm package. Steps to install Cluster Manager on these distrubutios:
+If you are using CentOS 8 or RedHat 8 for Cluster Manager, you are in luck, we have rpm package. Steps to install Cluster Manager on these distrubutios:
 
 1. Install Epel Release
 
     ```
-    sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     ```
 
     ```
@@ -123,7 +123,7 @@ If you are using CentOS 7 or RedHat 7 for Cluster Manager, you are in luck, we h
 3. Install Cluster Manager
 
     ```
-    sudo wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
+    sudo wget https://repo.gluu.org/rhel/Gluu-rhel-8-testing.repo -O /etc/yum.repos.d/Gluu.repo
     ```
 
     ```
