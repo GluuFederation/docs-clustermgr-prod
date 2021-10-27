@@ -149,11 +149,7 @@ If you are using CentOS 8 or RedHat 8 for Cluster Manager, you are in luck, we h
     ```
 
     ```
-    sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.3.0.Final/oxauth-client-4.3.0.Final-jar-with-dependencies.jar  -O 
-    ```
-
-    ```
-    $HOME/.clustermgr4/javalibs/keygen.jar
+    sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.3.0.Final/oxauth-client-4.3.0.Final-jar-with-dependencies.jar  -O  $HOME/.clustermgr4/javalibs/keygen.jar
     ```
 
 5. Cluster Manager Service
