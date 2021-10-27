@@ -20,7 +20,7 @@ theme:
     logo: 'gluu.jpg'
     favicon: 'favicon.ico'
 extra:
-    version: '4.2'
+    version: '4.3'
 
 # Tracking
 google_analytics:
