@@ -149,7 +149,7 @@ If you are using CentOS 8 or RedHat 8 for Cluster Manager, you are in luck, we h
     ```
 
     ```
-    sudo wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.3.0.Final/oxauth-client-4.3.0.Final-jar-with-dependencies.jar  -O  $HOME/.clustermgr4/javalibs/keygen.jar
+    sudo wget https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar  -O  $HOME/.clustermgr4/javalibs/keygen.jar
     ```
 
 5. Cluster Manager Service
@@ -309,7 +309,7 @@ Prepare the license validator by using the following commands:
 
 ```
 mkdir -p $HOME/.clustermgr4/javalibs
-wget -q https://ox.gluu.org/maven/org/gluu/oxlicense-validator/4.3.0.Final/oxlicense-validator-4.3.0.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
+wget -q https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
@@ -327,7 +327,7 @@ If automated key rotation is required, you'll need to download the keygen.jar. P
 
 ```
 mkdir -p $HOME/.clustermgr4/javalibs
-wget https://ox.gluu.org/maven/org/gluu/oxauth-client/4.3.0.Final/oxauth-client-4.3.0.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr4/javalibs/keygen.jar
+wget https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr4/javalibs/keygen.jar
 ```
 
 Automated key rotation can be configured inside the Cluster Manager UI.
