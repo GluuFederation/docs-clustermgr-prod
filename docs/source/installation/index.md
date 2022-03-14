@@ -211,10 +211,9 @@ Install the necessary dependencies on the Gluu Cluster Manager machine:
 ##### On Ubuntu 20
 
 ```
-apt install python3-pip python3-dev libssl-dev libffi-dev
+apt install python3-pip python3-dev libssl-dev libffi-dev git
 apt install openjdk-11-jre-headless
 apt install build-essential
-pip3 install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
 Install Cluster Manager from github
@@ -226,14 +225,13 @@ pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
 #####  On Ubuntu 18
 ```
 apt-get update
-apt install python3-pip python3-dev libssl-dev libffi-dev
+apt install python3-pip python3-dev libssl-dev libffi-dev git
 apt install openjdk-8-jre-headless
 apt install build-essential
 pip3 install --upgrade pip
 pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
-pip3 install https://github.com/GluuFederation/redislite/archive/master.zip
 pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
 ```
 
@@ -256,13 +254,12 @@ Install curl and wget if missing:
     If your Gluu Server nodes will be Red Hat 7, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
 
 ```
-yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel
+yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel git
 yum install java-1.8.0-openjdk
 pip3 install --upgrade pip
 pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
-pip3 install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
 Install Cluster Manager from github
@@ -290,11 +287,10 @@ Install curl and wget if missing:
     If your Gluu Server nodes will be Red Hat 8, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
 
 ```
-yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel
+yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel git
 yum install java-11-openjdk-headless
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
-pip3 install https://github.com/GluuFederation/redislite/archive/master.zip
 ```
 
 Install Cluster Manager from github
