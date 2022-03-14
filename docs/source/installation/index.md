@@ -197,8 +197,6 @@ Use address of you Cluster Manager machine for `address.of.cluster.manager`
 
 Open your browser and point to http://localhost:5000
 
--->
-
 
 ### Install Using PyPi or Github
 
