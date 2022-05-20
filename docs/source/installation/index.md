@@ -100,6 +100,8 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
+In the following installations Jdk is required for <!--license requirements and --> key rotation. If you are not going to use Cluster Manager's key rotation feature, you don't need to install Jdk. 
+
 
 #### Install on Ubuntu 18/20
 
@@ -118,8 +120,6 @@ Install Cluster Manager from github
 ```
 pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 ```
-
-Jre is required for <!--license requirements and --> key rotation.
 
 #### Install on RedHat 7 and CentOS 7
 
@@ -141,8 +141,6 @@ pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
-
-Jre is required for <!--license requirements and --> key rotation.
 
 Install Cluster Manager from github
 ```
@@ -171,8 +169,6 @@ pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
-
-Jre is required for <!--license requirements and --> key rotation.
 
 Install Cluster Manager from github
 
