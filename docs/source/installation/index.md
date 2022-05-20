@@ -101,103 +101,6 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
 
-### Install Binary Package
-If you are using CentOS 8 or RedHat 8 for Cluster Manager, you are in luck, we have rpm package. Steps to install Cluster Manager on these distrubutios:
-
-1. Install Epel Release
-
-    ```
-    sudo rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    ```
-
-    ```
-    sudo yum clean all
-    ```
-
-2. Install Java
-
-    ```
-    sudo yum install java-1.8.0-openjdk
-    ```
-
-3. Install Cluster Manager
-
-    ```
-    sudo wget https://repo.gluu.org/rhel/Gluu-rhel-8-testing.repo -O /etc/yum.repos.d/Gluu.repo
-    ```
-
-    ```
-    sudo wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-    ```
-
-    ```
-    sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-    ```
-
-    ```
-    sudo yum clean all
-    ```
-
-    ```
-    sudo yum install clustermgr
-    ```
-
-4. Download Key Generator
-
-    ```
-    sudo mkdir -p $HOME/.clustermgr4/javalibs
-    ```
-
-    ```
-    sudo wget https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar  -O  $HOME/.clustermgr4/javalibs/keygen.jar
-    ```
-
-5. Cluster Manager Service
-
-    Enable Cluster Manager so that it startrs on boot
-
-    ```
-    sudo systemctl enable clustermgr
-    ```
-
-    Now start
-
-    ```
-    sudo systemctl start clustermgr
-    ```
-
-    You can see status
-
-    ```
-    sudo systemctl status clustermgr
-    ```
-
-    To stop
-    
-    ```
-    sudo systemctl stop clustermgr
-    ```
-
-    Cluster Manager CLI can also be used for starting/stopping
-
-    ```
-    clustermgr4-cli start
-    clustermgr4-cli stop
-    ```
-
-6. Connect Cluster Manager
-
-    On your desktop, execute the following command:
-    
-    ```
-    ssh -L 5000:localhost:5000 root@address.of.cluster.manager
-    ```
-
-Use address of you Cluster Manager machine for `address.of.cluster.manager`
-
-Open your browser and point to http://localhost:5000
-
-
 ### Install Using PyPi or Github
 
 Most recent version of Cluster Manager is available on Github, once we decided it stable we push to PyPi. In this scetion we will explain how to install Cluster Manager using **pip**.
@@ -206,94 +109,84 @@ Most recent version of Cluster Manager is available on Github, once we decided i
 
 Install the necessary dependencies on the Gluu Cluster Manager machine:
 
-##### On Ubuntu 20
+##### On Ubuntu 18/20
+
+Install dependencies
 
 ```
-apt install python3-pip python3-dev libssl-dev libffi-dev git
-apt install openjdk-11-jre-headless
-apt install build-essential
-```
-
-Install Cluster Manager from github
-```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
-```
-
-
-#####  On Ubuntu 18
-```
-apt-get update
-apt install python3-pip python3-dev libssl-dev libffi-dev git
-apt install openjdk-8-jre-headless
-apt install build-essential
+apt install -y python3-pip openjdk-11-jre-headless
 pip3 install --upgrade pip
 pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
 ```
 
-Jre is required for <!--license requirements and --> key rotation. It is not necessary if Java (up to 8) is already installed.
+Install Cluster Manager from github
+
+```
+pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
+```
+
+Jre is required for <!--license requirements and --> key rotation.
 
 #### RedHat 7 and CentOS 7
-First install Dependencies.
 
-Install depenepel release:
+Install CentOS 7 epel-release:
 
-`rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
+`yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm`
 
-`yum repolist`
-
-Install curl and wget if missing:
-
-`yum install -y wget curl`
+`yum repolist clean`
 
 !!! Note
-    If your Gluu Server nodes will be Red Hat 7, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
+    If your Gluu Server nodes will be Red Hat 7, please enable epel-release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
+
+Install dependencies:
 
 ```
-yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel git
-yum install java-1.8.0-openjdk
+yum install -y wget which curl python3 python3-pip java-1.8.0-openjdk
 pip3 install --upgrade pip
 pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
 
+Jre is required for <!--license requirements and --> key rotation.
+
 Install Cluster Manager from github
 ```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
+pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 ```
 
 There may be a few innocuous warnings, but this is normal.
 
 ### RedHat 8 and CentOS 8
 
-First install Dependencies.
 
-Install depenepel release:
+Install epel-release:
 
-`rpm -i https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm`
+`yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm`
 
-`yum repolist`
-
-Install curl and wget if missing:
-
-`yum install -y wget curl`
+`yum repolist clean`
 
 !!! Note
     If your Gluu Server nodes will be Red Hat 8, please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM. 
 
+Install dependencies:
+
 ```
-yum install gcc gcc-c++ make python3-devel openldap-devel python3-pip libffi-devel openssl-devel git
-yum install java-11-openjdk-headless
+yum install -y python3 python3-pip java-11-openjdk-headless
+pip3 install --upgrade pip
+pip3 install --upgrade setuptools
 pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
 
+Jre is required for <!--license requirements and --> key rotation.
+
 Install Cluster Manager from github
+
 ```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
+pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 ```
 
 <!--
