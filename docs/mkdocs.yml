@@ -1,5 +1,5 @@
 # Project information
-site_name: Cluster Manager 4.3 Docs
+site_name: Cluster Manager 4.4 Docs
 site_description: Documentation for Gluu Cluster Manager
 
 # Copyright
@@ -9,7 +9,7 @@ copyright: Copyright &copy; 2020, Gluu, Inc.
 docs_dir: source
 repo_name: GluuFederation/docs-clustermgr-prod
 repo_url: https://github.com/GluuFederation/docs-clustermgr-prod/
-edit_uri: edit/4.3/docs/source
+edit_uri: edit/4.4/docs/source
 
 # Configuration
 theme: 
@@ -20,7 +20,7 @@ theme:
     logo: 'gluu.jpg'
     favicon: 'favicon.ico'
 extra:
-    version: '4.3'
+    version: '4.4'
 
 # Tracking
 google_analytics:
@@ -38,6 +38,7 @@ markdown_extensions:
 # Navigation
 nav:
 - 'Versions':
+    - '4.4': 'https://gluu.org/docs/cm/4.4/'
     - '4.3': 'https://gluu.org/docs/cm/4.3/'
     - '4.2': 'https://gluu.org/docs/cm/4.2/'
     - '4.1': 'https://gluu.org/docs/cm/4.1/'
