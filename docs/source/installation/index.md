@@ -102,6 +102,7 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 In the following installations Jdk is required for <!--license requirements and --> key rotation. If you are not going to use Cluster Manager's key rotation feature, you don't need to install Jdk. 
 
+To build Cluster Manager, please refer to [building pyz files](../building/index.md)
 
 #### Install on Ubuntu 18/20
 
