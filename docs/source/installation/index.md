@@ -101,7 +101,7 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
 
-### Ubuntu 18/20
+#### Install on Ubuntu 18/20
 
 Install dependencies
 
@@ -121,7 +121,7 @@ pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 
 Jre is required for <!--license requirements and --> key rotation.
 
-#### RedHat 7 and CentOS 7
+#### Install on RedHat 7 and CentOS 7
 
 Install CentOS 7 epel-release:
 
@@ -151,8 +151,7 @@ pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 
 There may be a few innocuous warnings, but this is normal.
 
-### RedHat 8 and CentOS 8-Stream
-
+#### Install on RedHat 8 and CentOS 8-Stream
 
 Install epel-release:
 
