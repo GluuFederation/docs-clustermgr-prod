@@ -104,10 +104,11 @@ In the following installations Jdk is required for <!--license requirements and 
 
 To build Cluster Manager, please refer to [building pyz files](../building/index.md)</a>
 
- Install on Ubuntu 18/20
+ 
 
-Install dependencies
+### Install dependencies
 
+#### Install on Ubuntu 18/20
 ```
 apt install -y python3-pip openjdk-11-jre-headless
 pip3 install --upgrade pip
