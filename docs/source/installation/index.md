@@ -101,15 +101,7 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 - Copy the public key (default is `id_rsa.pub`) to the `/root/.ssh/authorized_keys` file of all servers in the cluster, including the Load Balancer (unless another load-balancing service will be used) and Redis Cache Server. **This MUST be the root authorized_keys.**
 
 
-### Install Using PyPi or Github
-
-Most recent version of Cluster Manager is available on Github, once we decided it stable we push to PyPi. In this scetion we will explain how to install Cluster Manager using **pip**.
-
-#### Install Dependencies on Ubuntu
-
-Install the necessary dependencies on the Gluu Cluster Manager machine:
-
-##### On Ubuntu 18/20
+### Ubuntu 18/20
 
 Install dependencies
 
@@ -159,7 +151,7 @@ pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
 
 There may be a few innocuous warnings, but this is normal.
 
-### RedHat 8 and CentOS 8
+### RedHat 8 and CentOS 8-Stream
 
 
 Install epel-release:
