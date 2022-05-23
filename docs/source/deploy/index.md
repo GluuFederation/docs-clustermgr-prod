@@ -109,6 +109,9 @@ Click `Submit` to begin installation.
 
 Once completed, repeat the process for the other servers in the cluster.
 
+!!! Note
+    Until LDAP replication enabled, secondary nodes won't work.
+
 When all the installations have completed, and you're not using your own load balancer, you should install Nginx:
 
 ## Installing Nginx Load-balancer
