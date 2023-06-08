@@ -87,6 +87,22 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 
 ## Installing Cluster Manager
 
+### Download Cluster Manager
+
+Since Cluster Manager package is protected, download can be done via browser. If you have access to Cluster Manager github repository,
+navigate to https://github.com/GluuFederation/cluster-mgr
+
+(1) Select branch 4.4
+
+(2) Click on **Code** button
+
+(3) Click on **Download ZIP**
+
+![Steps to download Cluster Manager package](../img/github-cm.png)
+
+Downloaded file should be uploaded to VM on which Cluster Manager will be installed. We uploaded file `cluster-mgr-4.4.zip` to `/root`
+
+
 ### SSH & Keypairs
 
 Give Cluster Manager the ability to establish an SSH connection to the servers in the cluster. This includes the NGINX/load-balancing server. A simple key generation example:
@@ -102,7 +118,7 @@ Give Cluster Manager the ability to establish an SSH connection to the servers i
 
 In the following installations Jdk is required for <!--license requirements and --> key rotation. If you are not going to use Cluster Manager's key rotation feature, you don't need to install Jdk. 
 
-To build Cluster Manager, please refer to [building pyz files](../building/index.md)</a>
+To build Cluster Manager, please refer to [building pyz files](../building/index.md)
 
  
 
@@ -117,10 +133,10 @@ pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
 
-Install Cluster Manager from github
+If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
 
 ```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
+pip3 install /root/cluster-mgr-4.4.zip
 ```
 
 #### Install on RedHat 7 and CentOS 7
@@ -144,9 +160,10 @@ pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
 
-Install Cluster Manager from github
+If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
+
 ```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
+pip3 install /root/cluster-mgr-4.4.zip
 ```
 
 There may be a few innocuous warnings, but this is normal.
@@ -172,10 +189,10 @@ pip3 install --upgrade psutil
 pip3 install --upgrade python3-ldap
 ```
 
-Install Cluster Manager from github
+If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
 
 ```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.4.zip
+pip3 install /root/cluster-mgr-4.4.zip
 ```
 
 <!--
