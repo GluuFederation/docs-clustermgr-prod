@@ -44,7 +44,9 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
   Cluster Manager will upload selected package to nodes via ssh while installing Gluu Sever. In case you choose this option, you need to compelete [these instructions](https://github.com/GluuFederation/cluster-mgr/blob/4.2/docs/offline_install.md) which are implemented by Cluster Manager in non-offline mode.
 
-- `Replication Manager Password` will be used in WrenDS for replication purposes. You generally won't need this password, as WrenDS replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
+- Since Gluu repository password protected, you need to enter Gluu repository username and password to fields `Gluu Repository User` and `Gluu Repository Password`. If you don't have, contact to support@gluu.org.
+
+- `Replication Manager Password` will be used in OpenDJ for replication purposes. You generally won't need this password, as WrenDS replication is handled automatically, but it's useful to have on hand for operations and maintenance. It can be the same as the LDAP password 
 
 - `Load Balancer Hostname` will be the hostname of either the NGINX proxy server, or any other load balancing server in use for the cluster. Check the `This is an external load balancer` box if you are using an external load balancer like Amazon ELB or F5 
 
