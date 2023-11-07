@@ -124,7 +124,10 @@ To build Cluster Manager, please refer to [building pyz files](../building/index
 
 ### Install dependencies
 
-#### Install on Ubuntu 18/20
+#### Install on Ubuntu 20/22
+!!! Note
+    If your system has `python3-blinker` package, remove it by `sudo apt uninstall python3-blinker` since we need newest version and `pip` will install it.
+    
 ```
 apt install -y python3-pip openjdk-11-jre-headless
 pip3 install --upgrade pip
