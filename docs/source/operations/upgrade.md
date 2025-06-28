@@ -7,20 +7,17 @@ Cluster Manager has a built-in upgrade feature which checks the GitHub repo for 
 To perform an upgrade manually, simply uninstall the current installation and install latest package. 
 
 !!! Attention
-    Although this process won't affect `~/.clustermgr4`, and is therefore safe, a [backup](./backup.md) is still recommended before proceeding. 
+    Although this process won't affect `~/.clustermgr5`, and is therefore safe, a [backup](./backup.md) is still recommended before proceeding. 
 
 ### Uninstall
 To uninstall Cluster Manager:
 
 ```
-clustermgr4-cli stop
-pip3 uninstall clustermgr4
+clustermgr5-cli stop
+pip3 uninstall clustermgr5
 ```
 
 ### Reinstall
 To re-install latest package from Github.
 
-```
-pip3 install https://github.com/GluuFederation/cluster-mgr/archive/4.3.zip
-clustermgr4-cli start
-```
+[Install from GitHub](./installation/index.md#installing-cluster-manager)

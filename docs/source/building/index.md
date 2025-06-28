@@ -4,7 +4,7 @@ In this section we will explain how to build build self-contained, single-artifa
 
 ## Install dependencies
 
-### on Ubuntu 18/20
+### on Ubuntu 20/22
 
 ```
 apt install -y wget unzip python3 python3-pip make
@@ -27,14 +27,14 @@ pip3 install --upgrade shiv
 Download Cluster Manager archieve
 
 ```
-wget https://github.com/GluuFederation/cluster-mgr/archive/refs/heads/4.4.zip
+wget https://github.com/GluuFederation/cluster-mgr/archive/refs/heads/4.5.zip
 ```
 
 Unzip and build
 
 ```
-unzip 4.4.zip
-cd cluster-mgr-4.4/
+unzip 4.5.zip
+cd cluster-mgr-4.5/
 make zipapp
 ```
 
@@ -43,7 +43,7 @@ make zipapp
 You can run Cluster Manager as
 
 ```
-./clustermgr4-4.pyz run-clustermgr
+./clustermgr4-5.pyz run-clustermgr
 ```
 
 Locate your browser to http://localhost:5000

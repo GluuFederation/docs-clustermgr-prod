@@ -2,8 +2,8 @@
 
 ## Prerequisites
 
-- A minimum of four (4) machines running **Ubuntu 18-20, CentOS 7/ RHEL 7 or CentOS 8/ RHEL 8**:
-    - Cluster Manager: One (1) machine with at least 4GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
+- A minimum of four (4) machines running **Ubuntu 20-22**, **CentOS 7/ RHEL 7**, **CentOS Stream 8/ RHEL 8**, and **CentOS AppStream 9 / RHEL 9:
+    - Cluster Manager: One (1) machine with at least 2GB of RAM for cluster manager, which will proxy TCP and HTTP traffic.
     - Load Balancer: One (1) machine 4GB of RAM for the Nginx load balancer and Twemproxy. This server is not necessary if you are using your own load balancer **and** you use Redis Cluster on the Gluu Server installations.
     - Gluu Server(s): At least two (2) machines with at least 8GB of RAM for Gluu Servers. *SeLinux should be disabled in case of nochroot installation*.
     - Redis Cache Server (optional): One (1) machine with at least 4GB of RAM if you want to use redis for caching.
@@ -92,7 +92,7 @@ Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=7&arch=x86_6
 Since Cluster Manager package is protected, download can be done via browser. If you have access to Cluster Manager github repository,
 navigate to https://github.com/GluuFederation/cluster-mgr
 
-(1) Select branch 4.4
+(1) Select branch 4.5
 
 (2) Click on **Code** button
 
@@ -100,7 +100,7 @@ navigate to https://github.com/GluuFederation/cluster-mgr
 
 ![Steps to download Cluster Manager package](../img/github-cm.png)
 
-Downloaded file should be uploaded to VM on which Cluster Manager will be installed. We uploaded file `cluster-mgr-4.4.zip` to `/root`
+Downloaded file should be uploaded to VM on which Cluster Manager will be installed. We uploaded file `cluster-mgr-4.5.zip` to `/root`
 
 
 ### SSH & Keypairs
@@ -139,7 +139,7 @@ pip3 install --upgrade python3-ldap
 If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
 
 ```
-pip3 install /root/cluster-mgr-4.4.zip
+pip3 install /root/cluster-mgr-4.5.zip
 ```
 
 #### Install on RedHat 7 and CentOS 7
@@ -166,7 +166,7 @@ pip3 install --upgrade python3-ldap
 If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
 
 ```
-pip3 install /root/cluster-mgr-4.4.zip
+pip3 install /root/cluster-mgr-4.5.zip
 ```
 
 There may be a few innocuous warnings, but this is normal.
@@ -195,7 +195,36 @@ pip3 install --upgrade python3-ldap
 If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
 
 ```
-pip3 install /root/cluster-mgr-4.4.zip
+pip3 install /root/cluster-mgr-4.5.zip
+```
+
+
+#### Install on RedHat 9 and CentOS 9-AppStream
+
+Install epel-release:
+
+`yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm`
+
+`yum repolist clean`
+
+!!! Note
+    If your Gluu Server nodes will be Red Hat 9 / CentOS 9-AppStream,
+    1. Please enable epel release each node (by repeating above steps) before attempting to install Gluu Server via CM.
+    2. Reboot after enable installing SHA-1 signed packages with command `update-crypto-policies --set LEGACY`
+    3. CM will enable CentOS 9-AppStream repositories both inside and outside of the container to install dependencies. You cand disable CentOS 9-AppStream repositories manually after finishing cluster setup.
+    
+
+
+Install dependencies:
+
+```
+yum install -y wget which curl python3 python3-pip java-1.8.0-openjdk-headless python3-psutil python3-ldap
+```
+
+If you did not download Cluster Manager package from github and uploaded, please do as explained in section [Download Cluster Manager](index.md#download-cluster-manager)
+
+```
+pip3 install /root/cluster-mgr-4.5.zip
 ```
 
 <!--
@@ -204,8 +233,8 @@ pip3 install /root/cluster-mgr-4.4.zip
 Prepare the license validator by using the following commands:
 
 ```
-mkdir -p $HOME/.clustermgr4/javalibs
-wget -q https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar -O $HOME/.clustermgr4/javalibs/oxlicense-validator.jar
+mkdir -p $HOME/.clustermgr5/javalibs
+wget -q https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-client-4.3.1.Final-jar-with-dependencies.jar -O $HOME/.clustermgr5/javalibs/oxlicense-validator.jar
 ```
 
 !!! Note
@@ -222,8 +251,8 @@ wget -q https://maven.gluu.org/maven/org/gluu/oxauth-client/4.3.1.Final/oxauth-c
 If automated key rotation is required, you'll need to download the keygen.jar. Prepare the OpenID Connect keys generator by using the following commands:
 
 ```
-mkdir -p $HOME/.clustermgr4/javalibs
-wget https://maven.gluu.org/maven/org/gluu/oxauth-client/<Grab_your_Gluu_Server_version_repo_link>/oxauth-client-4.x.x.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr4/javalibs/keygen.jar
+mkdir -p $HOME/.clustermgr5/javalibs
+wget https://maven.gluu.org/maven/org/gluu/oxauth-client/<Grab_your_Gluu_Server_version_repo_link>/oxauth-client-4.x.x.Final-jar-with-dependencies.jar  -O $HOME/.clustermgr5/javalibs/keygen.jar
 ```
 
 Automated key rotation can be configured inside the Cluster Manager UI.
@@ -232,17 +261,17 @@ Automated key rotation can be configured inside the Cluster Manager UI.
 
 The following commands will stop/start/restart all the components of Cluster Manager:
 
- - `clustermgr4-cli stop`
- - `clustermgr4-cli start`
- - `clustermgr4-cli restart`
+ - `clustermgr5-cli stop`
+ - `clustermgr5-cli start`
+ - `clustermgr5-cli restart`
 
 
 !!! Note
-    All the Cluster Manager logs can be found in the `$HOME/.clustermgr4/logs` directory
+    All the Cluster Manager logs can be found in the `$HOME/.clustermgr5/logs` directory
 
 ### Create Credentials
 
-When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr4/auth.ini`.
+When Cluster Manager is run for the first time, it will prompt for creation of an admin username and password. This creates an authentication config file at `$HOME/.clustermgr5/auth.ini`.
 
 
 ### Create New User
@@ -271,5 +300,5 @@ Next, move on to [deploy the Gluu cluster](../deploy/index.md).
 To uninstall Cluster Manager, simply:
 
 ```
-pip3 uninstall clustermgr4
+pip3 uninstall clustermgr5
 ```

@@ -38,7 +38,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
     If you are installing nochroot package, SeLinux should be disabled on all nodes.
 
 
-- `Offline installation` Cluster Manager can install Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr4/gluu_repo` (please refresh this page after putting package), here is a sample:
+- `Offline installation` Cluster Manager can install Gluu Servers and configure all servers in cluster without public internet access. If your servers don't have public internet access check this. You will put Gluu Server package(s) to `~/.clustermgr5/gluu_repo` (please refresh this page after putting package), here is a sample:
 
   ![Offline mode](../img/Cluster_Manager_offline.png)
 
@@ -63,7 +63,7 @@ After it's finished, click the `Start` button to move on to the dashboard.
 
 - `Custom Schema Files` can be added here as well.
 
-- `Upgrade` will automatically upgrade your Cluster Manager instance to the latest version. This requires you restart the instance with `clustermgr4-cli restart`. Alternatively this can be done manually with `pip install clustermgr4` and restarting Cluster Manager `clustermgr4-cli restart`.
+- `Upgrade` will automatically upgrade your Cluster Manager instance to the latest version. This requires you restart the instance with `clustermgr5-cli restart`. Alternatively this can be done manually with `pip install clustermgr5` and restarting Cluster Manager `clustermgr5-cli restart`.
 
 Once the settings are configured, click the `Update Configuration button`.
 
@@ -254,7 +254,7 @@ Click `Settings` to enable this functionality, as well as setting the time inter
 
 ![Key Rotation Set](../img/CM_KeyRotationConfig.png)
 
-If you want to keep copies of old keys check **Backup old keys** option. This enables you keep track of your keys. Cluster Manager saves current keys to `~/.clustermgr4/backup_oxAuthConfWebKeys` in json format.
+If you want to keep copies of old keys check **Backup old keys** option. This enables you keep track of your keys. Cluster Manager saves current keys to `~/.clustermgr5/backup_oxAuthConfWebKeys` in json format.
 
 ## Certificates
 
@@ -291,7 +291,7 @@ Log out from Cluster Manager. You will see `Login with Gluu Server` link. Once y
 
 ![Oxd Settings](../img/CM_oxd_user_login.png)
 
-You can see who made changes in the logs. For example in `~/.clustermgr4/logs/sql.log`, user `mike` updated configuration:
+You can see who made changes in the logs. For example in `~/.clustermgr5/logs/sql.log`, user `mike` updated configuration:
 
 ```
 2020-03-17 15:06:31,787 - mike@openid - DEBUG - UPDTE[AppConfiguration]: {"object_class_base": null, "cache_host": null, "nginx_host": "c3.gluu.org", "id": 1, "gluu_version": "4.1.0", "monitoring": true, "replication_dn": null, "last_test": null, "nginx_os": "Ubuntu 16", "use_ldap_cache": false, "nginx_ip": "159.89.38.138", "nginx_os_type": "Ubuntu 16", "offline": false, "external_load_balancer": false, "modify_hosts": false, "log_purge": null, "attribute_oid": 100, "gluu_archive": "", "use_ip": null, "latest_version": "4.0-6", "ldap_update_period_unit": "s", "replication_pw": "1234.Gluu", "ldap_update_period": "300", "cache_ip": null, "admin_email": null}
