@@ -20,4 +20,4 @@ pip3 uninstall clustermgr5
 ### Reinstall
 To re-install latest package from Github.
 
-[Install from GitHub](./installation/index.md#installing-cluster-manager)
+[Install from GitHub](../installation/index.md#installing-cluster-manager)
